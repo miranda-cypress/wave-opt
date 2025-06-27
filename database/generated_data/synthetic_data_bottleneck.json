@@ -1,0 +1,4286 @@
+{
+  "scenario_type": "bottleneck",
+  "generated_at": "2025-06-26T16:02:47.185687",
+  "warehouse_config": {
+    "id": 1,
+    "name": "MidWest Distribution Co",
+    "total_sqft": 85000,
+    "zones": 5,
+    "shift_start_hour": 6,
+    "shift_end_hour": 22,
+    "max_orders_per_day": 2500,
+    "deadline_penalty_per_hour": 100.0,
+    "overtime_multiplier": 1.5
+  },
+  "workers": [
+    {
+      "name": "Sarah Johnson",
+      "skills": [
+        "picking",
+        "packing",
+        "shipping"
+      ],
+      "hourly_rate": 29.836560790747303,
+      "efficiency_factor": 1.15,
+      "max_hours_per_day": 8.0,
+      "reliability_score": 0.95,
+      "warehouse_id": 1
+    },
+    {
+      "name": "Mike Chen",
+      "skills": [
+        "picking",
+        "consolidation",
+        "staging"
+      ],
+      "hourly_rate": 25.850064531336002,
+      "efficiency_factor": 1.12,
+      "max_hours_per_day": 8.0,
+      "reliability_score": 0.93,
+      "warehouse_id": 1
+    },
+    {
+      "name": "Lisa Rodriguez",
+      "skills": [
+        "labeling",
+        "packing",
+        "shipping"
+      ],
+      "hourly_rate": 27.950175910214718,
+      "efficiency_factor": 1.18,
+      "max_hours_per_day": 8.0,
+      "reliability_score": 0.97,
+      "warehouse_id": 1
+    },
+    {
+      "name": "David Kim",
+      "skills": [
+        "picking",
+        "packing",
+        "consolidation"
+      ],
+      "hourly_rate": 26.839264428892935,
+      "efficiency_factor": 1.1,
+      "max_hours_per_day": 8.0,
+      "reliability_score": 0.94,
+      "warehouse_id": 1
+    },
+    {
+      "name": "Emma Wilson",
+      "skills": [
+        "labeling",
+        "packing",
+        "shipping"
+      ],
+      "hourly_rate": 30.51882728498407,
+      "efficiency_factor": 1.16,
+      "max_hours_per_day": 8.0,
+      "reliability_score": 0.96,
+      "warehouse_id": 1
+    },
+    {
+      "name": "James Thompson",
+      "skills": [
+        "picking"
+      ],
+      "hourly_rate": 23.06019692453747,
+      "efficiency_factor": 0.95,
+      "max_hours_per_day": 8.0,
+      "reliability_score": 0.85,
+      "warehouse_id": 1
+    },
+    {
+      "name": "Maria Garcia",
+      "skills": [
+        "packing"
+      ],
+      "hourly_rate": 24.653077406229073,
+      "efficiency_factor": 0.98,
+      "max_hours_per_day": 8.0,
+      "reliability_score": 0.88,
+      "warehouse_id": 1
+    },
+    {
+      "name": "Robert Lee",
+      "skills": [
+        "shipping"
+      ],
+      "hourly_rate": 20.221632995776496,
+      "efficiency_factor": 1.02,
+      "max_hours_per_day": 8.0,
+      "reliability_score": 0.9,
+      "warehouse_id": 1
+    },
+    {
+      "name": "Jennifer Davis",
+      "skills": [
+        "labeling"
+      ],
+      "hourly_rate": 21.231530918111623,
+      "efficiency_factor": 0.92,
+      "max_hours_per_day": 8.0,
+      "reliability_score": 0.82,
+      "warehouse_id": 1
+    },
+    {
+      "name": "Christopher Brown",
+      "skills": [
+        "consolidation"
+      ],
+      "hourly_rate": 19.678783316628422,
+      "efficiency_factor": 1.0,
+      "max_hours_per_day": 8.0,
+      "reliability_score": 0.87,
+      "warehouse_id": 1
+    },
+    {
+      "name": "Amanda Miller",
+      "skills": [
+        "picking",
+        "packing"
+      ],
+      "hourly_rate": 23.811827848821622,
+      "efficiency_factor": 1.05,
+      "max_hours_per_day": 8.0,
+      "reliability_score": 0.91,
+      "warehouse_id": 1
+    },
+    {
+      "name": "Daniel Martinez",
+      "skills": [
+        "labeling",
+        "packing"
+      ],
+      "hourly_rate": 25.732131728620175,
+      "efficiency_factor": 1.07,
+      "max_hours_per_day": 8.0,
+      "reliability_score": 0.92,
+      "warehouse_id": 1
+    },
+    {
+      "name": "Jessica Taylor",
+      "skills": [
+        "staging",
+        "shipping"
+      ],
+      "hourly_rate": 22.459215818103182,
+      "efficiency_factor": 1.03,
+      "max_hours_per_day": 8.0,
+      "reliability_score": 0.89,
+      "warehouse_id": 1
+    },
+    {
+      "name": "Kevin Anderson",
+      "skills": [
+        "picking",
+        "consolidation"
+      ],
+      "hourly_rate": 23.293025904119894,
+      "efficiency_factor": 1.01,
+      "max_hours_per_day": 8.0,
+      "reliability_score": 0.88,
+      "warehouse_id": 1
+    },
+    {
+      "name": "Nicole White",
+      "skills": [
+        "labeling",
+        "shipping"
+      ],
+      "hourly_rate": 26.69930662667714,
+      "efficiency_factor": 1.08,
+      "max_hours_per_day": 8.0,
+      "reliability_score": 0.93,
+      "warehouse_id": 1
+    },
+    {
+      "name": "Alex Turner",
+      "skills": [
+        "picking",
+        "labeling",
+        "packing"
+      ],
+      "hourly_rate": 29.069648883619298,
+      "efficiency_factor": 1.13,
+      "max_hours_per_day": 8.0,
+      "reliability_score": 0.94,
+      "warehouse_id": 1
+    },
+    {
+      "name": "Rachel Green",
+      "skills": [
+        "staging",
+        "shipping",
+        "consolidation"
+      ],
+      "hourly_rate": 26.722643732244183,
+      "efficiency_factor": 1.09,
+      "max_hours_per_day": 8.0,
+      "reliability_score": 0.91,
+      "warehouse_id": 1
+    },
+    {
+      "name": "Michael Scott",
+      "skills": [
+        "picking",
+        "staging"
+      ],
+      "hourly_rate": 25.93559410325545,
+      "efficiency_factor": 1.04,
+      "max_hours_per_day": 8.0,
+      "reliability_score": 0.9,
+      "warehouse_id": 1
+    },
+    {
+      "name": "Pam Beesly",
+      "skills": [
+        "packing",
+        "shipping"
+      ],
+      "hourly_rate": 27.956582740066963,
+      "efficiency_factor": 1.11,
+      "max_hours_per_day": 8.0,
+      "reliability_score": 0.95,
+      "warehouse_id": 1
+    },
+    {
+      "name": "Dwight Schrute",
+      "skills": [
+        "labeling",
+        "consolidation"
+      ],
+      "hourly_rate": 22.638992558068367,
+      "efficiency_factor": 1.06,
+      "max_hours_per_day": 8.0,
+      "reliability_score": 0.89,
+      "warehouse_id": 1
+    }
+  ],
+  "equipment": [
+    {
+      "name": "Packing Station 1",
+      "equipment_type": "packing_station",
+      "capacity": 1,
+      "hourly_cost": 15.0,
+      "efficiency_factor": 1.0611638503665617,
+      "maintenance_frequency": 40.0,
+      "current_utilization": 0.8745348487470567,
+      "warehouse_id": 1
+    },
+    {
+      "name": "Packing Station 2",
+      "equipment_type": "packing_station",
+      "capacity": 1,
+      "hourly_cost": 15.0,
+      "efficiency_factor": 0.9680501033035984,
+      "maintenance_frequency": 40.0,
+      "current_utilization": 0.7388698749529453,
+      "warehouse_id": 1
+    },
+    {
+      "name": "Packing Station 3",
+      "equipment_type": "packing_station",
+      "capacity": 1,
+      "hourly_cost": 15.0,
+      "efficiency_factor": 1.0914426144413563,
+      "maintenance_frequency": 40.0,
+      "current_utilization": 0.7841486362781567,
+      "warehouse_id": 1
+    },
+    {
+      "name": "Packing Station 4",
+      "equipment_type": "packing_station",
+      "capacity": 1,
+      "hourly_cost": 15.0,
+      "efficiency_factor": 0.9185491686760296,
+      "maintenance_frequency": 40.0,
+      "current_utilization": 0.7241790942083659,
+      "warehouse_id": 1
+    },
+    {
+      "name": "Packing Station 5",
+      "equipment_type": "packing_station",
+      "capacity": 1,
+      "hourly_cost": 15.0,
+      "efficiency_factor": 1.0694988732694921,
+      "maintenance_frequency": 40.0,
+      "current_utilization": 0.8509315078417228,
+      "warehouse_id": 1
+    },
+    {
+      "name": "Packing Station 6",
+      "equipment_type": "packing_station",
+      "capacity": 1,
+      "hourly_cost": 15.0,
+      "efficiency_factor": 1.0614256546548761,
+      "maintenance_frequency": 40.0,
+      "current_utilization": 0.8824329466734544,
+      "warehouse_id": 1
+    },
+    {
+      "name": "Packing Station 7",
+      "equipment_type": "packing_station",
+      "capacity": 1,
+      "hourly_cost": 15.0,
+      "efficiency_factor": 1.0072456182909402,
+      "maintenance_frequency": 40.0,
+      "current_utilization": 0.9432789409948426,
+      "warehouse_id": 1
+    },
+    {
+      "name": "Packing Station 8",
+      "equipment_type": "packing_station",
+      "capacity": 1,
+      "hourly_cost": 15.0,
+      "efficiency_factor": 0.9757068754416708,
+      "maintenance_frequency": 40.0,
+      "current_utilization": 0.8380101578183067,
+      "warehouse_id": 1
+    },
+    {
+      "name": "Dock Door 1",
+      "equipment_type": "dock_door",
+      "capacity": 1,
+      "hourly_cost": 5.0,
+      "efficiency_factor": 1.0,
+      "maintenance_frequency": 80.0,
+      "current_utilization": 0.8488213992758985,
+      "warehouse_id": 1
+    },
+    {
+      "name": "Dock Door 2",
+      "equipment_type": "dock_door",
+      "capacity": 1,
+      "hourly_cost": 5.0,
+      "efficiency_factor": 1.0,
+      "maintenance_frequency": 80.0,
+      "current_utilization": 0.7855559257092738,
+      "warehouse_id": 1
+    },
+    {
+      "name": "Dock Door 3",
+      "equipment_type": "dock_door",
+      "capacity": 1,
+      "hourly_cost": 5.0,
+      "efficiency_factor": 1.0,
+      "maintenance_frequency": 80.0,
+      "current_utilization": 0.8585120700932332,
+      "warehouse_id": 1
+    },
+    {
+      "name": "Dock Door 4",
+      "equipment_type": "dock_door",
+      "capacity": 1,
+      "hourly_cost": 5.0,
+      "efficiency_factor": 1.0,
+      "maintenance_frequency": 80.0,
+      "current_utilization": 0.7732056435770286,
+      "warehouse_id": 1
+    },
+    {
+      "name": "Dock Door 5",
+      "equipment_type": "dock_door",
+      "capacity": 1,
+      "hourly_cost": 5.0,
+      "efficiency_factor": 1.0,
+      "maintenance_frequency": 80.0,
+      "current_utilization": 0.811371550864477,
+      "warehouse_id": 1
+    },
+    {
+      "name": "Dock Door 6",
+      "equipment_type": "dock_door",
+      "capacity": 1,
+      "hourly_cost": 5.0,
+      "efficiency_factor": 1.0,
+      "maintenance_frequency": 80.0,
+      "current_utilization": 0.6137473150966987,
+      "warehouse_id": 1
+    },
+    {
+      "name": "Pick Cart 1",
+      "equipment_type": "pick_cart",
+      "capacity": 1,
+      "hourly_cost": 2.0,
+      "efficiency_factor": 1.0,
+      "maintenance_frequency": 60.0,
+      "current_utilization": 0.5683694826954641,
+      "warehouse_id": 1
+    },
+    {
+      "name": "Pick Cart 2",
+      "equipment_type": "pick_cart",
+      "capacity": 1,
+      "hourly_cost": 2.0,
+      "efficiency_factor": 1.0,
+      "maintenance_frequency": 60.0,
+      "current_utilization": 0.5868163890806322,
+      "warehouse_id": 1
+    },
+    {
+      "name": "Pick Cart 3",
+      "equipment_type": "pick_cart",
+      "capacity": 1,
+      "hourly_cost": 2.0,
+      "efficiency_factor": 1.0,
+      "maintenance_frequency": 60.0,
+      "current_utilization": 0.5239375930770882,
+      "warehouse_id": 1
+    },
+    {
+      "name": "Pick Cart 4",
+      "equipment_type": "pick_cart",
+      "capacity": 1,
+      "hourly_cost": 2.0,
+      "efficiency_factor": 1.0,
+      "maintenance_frequency": 60.0,
+      "current_utilization": 0.5698372659083091,
+      "warehouse_id": 1
+    },
+    {
+      "name": "Pick Cart 5",
+      "equipment_type": "pick_cart",
+      "capacity": 1,
+      "hourly_cost": 2.0,
+      "efficiency_factor": 1.0,
+      "maintenance_frequency": 60.0,
+      "current_utilization": 0.5303004288229187,
+      "warehouse_id": 1
+    },
+    {
+      "name": "Pick Cart 6",
+      "equipment_type": "pick_cart",
+      "capacity": 1,
+      "hourly_cost": 2.0,
+      "efficiency_factor": 1.0,
+      "maintenance_frequency": 60.0,
+      "current_utilization": 0.5833920809330276,
+      "warehouse_id": 1
+    },
+    {
+      "name": "Pick Cart 7",
+      "equipment_type": "pick_cart",
+      "capacity": 1,
+      "hourly_cost": 2.0,
+      "efficiency_factor": 1.0,
+      "maintenance_frequency": 60.0,
+      "current_utilization": 0.69070533327932,
+      "warehouse_id": 1
+    },
+    {
+      "name": "Pick Cart 8",
+      "equipment_type": "pick_cart",
+      "capacity": 1,
+      "hourly_cost": 2.0,
+      "efficiency_factor": 1.0,
+      "maintenance_frequency": 60.0,
+      "current_utilization": 0.6094496536910253,
+      "warehouse_id": 1
+    },
+    {
+      "name": "Pick Cart 9",
+      "equipment_type": "pick_cart",
+      "capacity": 1,
+      "hourly_cost": 2.0,
+      "efficiency_factor": 1.0,
+      "maintenance_frequency": 60.0,
+      "current_utilization": 0.6110542901350648,
+      "warehouse_id": 1
+    },
+    {
+      "name": "Pick Cart 10",
+      "equipment_type": "pick_cart",
+      "capacity": 1,
+      "hourly_cost": 2.0,
+      "efficiency_factor": 1.0,
+      "maintenance_frequency": 60.0,
+      "current_utilization": 0.5628521092314464,
+      "warehouse_id": 1
+    },
+    {
+      "name": "Pick Cart 11",
+      "equipment_type": "pick_cart",
+      "capacity": 1,
+      "hourly_cost": 2.0,
+      "efficiency_factor": 1.0,
+      "maintenance_frequency": 60.0,
+      "current_utilization": 0.580093346614734,
+      "warehouse_id": 1
+    },
+    {
+      "name": "Pick Cart 12",
+      "equipment_type": "pick_cart",
+      "capacity": 1,
+      "hourly_cost": 2.0,
+      "efficiency_factor": 1.0,
+      "maintenance_frequency": 60.0,
+      "current_utilization": 0.7809963763137482,
+      "warehouse_id": 1
+    },
+    {
+      "name": "Pick Cart 13",
+      "equipment_type": "pick_cart",
+      "capacity": 1,
+      "hourly_cost": 2.0,
+      "efficiency_factor": 1.0,
+      "maintenance_frequency": 60.0,
+      "current_utilization": 0.6944106155739781,
+      "warehouse_id": 1
+    },
+    {
+      "name": "Pick Cart 14",
+      "equipment_type": "pick_cart",
+      "capacity": 1,
+      "hourly_cost": 2.0,
+      "efficiency_factor": 1.0,
+      "maintenance_frequency": 60.0,
+      "current_utilization": 0.6827393017000964,
+      "warehouse_id": 1
+    },
+    {
+      "name": "Pick Cart 15",
+      "equipment_type": "pick_cart",
+      "capacity": 1,
+      "hourly_cost": 2.0,
+      "efficiency_factor": 1.0,
+      "maintenance_frequency": 60.0,
+      "current_utilization": 0.5513415944594291,
+      "warehouse_id": 1
+    },
+    {
+      "name": "Pick Cart 16",
+      "equipment_type": "pick_cart",
+      "capacity": 1,
+      "hourly_cost": 2.0,
+      "efficiency_factor": 1.0,
+      "maintenance_frequency": 60.0,
+      "current_utilization": 0.7187380393851048,
+      "warehouse_id": 1
+    },
+    {
+      "name": "Pick Cart 17",
+      "equipment_type": "pick_cart",
+      "capacity": 1,
+      "hourly_cost": 2.0,
+      "efficiency_factor": 1.0,
+      "maintenance_frequency": 60.0,
+      "current_utilization": 0.5490207481285785,
+      "warehouse_id": 1
+    },
+    {
+      "name": "Pick Cart 18",
+      "equipment_type": "pick_cart",
+      "capacity": 1,
+      "hourly_cost": 2.0,
+      "efficiency_factor": 1.0,
+      "maintenance_frequency": 60.0,
+      "current_utilization": 0.6138366325272944,
+      "warehouse_id": 1
+    },
+    {
+      "name": "Pick Cart 19",
+      "equipment_type": "pick_cart",
+      "capacity": 1,
+      "hourly_cost": 2.0,
+      "efficiency_factor": 1.0,
+      "maintenance_frequency": 60.0,
+      "current_utilization": 0.7968570051909787,
+      "warehouse_id": 1
+    },
+    {
+      "name": "Pick Cart 20",
+      "equipment_type": "pick_cart",
+      "capacity": 1,
+      "hourly_cost": 2.0,
+      "efficiency_factor": 1.0,
+      "maintenance_frequency": 60.0,
+      "current_utilization": 0.6919999279562279,
+      "warehouse_id": 1
+    },
+    {
+      "name": "Conveyor 1",
+      "equipment_type": "conveyor",
+      "capacity": 5,
+      "hourly_cost": 8.0,
+      "efficiency_factor": 1.0,
+      "maintenance_frequency": 100.0,
+      "current_utilization": 0.5670849231323939,
+      "warehouse_id": 1
+    },
+    {
+      "name": "Conveyor 2",
+      "equipment_type": "conveyor",
+      "capacity": 5,
+      "hourly_cost": 8.0,
+      "efficiency_factor": 1.0,
+      "maintenance_frequency": 100.0,
+      "current_utilization": 0.6053842752969624,
+      "warehouse_id": 1
+    },
+    {
+      "name": "Conveyor 3",
+      "equipment_type": "conveyor",
+      "capacity": 5,
+      "hourly_cost": 8.0,
+      "efficiency_factor": 1.0,
+      "maintenance_frequency": 100.0,
+      "current_utilization": 0.6528555760569428,
+      "warehouse_id": 1
+    },
+    {
+      "name": "Label Printer 1",
+      "equipment_type": "label_printer",
+      "capacity": 1,
+      "hourly_cost": 3.0,
+      "efficiency_factor": 1.0,
+      "maintenance_frequency": 50.0,
+      "current_utilization": 0.8327999734638735,
+      "warehouse_id": 1
+    },
+    {
+      "name": "Label Printer 2",
+      "equipment_type": "label_printer",
+      "capacity": 1,
+      "hourly_cost": 3.0,
+      "efficiency_factor": 1.0,
+      "maintenance_frequency": 50.0,
+      "current_utilization": 0.6687144215892313,
+      "warehouse_id": 1
+    },
+    {
+      "name": "Label Printer 3",
+      "equipment_type": "label_printer",
+      "capacity": 1,
+      "hourly_cost": 3.0,
+      "efficiency_factor": 1.0,
+      "maintenance_frequency": 50.0,
+      "current_utilization": 0.6096300731712113,
+      "warehouse_id": 1
+    },
+    {
+      "name": "Label Printer 4",
+      "equipment_type": "label_printer",
+      "capacity": 1,
+      "hourly_cost": 3.0,
+      "efficiency_factor": 1.0,
+      "maintenance_frequency": 50.0,
+      "current_utilization": 0.6946359144177245,
+      "warehouse_id": 1
+    }
+  ],
+  "skus": [
+    {
+      "name": "Laptop Pro 15\"",
+      "category": "Electronics",
+      "zone": 3,
+      "pick_time_minutes": 2.766188605211547,
+      "pack_time_minutes": 4.047881674511327,
+      "volume_cubic_feet": 2.4507700772177534,
+      "weight_lbs": 4.653742812156928,
+      "demand_pattern": "high",
+      "shelf_life_days": null,
+      "warehouse_id": 1
+    },
+    {
+      "name": "Laptop Pro 13\"",
+      "category": "Electronics",
+      "zone": 4,
+      "pick_time_minutes": 3.0956319010606643,
+      "pack_time_minutes": 4.048728553844326,
+      "volume_cubic_feet": 2.288277778881098,
+      "weight_lbs": 3.2946404994941574,
+      "demand_pattern": "high",
+      "shelf_life_days": null,
+      "warehouse_id": 1
+    },
+    {
+      "name": "Smartphone X",
+      "category": "Electronics",
+      "zone": 5,
+      "pick_time_minutes": 3.2389772896672904,
+      "pack_time_minutes": 3.9482082869913544,
+      "volume_cubic_feet": 2.24265074094187,
+      "weight_lbs": 4.250598774836969,
+      "demand_pattern": "medium",
+      "shelf_life_days": null,
+      "warehouse_id": 1
+    },
+    {
+      "name": "Tablet Air",
+      "category": "Electronics",
+      "zone": 2,
+      "pick_time_minutes": 3.209526293676465,
+      "pack_time_minutes": 3.554545647304276,
+      "volume_cubic_feet": 1.6706745631371018,
+      "weight_lbs": 2.8289473910519773,
+      "demand_pattern": "medium",
+      "shelf_life_days": null,
+      "warehouse_id": 1
+    },
+    {
+      "name": "Wireless Headphones",
+      "category": "Electronics",
+      "zone": 4,
+      "pick_time_minutes": 3.296409030731974,
+      "pack_time_minutes": 3.7308603870046997,
+      "volume_cubic_feet": 2.493832642541692,
+      "weight_lbs": 3.9041496633540316,
+      "demand_pattern": "high",
+      "shelf_life_days": null,
+      "warehouse_id": 1
+    },
+    {
+      "name": "USB-C Charger",
+      "category": "Electronics",
+      "zone": 5,
+      "pick_time_minutes": 3.5607797022344982,
+      "pack_time_minutes": 3.5068886131656916,
+      "volume_cubic_feet": 2.681082729040292,
+      "weight_lbs": 4.545131107079724,
+      "demand_pattern": "medium",
+      "shelf_life_days": null,
+      "warehouse_id": 1
+    },
+    {
+      "name": "Bluetooth Speaker",
+      "category": "Electronics",
+      "zone": 3,
+      "pick_time_minutes": 3.468598732657446,
+      "pack_time_minutes": 3.704105283818627,
+      "volume_cubic_feet": 2.0402501929711394,
+      "weight_lbs": 2.9744732630340094,
+      "demand_pattern": "high",
+      "shelf_life_days": null,
+      "warehouse_id": 1
+    },
+    {
+      "name": "Gaming Mouse",
+      "category": "Electronics",
+      "zone": 3,
+      "pick_time_minutes": 3.6718880988701144,
+      "pack_time_minutes": 3.9571773194312385,
+      "volume_cubic_feet": 2.3615225119064878,
+      "weight_lbs": 2.819232468393115,
+      "demand_pattern": "medium",
+      "shelf_life_days": null,
+      "warehouse_id": 1
+    },
+    {
+      "name": "Mechanical Keyboard",
+      "category": "Electronics",
+      "zone": 5,
+      "pick_time_minutes": 3.3089702114381723,
+      "pack_time_minutes": 3.5917035611297807,
+      "volume_cubic_feet": 2.743766200112727,
+      "weight_lbs": 4.118137090358877,
+      "demand_pattern": "low",
+      "shelf_life_days": null,
+      "warehouse_id": 1
+    },
+    {
+      "name": "Monitor 27\"",
+      "category": "Electronics",
+      "zone": 5,
+      "pick_time_minutes": 3.6184934943957026,
+      "pack_time_minutes": 3.8593667506761373,
+      "volume_cubic_feet": 2.332908562043422,
+      "weight_lbs": 2.835603175962685,
+      "demand_pattern": "medium",
+      "shelf_life_days": null,
+      "warehouse_id": 1
+    },
+    {
+      "name": "Webcam HD",
+      "category": "Electronics",
+      "zone": 3,
+      "pick_time_minutes": 2.939452310338059,
+      "pack_time_minutes": 3.64452295546834,
+      "volume_cubic_feet": 2.451035415533365,
+      "weight_lbs": 2.7362711448740984,
+      "demand_pattern": "low",
+      "shelf_life_days": null,
+      "warehouse_id": 1
+    },
+    {
+      "name": "Microphone USB",
+      "category": "Electronics",
+      "zone": 1,
+      "pick_time_minutes": 3.6779844936773345,
+      "pack_time_minutes": 3.8196237017177093,
+      "volume_cubic_feet": 1.7886407672806621,
+      "weight_lbs": 4.479252468242102,
+      "demand_pattern": "seasonal",
+      "shelf_life_days": null,
+      "warehouse_id": 1
+    },
+    {
+      "name": "Headset Gaming",
+      "category": "Electronics",
+      "zone": 2,
+      "pick_time_minutes": 2.9650566289400593,
+      "pack_time_minutes": 4.023459824651154,
+      "volume_cubic_feet": 2.2347069103013304,
+      "weight_lbs": 3.1353946163262463,
+      "demand_pattern": "medium",
+      "shelf_life_days": null,
+      "warehouse_id": 1
+    },
+    {
+      "name": "Power Bank",
+      "category": "Electronics",
+      "zone": 2,
+      "pick_time_minutes": 3.4129489728191222,
+      "pack_time_minutes": 3.739395379998457,
+      "volume_cubic_feet": 2.607530439457425,
+      "weight_lbs": 3.6202615075878812,
+      "demand_pattern": "low",
+      "shelf_life_days": null,
+      "warehouse_id": 1
+    },
+    {
+      "name": "Cable Set",
+      "category": "Electronics",
+      "zone": 4,
+      "pick_time_minutes": 2.821004195868266,
+      "pack_time_minutes": 3.6348184022189343,
+      "volume_cubic_feet": 2.1071283432211834,
+      "weight_lbs": 4.2649261553717,
+      "demand_pattern": "high",
+      "shelf_life_days": null,
+      "warehouse_id": 1
+    },
+    {
+      "name": "Cotton T-Shirt L",
+      "category": "Clothing",
+      "zone": 2,
+      "pick_time_minutes": 1.6071908389850935,
+      "pack_time_minutes": 2.5247045679290725,
+      "volume_cubic_feet": 0.4883106503144851,
+      "weight_lbs": 0.1,
+      "demand_pattern": "high",
+      "shelf_life_days": null,
+      "warehouse_id": 1
+    },
+    {
+      "name": "Denim Jeans 32x32",
+      "category": "Clothing",
+      "zone": 5,
+      "pick_time_minutes": 1.8380046343689953,
+      "pack_time_minutes": 2.5013866669777682,
+      "volume_cubic_feet": 0.7213552110556579,
+      "weight_lbs": 0.19693554617507503,
+      "demand_pattern": "seasonal",
+      "shelf_life_days": null,
+      "warehouse_id": 1
+    },
+    {
+      "name": "Wool Sweater M",
+      "category": "Clothing",
+      "zone": 4,
+      "pick_time_minutes": 1.8429972423957246,
+      "pack_time_minutes": 2.383783765766756,
+      "volume_cubic_feet": 1.010589942228905,
+      "weight_lbs": 0.1,
+      "demand_pattern": "medium",
+      "shelf_life_days": null,
+      "warehouse_id": 1
+    },
+    {
+      "name": "Leather Jacket L",
+      "category": "Clothing",
+      "zone": 4,
+      "pick_time_minutes": 2.067024668036675,
+      "pack_time_minutes": 2.5374455096759103,
+      "volume_cubic_feet": 1.4100468209399524,
+      "weight_lbs": 2.7524956340978983,
+      "demand_pattern": "high",
+      "shelf_life_days": null,
+      "warehouse_id": 1
+    },
+    {
+      "name": "Running Shoes 10",
+      "category": "Clothing",
+      "zone": 3,
+      "pick_time_minutes": 2.400592510861699,
+      "pack_time_minutes": 2.1655614193468824,
+      "volume_cubic_feet": 0.6873851082124811,
+      "weight_lbs": 1.4088572617310333,
+      "demand_pattern": "high",
+      "shelf_life_days": 266,
+      "warehouse_id": 1
+    },
+    {
+      "name": "Hoodie XL",
+      "category": "Clothing",
+      "zone": 2,
+      "pick_time_minutes": 2.47448595407058,
+      "pack_time_minutes": 2.1452309330245733,
+      "volume_cubic_feet": 1.612033367097554,
+      "weight_lbs": 2.3679006774051183,
+      "demand_pattern": "high",
+      "shelf_life_days": null,
+      "warehouse_id": 1
+    },
+    {
+      "name": "Dress Shirt M",
+      "category": "Clothing",
+      "zone": 5,
+      "pick_time_minutes": 2.4360275850799518,
+      "pack_time_minutes": 2.6813977543708507,
+      "volume_cubic_feet": 1.7895504745121915,
+      "weight_lbs": 2.3460872032429165,
+      "demand_pattern": "high",
+      "shelf_life_days": null,
+      "warehouse_id": 1
+    },
+    {
+      "name": "Winter Coat L",
+      "category": "Clothing",
+      "zone": 2,
+      "pick_time_minutes": 2.4646503940302154,
+      "pack_time_minutes": 2.641465719306329,
+      "volume_cubic_feet": 0.6469556821022904,
+      "weight_lbs": 0.1,
+      "demand_pattern": "medium",
+      "shelf_life_days": null,
+      "warehouse_id": 1
+    },
+    {
+      "name": "Athletic Shorts M",
+      "category": "Clothing",
+      "zone": 4,
+      "pick_time_minutes": 1.8852492289469205,
+      "pack_time_minutes": 2.5179549021600973,
+      "volume_cubic_feet": 1.495757976123199,
+      "weight_lbs": 2.150084585452862,
+      "demand_pattern": "medium",
+      "shelf_life_days": null,
+      "warehouse_id": 1
+    },
+    {
+      "name": "Socks Pack 6",
+      "category": "Clothing",
+      "zone": 2,
+      "pick_time_minutes": 1.8967078254945644,
+      "pack_time_minutes": 2.6812256189814954,
+      "volume_cubic_feet": 1.2687704362243843,
+      "weight_lbs": 1.4265856041228229,
+      "demand_pattern": "low",
+      "shelf_life_days": 329,
+      "warehouse_id": 1
+    },
+    {
+      "name": "Dress Pants 34x32",
+      "category": "Clothing",
+      "zone": 4,
+      "pick_time_minutes": 2.1028503829195135,
+      "pack_time_minutes": 2.611631935228971,
+      "volume_cubic_feet": 0.636149091909225,
+      "weight_lbs": 2.6823367098233515,
+      "demand_pattern": "high",
+      "shelf_life_days": 334,
+      "warehouse_id": 1
+    },
+    {
+      "name": "Polo Shirt M",
+      "category": "Clothing",
+      "zone": 1,
+      "pick_time_minutes": 2.2752125536040904,
+      "pack_time_minutes": 2.241122337000559,
+      "volume_cubic_feet": 0.5798299209206863,
+      "weight_lbs": 2.4708619423883125,
+      "demand_pattern": "high",
+      "shelf_life_days": null,
+      "warehouse_id": 1
+    },
+    {
+      "name": "Sneakers Casual",
+      "category": "Clothing",
+      "zone": 5,
+      "pick_time_minutes": 1.6819834054948757,
+      "pack_time_minutes": 2.494423898683513,
+      "volume_cubic_feet": 1.2478403857661342,
+      "weight_lbs": 0.7491095379301814,
+      "demand_pattern": "high",
+      "shelf_life_days": null,
+      "warehouse_id": 1
+    },
+    {
+      "name": "Belt Leather",
+      "category": "Clothing",
+      "zone": 3,
+      "pick_time_minutes": 1.838685952615846,
+      "pack_time_minutes": 2.337471508074753,
+      "volume_cubic_feet": 1.4075353344399568,
+      "weight_lbs": 0.6999912393962867,
+      "demand_pattern": "medium",
+      "shelf_life_days": null,
+      "warehouse_id": 1
+    },
+    {
+      "name": "Tie Silk",
+      "category": "Clothing",
+      "zone": 1,
+      "pick_time_minutes": 1.6093154568842465,
+      "pack_time_minutes": 2.4726955532958557,
+      "volume_cubic_feet": 1.244490468458419,
+      "weight_lbs": 0.1,
+      "demand_pattern": "medium",
+      "shelf_life_days": null,
+      "warehouse_id": 1
+    },
+    {
+      "name": "Table Lamp Modern",
+      "category": "Home",
+      "zone": 2,
+      "pick_time_minutes": 4.233259377993709,
+      "pack_time_minutes": 4.428518504211864,
+      "volume_cubic_feet": 5.318905363726814,
+      "weight_lbs": 6.3085812662166525,
+      "demand_pattern": "high",
+      "shelf_life_days": null,
+      "warehouse_id": 1
+    },
+    {
+      "name": "Office Chair Ergonomic",
+      "category": "Home",
+      "zone": 5,
+      "pick_time_minutes": 4.003539925087371,
+      "pack_time_minutes": 4.2670066594355704,
+      "volume_cubic_feet": 5.480849595447257,
+      "weight_lbs": 7.161928953132199,
+      "demand_pattern": "high",
+      "shelf_life_days": null,
+      "warehouse_id": 1
+    },
+    {
+      "name": "Coffee Table Wood",
+      "category": "Home",
+      "zone": 5,
+      "pick_time_minutes": 3.5993787521999776,
+      "pack_time_minutes": 4.298033228979646,
+      "volume_cubic_feet": 5.408395005890656,
+      "weight_lbs": 5.602873343180104,
+      "demand_pattern": "high",
+      "shelf_life_days": null,
+      "warehouse_id": 1
+    },
+    {
+      "name": "Wall Mirror Round",
+      "category": "Home",
+      "zone": 1,
+      "pick_time_minutes": 4.042416683980998,
+      "pack_time_minutes": 3.9932687458649943,
+      "volume_cubic_feet": 4.422634407186841,
+      "weight_lbs": 5.83188896442083,
+      "demand_pattern": "medium",
+      "shelf_life_days": null,
+      "warehouse_id": 1
+    },
+    {
+      "name": "Area Rug 8x10",
+      "category": "Home",
+      "zone": 3,
+      "pick_time_minutes": 3.805409058097987,
+      "pack_time_minutes": 4.050672751241937,
+      "volume_cubic_feet": 5.362238569327857,
+      "weight_lbs": 5.352396680987592,
+      "demand_pattern": "medium",
+      "shelf_life_days": null,
+      "warehouse_id": 1
+    },
+    {
+      "name": "Throw Pillow Decorative",
+      "category": "Home",
+      "zone": 3,
+      "pick_time_minutes": 3.34408676179905,
+      "pack_time_minutes": 4.100133923163053,
+      "volume_cubic_feet": 4.196229491052553,
+      "weight_lbs": 8.139393861486507,
+      "demand_pattern": "high",
+      "shelf_life_days": null,
+      "warehouse_id": 1
+    },
+    {
+      "name": "Desk Lamp LED",
+      "category": "Home",
+      "zone": 4,
+      "pick_time_minutes": 3.851680421126391,
+      "pack_time_minutes": 4.156612151388408,
+      "volume_cubic_feet": 4.01450454941251,
+      "weight_lbs": 5.425731580221301,
+      "demand_pattern": "low",
+      "shelf_life_days": null,
+      "warehouse_id": 1
+    },
+    {
+      "name": "Bookshelf 5-Shelf",
+      "category": "Home",
+      "zone": 2,
+      "pick_time_minutes": 3.8455902892055223,
+      "pack_time_minutes": 4.40075701193161,
+      "volume_cubic_feet": 4.8737643497346905,
+      "weight_lbs": 5.644281356702448,
+      "demand_pattern": "high",
+      "shelf_life_days": null,
+      "warehouse_id": 1
+    },
+    {
+      "name": "Bedside Table",
+      "category": "Home",
+      "zone": 3,
+      "pick_time_minutes": 3.6646515153272556,
+      "pack_time_minutes": 4.459852806312393,
+      "volume_cubic_feet": 5.458294397525891,
+      "weight_lbs": 5.319684634333655,
+      "demand_pattern": "medium",
+      "shelf_life_days": null,
+      "warehouse_id": 1
+    },
+    {
+      "name": "Floor Vase Ceramic",
+      "category": "Home",
+      "zone": 2,
+      "pick_time_minutes": 3.966933410635543,
+      "pack_time_minutes": 4.112207180768771,
+      "volume_cubic_feet": 4.8398252787158045,
+      "weight_lbs": 7.824138170623273,
+      "demand_pattern": "seasonal",
+      "shelf_life_days": null,
+      "warehouse_id": 1
+    },
+    {
+      "name": "Picture Frame 8x10",
+      "category": "Home",
+      "zone": 2,
+      "pick_time_minutes": 4.225763822569556,
+      "pack_time_minutes": 4.042042399337616,
+      "volume_cubic_feet": 4.2437526506506575,
+      "weight_lbs": 7.599661089720691,
+      "demand_pattern": "high",
+      "shelf_life_days": null,
+      "warehouse_id": 1
+    },
+    {
+      "name": "Candle Set",
+      "category": "Home",
+      "zone": 4,
+      "pick_time_minutes": 3.3247863618981883,
+      "pack_time_minutes": 4.3419386830530495,
+      "volume_cubic_feet": 4.498278201919643,
+      "weight_lbs": 7.992447658144977,
+      "demand_pattern": "low",
+      "shelf_life_days": null,
+      "warehouse_id": 1
+    },
+    {
+      "name": "Plant Pot Ceramic",
+      "category": "Home",
+      "zone": 2,
+      "pick_time_minutes": 3.5668057095944716,
+      "pack_time_minutes": 4.372424705481283,
+      "volume_cubic_feet": 4.162143439604436,
+      "weight_lbs": 7.81650034871827,
+      "demand_pattern": "low",
+      "shelf_life_days": null,
+      "warehouse_id": 1
+    },
+    {
+      "name": "Wall Clock",
+      "category": "Home",
+      "zone": 2,
+      "pick_time_minutes": 3.499572830025752,
+      "pack_time_minutes": 4.451071140737697,
+      "volume_cubic_feet": 4.524487636668878,
+      "weight_lbs": 7.661609142914687,
+      "demand_pattern": "low",
+      "shelf_life_days": null,
+      "warehouse_id": 1
+    },
+    {
+      "name": "Doormat Welcome",
+      "category": "Home",
+      "zone": 2,
+      "pick_time_minutes": 3.3236644347014512,
+      "pack_time_minutes": 4.015877872996626,
+      "volume_cubic_feet": 4.49239292679656,
+      "weight_lbs": 7.793058826090859,
+      "demand_pattern": "seasonal",
+      "shelf_life_days": null,
+      "warehouse_id": 1
+    },
+    {
+      "name": "Basketball Official",
+      "category": "Sports",
+      "zone": 3,
+      "pick_time_minutes": 2.951146129082752,
+      "pack_time_minutes": 3.5056434053168224,
+      "volume_cubic_feet": 8.719277177540395,
+      "weight_lbs": 14.330983489816242,
+      "demand_pattern": "medium",
+      "shelf_life_days": null,
+      "warehouse_id": 1
+    },
+    {
+      "name": "Tennis Racket Pro",
+      "category": "Sports",
+      "zone": 1,
+      "pick_time_minutes": 2.715341751851428,
+      "pack_time_minutes": 3.782240366613337,
+      "volume_cubic_feet": 7.967851724258694,
+      "weight_lbs": 14.687602947284667,
+      "demand_pattern": "high",
+      "shelf_life_days": null,
+      "warehouse_id": 1
+    },
+    {
+      "name": "Yoga Mat Premium",
+      "category": "Sports",
+      "zone": 1,
+      "pick_time_minutes": 3.1965712549877447,
+      "pack_time_minutes": 3.40741226700788,
+      "volume_cubic_feet": 8.879642267305522,
+      "weight_lbs": 13.109181651611824,
+      "demand_pattern": "seasonal",
+      "shelf_life_days": null,
+      "warehouse_id": 1
+    },
+    {
+      "name": "Dumbbells 20lb Pair",
+      "category": "Sports",
+      "zone": 1,
+      "pick_time_minutes": 2.9851954333447273,
+      "pack_time_minutes": 3.5459528260979596,
+      "volume_cubic_feet": 8.082083759207872,
+      "weight_lbs": 13.926355851502512,
+      "demand_pattern": "high",
+      "shelf_life_days": null,
+      "warehouse_id": 1
+    },
+    {
+      "name": "Mountain Bike 26\"",
+      "category": "Sports",
+      "zone": 5,
+      "pick_time_minutes": 3.2868571469145267,
+      "pack_time_minutes": 3.764157872238532,
+      "volume_cubic_feet": 8.80555654023545,
+      "weight_lbs": 12.391105387305204,
+      "demand_pattern": "medium",
+      "shelf_life_days": null,
+      "warehouse_id": 1
+    },
+    {
+      "name": "Treadmill Electric",
+      "category": "Sports",
+      "zone": 3,
+      "pick_time_minutes": 3.2231554099464095,
+      "pack_time_minutes": 3.5980324857593264,
+      "volume_cubic_feet": 7.886937973496551,
+      "weight_lbs": 14.500140505291274,
+      "demand_pattern": "medium",
+      "shelf_life_days": null,
+      "warehouse_id": 1
+    },
+    {
+      "name": "Weight Bench Adjustable",
+      "category": "Sports",
+      "zone": 4,
+      "pick_time_minutes": 2.9261829048574,
+      "pack_time_minutes": 3.6183250485166396,
+      "volume_cubic_feet": 8.53161871650019,
+      "weight_lbs": 12.375520278970443,
+      "demand_pattern": "medium",
+      "shelf_life_days": null,
+      "warehouse_id": 1
+    },
+    {
+      "name": "Golf Clubs Set",
+      "category": "Sports",
+      "zone": 4,
+      "pick_time_minutes": 3.277317945272733,
+      "pack_time_minutes": 3.74168332743955,
+      "volume_cubic_feet": 8.62327237392707,
+      "weight_lbs": 12.702849623696697,
+      "demand_pattern": "medium",
+      "shelf_life_days": null,
+      "warehouse_id": 1
+    },
+    {
+      "name": "Soccer Ball Size 5",
+      "category": "Sports",
+      "zone": 1,
+      "pick_time_minutes": 2.9038749492683538,
+      "pack_time_minutes": 3.3261096109295853,
+      "volume_cubic_feet": 8.87863824121637,
+      "weight_lbs": 13.619984711439288,
+      "demand_pattern": "medium",
+      "shelf_life_days": null,
+      "warehouse_id": 1
+    },
+    {
+      "name": "Swimming Goggles",
+      "category": "Sports",
+      "zone": 4,
+      "pick_time_minutes": 3.0421597993048075,
+      "pack_time_minutes": 3.32822084059346,
+      "volume_cubic_feet": 8.409779278863988,
+      "weight_lbs": 14.503542477484764,
+      "demand_pattern": "low",
+      "shelf_life_days": null,
+      "warehouse_id": 1
+    },
+    {
+      "name": "Baseball Glove",
+      "category": "Sports",
+      "zone": 2,
+      "pick_time_minutes": 3.258850744998422,
+      "pack_time_minutes": 3.3702718429958165,
+      "volume_cubic_feet": 8.695780754457498,
+      "weight_lbs": 13.657782416087127,
+      "demand_pattern": "high",
+      "shelf_life_days": null,
+      "warehouse_id": 1
+    },
+    {
+      "name": "Hockey Stick",
+      "category": "Sports",
+      "zone": 2,
+      "pick_time_minutes": 3.272795670557167,
+      "pack_time_minutes": 3.334784399598373,
+      "volume_cubic_feet": 7.998694899089864,
+      "weight_lbs": 11.87327616318048,
+      "demand_pattern": "high",
+      "shelf_life_days": null,
+      "warehouse_id": 1
+    },
+    {
+      "name": "Volleyball",
+      "category": "Sports",
+      "zone": 4,
+      "pick_time_minutes": 3.2112739730606803,
+      "pack_time_minutes": 3.661093603400118,
+      "volume_cubic_feet": 8.383124252570132,
+      "weight_lbs": 14.458410727152945,
+      "demand_pattern": "medium",
+      "shelf_life_days": null,
+      "warehouse_id": 1
+    },
+    {
+      "name": "Badminton Set",
+      "category": "Sports",
+      "zone": 4,
+      "pick_time_minutes": 3.094377169010437,
+      "pack_time_minutes": 3.3463906637470635,
+      "volume_cubic_feet": 8.684087016667675,
+      "weight_lbs": 11.816634454414096,
+      "demand_pattern": "low",
+      "shelf_life_days": null,
+      "warehouse_id": 1
+    },
+    {
+      "name": "Fishing Rod",
+      "category": "Sports",
+      "zone": 1,
+      "pick_time_minutes": 3.378420406767325,
+      "pack_time_minutes": 3.3313046820873917,
+      "volume_cubic_feet": 8.906164784259714,
+      "weight_lbs": 13.887735329224716,
+      "demand_pattern": "medium",
+      "shelf_life_days": null,
+      "warehouse_id": 1
+    },
+    {
+      "name": "Novel Bestseller",
+      "category": "Books",
+      "zone": 5,
+      "pick_time_minutes": 1.5491982796599717,
+      "pack_time_minutes": 2.2090018084109957,
+      "volume_cubic_feet": 0.8846927382052587,
+      "weight_lbs": 2.604249805166793,
+      "demand_pattern": "medium",
+      "shelf_life_days": null,
+      "warehouse_id": 1
+    },
+    {
+      "name": "Textbook Calculus",
+      "category": "Books",
+      "zone": 5,
+      "pick_time_minutes": 1.6172979574653477,
+      "pack_time_minutes": 2.153150008133468,
+      "volume_cubic_feet": 0.8638601379020399,
+      "weight_lbs": 2.645019521995052,
+      "demand_pattern": "low",
+      "shelf_life_days": null,
+      "warehouse_id": 1
+    },
+    {
+      "name": "Magazine Monthly",
+      "category": "Books",
+      "zone": 5,
+      "pick_time_minutes": 1.7459136120767005,
+      "pack_time_minutes": 1.7954947445257996,
+      "volume_cubic_feet": 1.4922423646748932,
+      "weight_lbs": 1.5502092717407243,
+      "demand_pattern": "low",
+      "shelf_life_days": null,
+      "warehouse_id": 1
+    },
+    {
+      "name": "Cookbook Recipes",
+      "category": "Books",
+      "zone": 3,
+      "pick_time_minutes": 2.0658136842971655,
+      "pack_time_minutes": 2.012779887696789,
+      "volume_cubic_feet": 1.140122655472672,
+      "weight_lbs": 1.0237923407526148,
+      "demand_pattern": "high",
+      "shelf_life_days": 169,
+      "warehouse_id": 1
+    },
+    {
+      "name": "Journal Hardcover",
+      "category": "Books",
+      "zone": 3,
+      "pick_time_minutes": 1.6197095684187623,
+      "pack_time_minutes": 2.0240913335110737,
+      "volume_cubic_feet": 0.40756109227423354,
+      "weight_lbs": 0.8937844391845603,
+      "demand_pattern": "medium",
+      "shelf_life_days": null,
+      "warehouse_id": 1
+    },
+    {
+      "name": "Children Book Illustrated",
+      "category": "Books",
+      "zone": 1,
+      "pick_time_minutes": 1.7148678958982182,
+      "pack_time_minutes": 1.8985288346228502,
+      "volume_cubic_feet": 0.8988864550267259,
+      "weight_lbs": 0.3867971317507559,
+      "demand_pattern": "low",
+      "shelf_life_days": null,
+      "warehouse_id": 1
+    },
+    {
+      "name": "Reference Dictionary",
+      "category": "Books",
+      "zone": 5,
+      "pick_time_minutes": 2.2460620335901007,
+      "pack_time_minutes": 1.7117191740426363,
+      "volume_cubic_feet": 1.5209850091367352,
+      "weight_lbs": 1.9270710404302407,
+      "demand_pattern": "medium",
+      "shelf_life_days": null,
+      "warehouse_id": 1
+    },
+    {
+      "name": "Poetry Collection",
+      "category": "Books",
+      "zone": 3,
+      "pick_time_minutes": 2.0534751250593857,
+      "pack_time_minutes": 2.2120687703414625,
+      "volume_cubic_feet": 1.6301455077051594,
+      "weight_lbs": 1.4570638478894655,
+      "demand_pattern": "low",
+      "shelf_life_days": null,
+      "warehouse_id": 1
+    },
+    {
+      "name": "Biography Hardcover",
+      "category": "Books",
+      "zone": 5,
+      "pick_time_minutes": 2.1978113473991954,
+      "pack_time_minutes": 1.9929376865301502,
+      "volume_cubic_feet": 0.6094029676448849,
+      "weight_lbs": 1.656925981395501,
+      "demand_pattern": "medium",
+      "shelf_life_days": null,
+      "warehouse_id": 1
+    },
+    {
+      "name": "Self-Help Paperback",
+      "category": "Books",
+      "zone": 4,
+      "pick_time_minutes": 2.024181377627289,
+      "pack_time_minutes": 2.2043033978375353,
+      "volume_cubic_feet": 1.5793124310034639,
+      "weight_lbs": 3.14216593255677,
+      "demand_pattern": "medium",
+      "shelf_life_days": null,
+      "warehouse_id": 1
+    },
+    {
+      "name": "Mystery Novel",
+      "category": "Books",
+      "zone": 5,
+      "pick_time_minutes": 1.8643919830247742,
+      "pack_time_minutes": 1.7162612278041876,
+      "volume_cubic_feet": 1.1641244720140036,
+      "weight_lbs": 0.6070984616916927,
+      "demand_pattern": "medium",
+      "shelf_life_days": 224,
+      "warehouse_id": 1
+    },
+    {
+      "name": "Science Fiction",
+      "category": "Books",
+      "zone": 3,
+      "pick_time_minutes": 1.5116602842114815,
+      "pack_time_minutes": 1.8961074829287852,
+      "volume_cubic_feet": 1.3418445618410406,
+      "weight_lbs": 1.337378646692409,
+      "demand_pattern": "low",
+      "shelf_life_days": null,
+      "warehouse_id": 1
+    },
+    {
+      "name": "History Book",
+      "category": "Books",
+      "zone": 3,
+      "pick_time_minutes": 2.1349109149121213,
+      "pack_time_minutes": 1.982184101727828,
+      "volume_cubic_feet": 1.323536391624276,
+      "weight_lbs": 0.3562568247297664,
+      "demand_pattern": "seasonal",
+      "shelf_life_days": 65,
+      "warehouse_id": 1
+    },
+    {
+      "name": "Art Book",
+      "category": "Books",
+      "zone": 1,
+      "pick_time_minutes": 2.054233204059526,
+      "pack_time_minutes": 2.2697670396295933,
+      "volume_cubic_feet": 0.4990410235437993,
+      "weight_lbs": 0.261140051960997,
+      "demand_pattern": "high",
+      "shelf_life_days": 88,
+      "warehouse_id": 1
+    },
+    {
+      "name": "Travel Guide",
+      "category": "Books",
+      "zone": 5,
+      "pick_time_minutes": 2.2477570222166516,
+      "pack_time_minutes": 1.9790203900611325,
+      "volume_cubic_feet": 0.5843655448432798,
+      "weight_lbs": 1.3066855229688241,
+      "demand_pattern": "medium",
+      "shelf_life_days": null,
+      "warehouse_id": 1
+    }
+  ],
+  "customers": [
+    {
+      "name": "Acme Corporation",
+      "customer_type": "b2b",
+      "order_frequency": 15.873428914384032,
+      "avg_order_value": 2611.116754470173,
+      "priority_tendency": "high",
+      "deadline_preference": "tight"
+    },
+    {
+      "name": "TechStart Inc",
+      "customer_type": "b2b",
+      "order_frequency": 6.655063240668797,
+      "avg_order_value": 1724.41556783944,
+      "priority_tendency": "high",
+      "deadline_preference": "tight"
+    },
+    {
+      "name": "Global Retail Co",
+      "customer_type": "retail",
+      "order_frequency": 25.314738930036974,
+      "avg_order_value": 1371.5548673628487,
+      "priority_tendency": "medium",
+      "deadline_preference": "standard"
+    },
+    {
+      "name": "Local Store Chain",
+      "customer_type": "retail",
+      "order_frequency": 12.303186913649657,
+      "avg_order_value": 963.2104604189778,
+      "priority_tendency": "medium",
+      "deadline_preference": "standard"
+    },
+    {
+      "name": "Online Marketplace",
+      "customer_type": "ecommerce",
+      "order_frequency": 49.50122783770127,
+      "avg_order_value": 776.5882394165238,
+      "priority_tendency": "low",
+      "deadline_preference": "flexible"
+    },
+    {
+      "name": "University Bookstore",
+      "customer_type": "b2b",
+      "order_frequency": 3.793319108366861,
+      "avg_order_value": 3036.839144499941,
+      "priority_tendency": "high",
+      "deadline_preference": "tight"
+    },
+    {
+      "name": "Sports Equipment Plus",
+      "customer_type": "retail",
+      "order_frequency": 19.322286535121272,
+      "avg_order_value": 1397.139752214853,
+      "priority_tendency": "medium",
+      "deadline_preference": "standard"
+    },
+    {
+      "name": "Home Decor Outlet",
+      "customer_type": "retail",
+      "order_frequency": 22.788772009983088,
+      "avg_order_value": 820.6330741950668,
+      "priority_tendency": "medium",
+      "deadline_preference": "standard"
+    },
+    {
+      "name": "Fashion Forward",
+      "customer_type": "ecommerce",
+      "order_frequency": 35.737036156666626,
+      "avg_order_value": 822.2111854584666,
+      "priority_tendency": "low",
+      "deadline_preference": "flexible"
+    },
+    {
+      "name": "Electronics Hub",
+      "customer_type": "b2b",
+      "order_frequency": 11.184908866400848,
+      "avg_order_value": 2226.3730221469264,
+      "priority_tendency": "high",
+      "deadline_preference": "tight"
+    }
+  ],
+  "orders": [
+    {
+      "id": 1,
+      "customer": "Acme Corporation",
+      "customer_type": "b2b",
+      "priority": "1",
+      "created_at": "2025-06-26 16:02:47.185177",
+      "shipping_deadline": "2025-06-26 23:20:08.750373",
+      "items": [
+        {
+          "sku_id": "Mountain Bike 26\"",
+          "quantity": 2,
+          "pick_time": 6.573714293829053,
+          "pack_time": 7.528315744477064,
+          "volume": 17.6111130804709,
+          "weight": 24.78221077461041
+        },
+        {
+          "sku_id": "Volleyball",
+          "quantity": 2,
+          "pick_time": 6.422547946121361,
+          "pack_time": 7.322187206800236,
+          "volume": 16.766248505140265,
+          "weight": 28.91682145430589
+        },
+        {
+          "sku_id": "Wireless Headphones",
+          "quantity": 3,
+          "pick_time": 9.889227092195922,
+          "pack_time": 11.192581161014099,
+          "volume": 7.481497927625076,
+          "weight": 11.712448990062095
+        },
+        {
+          "sku_id": "Hockey Stick",
+          "quantity": 2,
+          "pick_time": 6.545591341114334,
+          "pack_time": 6.669568799196746,
+          "volume": 15.997389798179729,
+          "weight": 23.74655232636096
+        },
+        {
+          "sku_id": "Laptop Pro 15\"",
+          "quantity": 2,
+          "pick_time": 5.532377210423094,
+          "pack_time": 8.095763349022654,
+          "volume": 4.901540154435507,
+          "weight": 9.307485624313856
+        }
+      ],
+      "total_pick_time": 34.963457883683766,
+      "total_pack_time": 40.808416260510796,
+      "total_volume": 62.75778946585149,
+      "total_weight": 98.4655191696532,
+      "status": "pending",
+      "warehouse_id": 1
+    },
+    {
+      "id": 2,
+      "customer": "Sports Equipment Plus",
+      "customer_type": "retail",
+      "priority": "3",
+      "created_at": "2025-06-26 16:02:47.185186",
+      "shipping_deadline": "2025-06-26 23:16:45.253935",
+      "items": [
+        {
+          "sku_id": "Baseball Glove",
+          "quantity": 2,
+          "pick_time": 6.517701489996844,
+          "pack_time": 6.740543685991633,
+          "volume": 17.391561508914997,
+          "weight": 27.315564832174253
+        },
+        {
+          "sku_id": "Monitor 27\"",
+          "quantity": 2,
+          "pick_time": 7.236986988791405,
+          "pack_time": 7.718733501352275,
+          "volume": 4.665817124086844,
+          "weight": 5.67120635192537
+        },
+        {
+          "sku_id": "Microphone USB",
+          "quantity": 3,
+          "pick_time": 11.033953481032004,
+          "pack_time": 11.458871105153127,
+          "volume": 5.365922301841986,
+          "weight": 13.437757404726305
+        },
+        {
+          "sku_id": "Dumbbells 20lb Pair",
+          "quantity": 3,
+          "pick_time": 8.95558630003418,
+          "pack_time": 10.637858478293879,
+          "volume": 24.246251277623617,
+          "weight": 41.779067554507535
+        },
+        {
+          "sku_id": "Coffee Table Wood",
+          "quantity": 3,
+          "pick_time": 10.798136256599932,
+          "pack_time": 12.894099686938938,
+          "volume": 16.22518501767197,
+          "weight": 16.80862002954031
+        }
+      ],
+      "total_pick_time": 44.54236451645437,
+      "total_pack_time": 49.45010645772985,
+      "total_volume": 67.89473723013941,
+      "total_weight": 105.01221617287378,
+      "status": "pending",
+      "warehouse_id": 1
+    },
+    {
+      "id": 3,
+      "customer": "Home Decor Outlet",
+      "customer_type": "retail",
+      "priority": "2",
+      "created_at": "2025-06-26 16:02:47.185194",
+      "shipping_deadline": "2025-06-26 22:29:15.961733",
+      "items": [
+        {
+          "sku_id": "Plant Pot Ceramic",
+          "quantity": 3,
+          "pick_time": 10.700417128783414,
+          "pack_time": 13.117274116443848,
+          "volume": 12.486430318813309,
+          "weight": 23.449501046154808
+        },
+        {
+          "sku_id": "Golf Clubs Set",
+          "quantity": 2,
+          "pick_time": 6.554635890545466,
+          "pack_time": 7.4833666548791,
+          "volume": 17.24654474785414,
+          "weight": 25.405699247393393
+        },
+        {
+          "sku_id": "Throw Pillow Decorative",
+          "quantity": 1,
+          "pick_time": 3.34408676179905,
+          "pack_time": 4.100133923163053,
+          "volume": 4.196229491052553,
+          "weight": 8.139393861486507
+        },
+        {
+          "sku_id": "USB-C Charger",
+          "quantity": 2,
+          "pick_time": 7.1215594044689965,
+          "pack_time": 7.013777226331383,
+          "volume": 5.362165458080584,
+          "weight": 9.090262214159448
+        },
+        {
+          "sku_id": "Wall Clock",
+          "quantity": 1,
+          "pick_time": 3.499572830025752,
+          "pack_time": 4.451071140737697,
+          "volume": 4.524487636668878,
+          "weight": 7.661609142914687
+        },
+        {
+          "sku_id": "Doormat Welcome",
+          "quantity": 3,
+          "pick_time": 9.970993304104354,
+          "pack_time": 12.047633618989877,
+          "volume": 13.47717878038968,
+          "weight": 23.379176478272576
+        }
+      ],
+      "total_pick_time": 41.19126531972704,
+      "total_pack_time": 48.21325668054496,
+      "total_volume": 57.29303643285915,
+      "total_weight": 97.12564199038141,
+      "status": "pending",
+      "warehouse_id": 1
+    },
+    {
+      "id": 4,
+      "customer": "University Bookstore",
+      "customer_type": "b2b",
+      "priority": "2",
+      "created_at": "2025-06-26 16:02:47.185201",
+      "shipping_deadline": "2025-06-26 23:14:15.971137",
+      "items": [
+        {
+          "sku_id": "Tennis Racket Pro",
+          "quantity": 2,
+          "pick_time": 5.430683503702856,
+          "pack_time": 7.564480733226674,
+          "volume": 15.935703448517389,
+          "weight": 29.375205894569334
+        },
+        {
+          "sku_id": "Microphone USB",
+          "quantity": 2,
+          "pick_time": 7.355968987354669,
+          "pack_time": 7.6392474034354185,
+          "volume": 3.5772815345613242,
+          "weight": 8.958504936484204
+        },
+        {
+          "sku_id": "Power Bank",
+          "quantity": 2,
+          "pick_time": 6.8258979456382445,
+          "pack_time": 7.478790759996914,
+          "volume": 5.21506087891485,
+          "weight": 7.2405230151757625
+        }
+      ],
+      "total_pick_time": 19.61255043669577,
+      "total_pack_time": 22.68251889665901,
+      "total_volume": 24.728045861993564,
+      "total_weight": 45.5742338462293,
+      "status": "pending",
+      "warehouse_id": 1
+    },
+    {
+      "id": 5,
+      "customer": "Online Marketplace",
+      "customer_type": "ecommerce",
+      "priority": "3",
+      "created_at": "2025-06-26 16:02:47.185207",
+      "shipping_deadline": "2025-06-26 22:48:31.959693",
+      "items": [
+        {
+          "sku_id": "Treadmill Electric",
+          "quantity": 1,
+          "pick_time": 3.2231554099464095,
+          "pack_time": 3.5980324857593264,
+          "volume": 7.886937973496551,
+          "weight": 14.500140505291274
+        },
+        {
+          "sku_id": "Dumbbells 20lb Pair",
+          "quantity": 1,
+          "pick_time": 2.9851954333447273,
+          "pack_time": 3.5459528260979596,
+          "volume": 8.082083759207872,
+          "weight": 13.926355851502512
+        },
+        {
+          "sku_id": "USB-C Charger",
+          "quantity": 1,
+          "pick_time": 3.5607797022344982,
+          "pack_time": 3.5068886131656916,
+          "volume": 2.681082729040292,
+          "weight": 4.545131107079724
+        },
+        {
+          "sku_id": "Candle Set",
+          "quantity": 2,
+          "pick_time": 6.649572723796377,
+          "pack_time": 8.683877366106099,
+          "volume": 8.996556403839286,
+          "weight": 15.984895316289954
+        },
+        {
+          "sku_id": "Treadmill Electric",
+          "quantity": 1,
+          "pick_time": 3.2231554099464095,
+          "pack_time": 3.5980324857593264,
+          "volume": 7.886937973496551,
+          "weight": 14.500140505291274
+        }
+      ],
+      "total_pick_time": 19.641858679268417,
+      "total_pack_time": 22.932783776888403,
+      "total_volume": 35.533598839080554,
+      "total_weight": 63.45666328545474,
+      "status": "pending",
+      "warehouse_id": 1
+    },
+    {
+      "id": 6,
+      "customer": "Home Decor Outlet",
+      "customer_type": "retail",
+      "priority": "2",
+      "created_at": "2025-06-26 16:02:47.185214",
+      "shipping_deadline": "2025-06-26 22:15:37.195765",
+      "items": [
+        {
+          "sku_id": "Laptop Pro 13\"",
+          "quantity": 1,
+          "pick_time": 3.0956319010606643,
+          "pack_time": 4.048728553844326,
+          "volume": 2.288277778881098,
+          "weight": 3.2946404994941574
+        },
+        {
+          "sku_id": "Wall Mirror Round",
+          "quantity": 1,
+          "pick_time": 4.042416683980998,
+          "pack_time": 3.9932687458649943,
+          "volume": 4.422634407186841,
+          "weight": 5.83188896442083
+        },
+        {
+          "sku_id": "Picture Frame 8x10",
+          "quantity": 3,
+          "pick_time": 12.677291467708669,
+          "pack_time": 12.126127198012847,
+          "volume": 12.731257951951973,
+          "weight": 22.798983269162072
+        },
+        {
+          "sku_id": "Table Lamp Modern",
+          "quantity": 2,
+          "pick_time": 8.466518755987417,
+          "pack_time": 8.857037008423728,
+          "volume": 10.637810727453628,
+          "weight": 12.617162532433305
+        },
+        {
+          "sku_id": "Volleyball",
+          "quantity": 3,
+          "pick_time": 9.63382191918204,
+          "pack_time": 10.983280810200354,
+          "volume": 25.149372757710395,
+          "weight": 43.375232181458834
+        },
+        {
+          "sku_id": "Bedside Table",
+          "quantity": 2,
+          "pick_time": 7.329303030654511,
+          "pack_time": 8.919705612624785,
+          "volume": 10.916588795051782,
+          "weight": 10.63936926866731
+        }
+      ],
+      "total_pick_time": 45.24498375857429,
+      "total_pack_time": 48.92814792897103,
+      "total_volume": 66.14594241823572,
+      "total_weight": 98.5572767156365,
+      "status": "pending",
+      "warehouse_id": 1
+    },
+    {
+      "id": 7,
+      "customer": "Sports Equipment Plus",
+      "customer_type": "retail",
+      "priority": "3",
+      "created_at": "2025-06-26 16:02:47.185220",
+      "shipping_deadline": "2025-06-26 20:31:28.773493",
+      "items": [
+        {
+          "sku_id": "Bookshelf 5-Shelf",
+          "quantity": 3,
+          "pick_time": 11.536770867616568,
+          "pack_time": 13.20227103579483,
+          "volume": 14.621293049204072,
+          "weight": 16.932844070107343
+        },
+        {
+          "sku_id": "Doormat Welcome",
+          "quantity": 2,
+          "pick_time": 6.6473288694029025,
+          "pack_time": 8.031755745993252,
+          "volume": 8.98478585359312,
+          "weight": 15.586117652181718
+        },
+        {
+          "sku_id": "Area Rug 8x10",
+          "quantity": 2,
+          "pick_time": 7.610818116195974,
+          "pack_time": 8.101345502483873,
+          "volume": 10.724477138655715,
+          "weight": 10.704793361975184
+        },
+        {
+          "sku_id": "Cable Set",
+          "quantity": 1,
+          "pick_time": 2.821004195868266,
+          "pack_time": 3.6348184022189343,
+          "volume": 2.1071283432211834,
+          "weight": 4.2649261553717
+        },
+        {
+          "sku_id": "Headset Gaming",
+          "quantity": 2,
+          "pick_time": 5.930113257880119,
+          "pack_time": 8.046919649302309,
+          "volume": 4.469413820602661,
+          "weight": 6.2707892326524926
+        }
+      ],
+      "total_pick_time": 34.54603530696383,
+      "total_pack_time": 41.0171103357932,
+      "total_volume": 40.90709820527675,
+      "total_weight": 53.75947047228844,
+      "status": "pending",
+      "warehouse_id": 1
+    },
+    {
+      "id": 8,
+      "customer": "Global Retail Co",
+      "customer_type": "retail",
+      "priority": "1",
+      "created_at": "2025-06-26 16:02:47.185230",
+      "shipping_deadline": "2025-06-26 23:58:06.538307",
+      "items": [
+        {
+          "sku_id": "Power Bank",
+          "quantity": 3,
+          "pick_time": 10.238846918457366,
+          "pack_time": 11.218186139995371,
+          "volume": 7.822591318372274,
+          "weight": 10.860784522763645
+        },
+        {
+          "sku_id": "Basketball Official",
+          "quantity": 2,
+          "pick_time": 5.902292258165504,
+          "pack_time": 7.011286810633645,
+          "volume": 17.43855435508079,
+          "weight": 28.661966979632485
+        },
+        {
+          "sku_id": "Golf Clubs Set",
+          "quantity": 3,
+          "pick_time": 9.831953835818199,
+          "pack_time": 11.22504998231865,
+          "volume": 25.86981712178121,
+          "weight": 38.10854887109009
+        },
+        {
+          "sku_id": "Soccer Ball Size 5",
+          "quantity": 2,
+          "pick_time": 5.8077498985367075,
+          "pack_time": 6.652219221859171,
+          "volume": 17.75727648243274,
+          "weight": 27.239969422878577
+        }
+      ],
+      "total_pick_time": 31.780842910977775,
+      "total_pack_time": 36.10674215480684,
+      "total_volume": 68.88823927766701,
+      "total_weight": 104.8712697963648,
+      "status": "pending",
+      "warehouse_id": 1
+    },
+    {
+      "id": 9,
+      "customer": "Online Marketplace",
+      "customer_type": "ecommerce",
+      "priority": "3",
+      "created_at": "2025-06-26 16:02:47.185234",
+      "shipping_deadline": "2025-06-26 23:56:37.032241",
+      "items": [
+        {
+          "sku_id": "Bedside Table",
+          "quantity": 1,
+          "pick_time": 3.6646515153272556,
+          "pack_time": 4.459852806312393,
+          "volume": 5.458294397525891,
+          "weight": 5.319684634333655
+        },
+        {
+          "sku_id": "Area Rug 8x10",
+          "quantity": 1,
+          "pick_time": 3.805409058097987,
+          "pack_time": 4.050672751241937,
+          "volume": 5.362238569327857,
+          "weight": 5.352396680987592
+        },
+        {
+          "sku_id": "Mountain Bike 26\"",
+          "quantity": 1,
+          "pick_time": 3.2868571469145267,
+          "pack_time": 3.764157872238532,
+          "volume": 8.80555654023545,
+          "weight": 12.391105387305204
+        },
+        {
+          "sku_id": "Coffee Table Wood",
+          "quantity": 1,
+          "pick_time": 3.5993787521999776,
+          "pack_time": 4.298033228979646,
+          "volume": 5.408395005890656,
+          "weight": 5.602873343180104
+        }
+      ],
+      "total_pick_time": 14.356296472539746,
+      "total_pack_time": 16.572716658772507,
+      "total_volume": 25.03448451297985,
+      "total_weight": 28.666060045806557,
+      "status": "pending",
+      "warehouse_id": 1
+    },
+    {
+      "id": 10,
+      "customer": "Online Marketplace",
+      "customer_type": "ecommerce",
+      "priority": "1",
+      "created_at": "2025-06-26 16:02:47.185243",
+      "shipping_deadline": "2025-06-26 21:48:29.935934",
+      "items": [
+        {
+          "sku_id": "Baseball Glove",
+          "quantity": 2,
+          "pick_time": 6.517701489996844,
+          "pack_time": 6.740543685991633,
+          "volume": 17.391561508914997,
+          "weight": 27.315564832174253
+        },
+        {
+          "sku_id": "Bluetooth Speaker",
+          "quantity": 1,
+          "pick_time": 3.468598732657446,
+          "pack_time": 3.704105283818627,
+          "volume": 2.0402501929711394,
+          "weight": 2.9744732630340094
+        },
+        {
+          "sku_id": "Weight Bench Adjustable",
+          "quantity": 2,
+          "pick_time": 5.8523658097148,
+          "pack_time": 7.236650097033279,
+          "volume": 17.06323743300038,
+          "weight": 24.751040557940886
+        },
+        {
+          "sku_id": "Basketball Official",
+          "quantity": 2,
+          "pick_time": 5.902292258165504,
+          "pack_time": 7.011286810633645,
+          "volume": 17.43855435508079,
+          "weight": 28.661966979632485
+        }
+      ],
+      "total_pick_time": 21.740958290534593,
+      "total_pack_time": 24.692585877477185,
+      "total_volume": 53.933603489967304,
+      "total_weight": 83.70304563278164,
+      "status": "pending",
+      "warehouse_id": 1
+    },
+    {
+      "id": 11,
+      "customer": "Acme Corporation",
+      "customer_type": "b2b",
+      "priority": "3",
+      "created_at": "2025-06-26 16:02:47.185249",
+      "shipping_deadline": "2025-06-26 20:39:12.054147",
+      "items": [
+        {
+          "sku_id": "Basketball Official",
+          "quantity": 1,
+          "pick_time": 2.951146129082752,
+          "pack_time": 3.5056434053168224,
+          "volume": 8.719277177540395,
+          "weight": 14.330983489816242
+        },
+        {
+          "sku_id": "Wireless Headphones",
+          "quantity": 2,
+          "pick_time": 6.592818061463948,
+          "pack_time": 7.461720774009399,
+          "volume": 4.987665285083384,
+          "weight": 7.808299326708063
+        },
+        {
+          "sku_id": "Tennis Racket Pro",
+          "quantity": 1,
+          "pick_time": 2.715341751851428,
+          "pack_time": 3.782240366613337,
+          "volume": 7.967851724258694,
+          "weight": 14.687602947284667
+        },
+        {
+          "sku_id": "Weight Bench Adjustable",
+          "quantity": 3,
+          "pick_time": 8.7785487145722,
+          "pack_time": 10.854975145549918,
+          "volume": 25.594856149500572,
+          "weight": 37.12656083691133
+        },
+        {
+          "sku_id": "Badminton Set",
+          "quantity": 1,
+          "pick_time": 3.094377169010437,
+          "pack_time": 3.3463906637470635,
+          "volume": 8.684087016667675,
+          "weight": 11.816634454414096
+        }
+      ],
+      "total_pick_time": 24.13223182598076,
+      "total_pack_time": 28.95097035523654,
+      "total_volume": 55.95373735305072,
+      "total_weight": 85.7700810551344,
+      "status": "pending",
+      "warehouse_id": 1
+    },
+    {
+      "id": 12,
+      "customer": "Online Marketplace",
+      "customer_type": "ecommerce",
+      "priority": "1",
+      "created_at": "2025-06-26 16:02:47.185257",
+      "shipping_deadline": "2025-06-26 23:12:33.853205",
+      "items": [
+        {
+          "sku_id": "Table Lamp Modern",
+          "quantity": 1,
+          "pick_time": 4.233259377993709,
+          "pack_time": 4.428518504211864,
+          "volume": 5.318905363726814,
+          "weight": 6.3085812662166525
+        },
+        {
+          "sku_id": "Treadmill Electric",
+          "quantity": 2,
+          "pick_time": 6.446310819892819,
+          "pack_time": 7.196064971518653,
+          "volume": 15.773875946993101,
+          "weight": 29.000281010582547
+        },
+        {
+          "sku_id": "Soccer Ball Size 5",
+          "quantity": 3,
+          "pick_time": 8.711624847805062,
+          "pack_time": 9.978328832788756,
+          "volume": 26.63591472364911,
+          "weight": 40.85995413431787
+        }
+      ],
+      "total_pick_time": 19.39119504569159,
+      "total_pack_time": 21.602912308519272,
+      "total_volume": 47.72869603436902,
+      "total_weight": 76.16881641111706,
+      "status": "pending",
+      "warehouse_id": 1
+    },
+    {
+      "id": 13,
+      "customer": "Fashion Forward",
+      "customer_type": "ecommerce",
+      "priority": "2",
+      "created_at": "2025-06-26 16:02:47.185266",
+      "shipping_deadline": "2025-06-26 22:32:54.601702",
+      "items": [
+        {
+          "sku_id": "Wall Clock",
+          "quantity": 2,
+          "pick_time": 6.999145660051504,
+          "pack_time": 8.902142281475394,
+          "volume": 9.048975273337756,
+          "weight": 15.323218285829373
+        },
+        {
+          "sku_id": "Area Rug 8x10",
+          "quantity": 3,
+          "pick_time": 11.416227174293962,
+          "pack_time": 12.15201825372581,
+          "volume": 16.086715707983572,
+          "weight": 16.057190042962777
+        },
+        {
+          "sku_id": "Plant Pot Ceramic",
+          "quantity": 2,
+          "pick_time": 7.133611419188943,
+          "pack_time": 8.744849410962566,
+          "volume": 8.324286879208872,
+          "weight": 15.63300069743654
+        },
+        {
+          "sku_id": "Weight Bench Adjustable",
+          "quantity": 3,
+          "pick_time": 8.7785487145722,
+          "pack_time": 10.854975145549918,
+          "volume": 25.594856149500572,
+          "weight": 37.12656083691133
+        },
+        {
+          "sku_id": "Tablet Air",
+          "quantity": 3,
+          "pick_time": 9.628578881029394,
+          "pack_time": 10.663636941912827,
+          "volume": 5.012023689411306,
+          "weight": 8.486842173155932
+        },
+        {
+          "sku_id": "Bluetooth Speaker",
+          "quantity": 1,
+          "pick_time": 3.468598732657446,
+          "pack_time": 3.704105283818627,
+          "volume": 2.0402501929711394,
+          "weight": 2.9744732630340094
+        }
+      ],
+      "total_pick_time": 47.424710581793455,
+      "total_pack_time": 55.02172731744515,
+      "total_volume": 66.10710789241323,
+      "total_weight": 95.60128529932996,
+      "status": "pending",
+      "warehouse_id": 1
+    },
+    {
+      "id": 14,
+      "customer": "TechStart Inc",
+      "customer_type": "b2b",
+      "priority": "2",
+      "created_at": "2025-06-26 16:02:47.185272",
+      "shipping_deadline": "2025-06-26 22:48:14.129625",
+      "items": [
+        {
+          "sku_id": "Table Lamp Modern",
+          "quantity": 1,
+          "pick_time": 4.233259377993709,
+          "pack_time": 4.428518504211864,
+          "volume": 5.318905363726814,
+          "weight": 6.3085812662166525
+        },
+        {
+          "sku_id": "Treadmill Electric",
+          "quantity": 1,
+          "pick_time": 3.2231554099464095,
+          "pack_time": 3.5980324857593264,
+          "volume": 7.886937973496551,
+          "weight": 14.500140505291274
+        },
+        {
+          "sku_id": "Webcam HD",
+          "quantity": 1,
+          "pick_time": 2.939452310338059,
+          "pack_time": 3.64452295546834,
+          "volume": 2.451035415533365,
+          "weight": 2.7362711448740984
+        },
+        {
+          "sku_id": "Candle Set",
+          "quantity": 2,
+          "pick_time": 6.649572723796377,
+          "pack_time": 8.683877366106099,
+          "volume": 8.996556403839286,
+          "weight": 15.984895316289954
+        }
+      ],
+      "total_pick_time": 17.045439822074556,
+      "total_pack_time": 20.354951311545626,
+      "total_volume": 24.653435156596014,
+      "total_weight": 39.52988823267198,
+      "status": "pending",
+      "warehouse_id": 1
+    },
+    {
+      "id": 15,
+      "customer": "Online Marketplace",
+      "customer_type": "ecommerce",
+      "priority": "2",
+      "created_at": "2025-06-26 16:02:47.185277",
+      "shipping_deadline": "2025-06-26 22:47:45.528124",
+      "items": [
+        {
+          "sku_id": "Cable Set",
+          "quantity": 2,
+          "pick_time": 5.642008391736532,
+          "pack_time": 7.2696368044378685,
+          "volume": 4.214256686442367,
+          "weight": 8.5298523107434
+        },
+        {
+          "sku_id": "Wall Mirror Round",
+          "quantity": 3,
+          "pick_time": 12.127250051942994,
+          "pack_time": 11.979806237594982,
+          "volume": 13.267903221560523,
+          "weight": 17.495666893262488
+        },
+        {
+          "sku_id": "Doormat Welcome",
+          "quantity": 1,
+          "pick_time": 3.3236644347014512,
+          "pack_time": 4.015877872996626,
+          "volume": 4.49239292679656,
+          "weight": 7.793058826090859
+        }
+      ],
+      "total_pick_time": 21.09292287838098,
+      "total_pack_time": 23.265320915029477,
+      "total_volume": 21.974552834799454,
+      "total_weight": 33.818578030096745,
+      "status": "pending",
+      "warehouse_id": 1
+    },
+    {
+      "id": 16,
+      "customer": "Electronics Hub",
+      "customer_type": "b2b",
+      "priority": "1",
+      "created_at": "2025-06-26 16:02:47.185284",
+      "shipping_deadline": "2025-06-26 20:19:55.486934",
+      "items": [
+        {
+          "sku_id": "Plant Pot Ceramic",
+          "quantity": 1,
+          "pick_time": 3.5668057095944716,
+          "pack_time": 4.372424705481283,
+          "volume": 4.162143439604436,
+          "weight": 7.81650034871827
+        },
+        {
+          "sku_id": "Mountain Bike 26\"",
+          "quantity": 1,
+          "pick_time": 3.2868571469145267,
+          "pack_time": 3.764157872238532,
+          "volume": 8.80555654023545,
+          "weight": 12.391105387305204
+        },
+        {
+          "sku_id": "Hockey Stick",
+          "quantity": 1,
+          "pick_time": 3.272795670557167,
+          "pack_time": 3.334784399598373,
+          "volume": 7.998694899089864,
+          "weight": 11.87327616318048
+        },
+        {
+          "sku_id": "Coffee Table Wood",
+          "quantity": 1,
+          "pick_time": 3.5993787521999776,
+          "pack_time": 4.298033228979646,
+          "volume": 5.408395005890656,
+          "weight": 5.602873343180104
+        }
+      ],
+      "total_pick_time": 13.725837279266145,
+      "total_pack_time": 15.769400206297833,
+      "total_volume": 26.3747898848204,
+      "total_weight": 37.68375524238405,
+      "status": "pending",
+      "warehouse_id": 1
+    },
+    {
+      "id": 17,
+      "customer": "Online Marketplace",
+      "customer_type": "ecommerce",
+      "priority": "1",
+      "created_at": "2025-06-26 16:02:47.185292",
+      "shipping_deadline": "2025-06-26 22:01:17.836450",
+      "items": [
+        {
+          "sku_id": "Wall Clock",
+          "quantity": 1,
+          "pick_time": 3.499572830025752,
+          "pack_time": 4.451071140737697,
+          "volume": 4.524487636668878,
+          "weight": 7.661609142914687
+        },
+        {
+          "sku_id": "Doormat Welcome",
+          "quantity": 3,
+          "pick_time": 9.970993304104354,
+          "pack_time": 12.047633618989877,
+          "volume": 13.47717878038968,
+          "weight": 23.379176478272576
+        },
+        {
+          "sku_id": "Area Rug 8x10",
+          "quantity": 3,
+          "pick_time": 11.416227174293962,
+          "pack_time": 12.15201825372581,
+          "volume": 16.086715707983572,
+          "weight": 16.057190042962777
+        },
+        {
+          "sku_id": "Picture Frame 8x10",
+          "quantity": 2,
+          "pick_time": 8.451527645139112,
+          "pack_time": 8.084084798675232,
+          "volume": 8.487505301301315,
+          "weight": 15.199322179441381
+        },
+        {
+          "sku_id": "Yoga Mat Premium",
+          "quantity": 3,
+          "pick_time": 9.589713764963234,
+          "pack_time": 10.22223680102364,
+          "volume": 26.63892680191657,
+          "weight": 39.327544954835474
+        }
+      ],
+      "total_pick_time": 42.92803471852642,
+      "total_pack_time": 46.957044613152256,
+      "total_volume": 69.21481422826001,
+      "total_weight": 101.6248427984269,
+      "status": "pending",
+      "warehouse_id": 1
+    },
+    {
+      "id": 18,
+      "customer": "Electronics Hub",
+      "customer_type": "b2b",
+      "priority": "3",
+      "created_at": "2025-06-26 16:02:47.185298",
+      "shipping_deadline": "2025-06-26 20:24:42.292463",
+      "items": [
+        {
+          "sku_id": "Plant Pot Ceramic",
+          "quantity": 3,
+          "pick_time": 10.700417128783414,
+          "pack_time": 13.117274116443848,
+          "volume": 12.486430318813309,
+          "weight": 23.449501046154808
+        },
+        {
+          "sku_id": "Throw Pillow Decorative",
+          "quantity": 3,
+          "pick_time": 10.03226028539715,
+          "pack_time": 12.30040176948916,
+          "volume": 12.58868847315766,
+          "weight": 24.41818158445952
+        },
+        {
+          "sku_id": "Office Chair Ergonomic",
+          "quantity": 1,
+          "pick_time": 4.003539925087371,
+          "pack_time": 4.2670066594355704,
+          "volume": 5.480849595447257,
+          "weight": 7.161928953132199
+        }
+      ],
+      "total_pick_time": 24.736217339267935,
+      "total_pack_time": 29.684682545368577,
+      "total_volume": 30.555968387418226,
+      "total_weight": 55.02961158374652,
+      "status": "pending",
+      "warehouse_id": 1
+    },
+    {
+      "id": 19,
+      "customer": "Electronics Hub",
+      "customer_type": "b2b",
+      "priority": "2",
+      "created_at": "2025-06-26 16:02:47.185303",
+      "shipping_deadline": "2025-06-26 22:07:20.264612",
+      "items": [
+        {
+          "sku_id": "Badminton Set",
+          "quantity": 2,
+          "pick_time": 6.188754338020874,
+          "pack_time": 6.692781327494127,
+          "volume": 17.36817403333535,
+          "weight": 23.633268908828192
+        },
+        {
+          "sku_id": "Weight Bench Adjustable",
+          "quantity": 1,
+          "pick_time": 2.9261829048574,
+          "pack_time": 3.6183250485166396,
+          "volume": 8.53161871650019,
+          "weight": 12.375520278970443
+        },
+        {
+          "sku_id": "Microphone USB",
+          "quantity": 2,
+          "pick_time": 7.355968987354669,
+          "pack_time": 7.6392474034354185,
+          "volume": 3.5772815345613242,
+          "weight": 8.958504936484204
+        }
+      ],
+      "total_pick_time": 16.47090623023294,
+      "total_pack_time": 17.950353779446186,
+      "total_volume": 29.477074284396863,
+      "total_weight": 44.96729412428284,
+      "status": "pending",
+      "warehouse_id": 1
+    },
+    {
+      "id": 20,
+      "customer": "Online Marketplace",
+      "customer_type": "ecommerce",
+      "priority": "3",
+      "created_at": "2025-06-26 16:02:47.185309",
+      "shipping_deadline": "2025-06-26 21:22:46.826177",
+      "items": [
+        {
+          "sku_id": "Golf Clubs Set",
+          "quantity": 2,
+          "pick_time": 6.554635890545466,
+          "pack_time": 7.4833666548791,
+          "volume": 17.24654474785414,
+          "weight": 25.405699247393393
+        },
+        {
+          "sku_id": "Baseball Glove",
+          "quantity": 2,
+          "pick_time": 6.517701489996844,
+          "pack_time": 6.740543685991633,
+          "volume": 17.391561508914997,
+          "weight": 27.315564832174253
+        },
+        {
+          "sku_id": "USB-C Charger",
+          "quantity": 2,
+          "pick_time": 7.1215594044689965,
+          "pack_time": 7.013777226331383,
+          "volume": 5.362165458080584,
+          "weight": 9.090262214159448
+        },
+        {
+          "sku_id": "Bookshelf 5-Shelf",
+          "quantity": 2,
+          "pick_time": 7.6911805784110445,
+          "pack_time": 8.80151402386322,
+          "volume": 9.747528699469381,
+          "weight": 11.288562713404897
+        }
+      ],
+      "total_pick_time": 27.885077363422347,
+      "total_pack_time": 30.039201591065336,
+      "total_volume": 49.7478004143191,
+      "total_weight": 73.100089007132,
+      "status": "pending",
+      "warehouse_id": 1
+    },
+    {
+      "id": 21,
+      "customer": "TechStart Inc",
+      "customer_type": "b2b",
+      "priority": "1",
+      "created_at": "2025-06-26 16:02:47.185314",
+      "shipping_deadline": "2025-06-26 20:11:35.623990",
+      "items": [
+        {
+          "sku_id": "Desk Lamp LED",
+          "quantity": 2,
+          "pick_time": 7.703360842252782,
+          "pack_time": 8.313224302776815,
+          "volume": 8.02900909882502,
+          "weight": 10.851463160442602
+        },
+        {
+          "sku_id": "Fishing Rod",
+          "quantity": 2,
+          "pick_time": 6.75684081353465,
+          "pack_time": 6.662609364174783,
+          "volume": 17.812329568519427,
+          "weight": 27.775470658449432
+        },
+        {
+          "sku_id": "Wall Mirror Round",
+          "quantity": 3,
+          "pick_time": 12.127250051942994,
+          "pack_time": 11.979806237594982,
+          "volume": 13.267903221560523,
+          "weight": 17.495666893262488
+        },
+        {
+          "sku_id": "Picture Frame 8x10",
+          "quantity": 3,
+          "pick_time": 12.677291467708669,
+          "pack_time": 12.126127198012847,
+          "volume": 12.731257951951973,
+          "weight": 22.798983269162072
+        }
+      ],
+      "total_pick_time": 39.264743175439094,
+      "total_pack_time": 39.081767102559425,
+      "total_volume": 51.84049984085694,
+      "total_weight": 78.92158398131659,
+      "status": "pending",
+      "warehouse_id": 1
+    },
+    {
+      "id": 22,
+      "customer": "University Bookstore",
+      "customer_type": "b2b",
+      "priority": "2",
+      "created_at": "2025-06-26 16:02:47.185323",
+      "shipping_deadline": "2025-06-26 20:47:48.373917",
+      "items": [
+        {
+          "sku_id": "Throw Pillow Decorative",
+          "quantity": 1,
+          "pick_time": 3.34408676179905,
+          "pack_time": 4.100133923163053,
+          "volume": 4.196229491052553,
+          "weight": 8.139393861486507
+        },
+        {
+          "sku_id": "Picture Frame 8x10",
+          "quantity": 3,
+          "pick_time": 12.677291467708669,
+          "pack_time": 12.126127198012847,
+          "volume": 12.731257951951973,
+          "weight": 22.798983269162072
+        },
+        {
+          "sku_id": "Laptop Pro 15\"",
+          "quantity": 3,
+          "pick_time": 8.298565815634642,
+          "pack_time": 12.143645023533981,
+          "volume": 7.35231023165326,
+          "weight": 13.961228436470783
+        },
+        {
+          "sku_id": "Mountain Bike 26\"",
+          "quantity": 2,
+          "pick_time": 6.573714293829053,
+          "pack_time": 7.528315744477064,
+          "volume": 17.6111130804709,
+          "weight": 24.78221077461041
+        },
+        {
+          "sku_id": "Candle Set",
+          "quantity": 1,
+          "pick_time": 3.3247863618981883,
+          "pack_time": 4.3419386830530495,
+          "volume": 4.498278201919643,
+          "weight": 7.992447658144977
+        }
+      ],
+      "total_pick_time": 34.218444700869604,
+      "total_pack_time": 40.24016057224,
+      "total_volume": 46.38918895704833,
+      "total_weight": 77.67426399987475,
+      "status": "pending",
+      "warehouse_id": 1
+    },
+    {
+      "id": 23,
+      "customer": "Electronics Hub",
+      "customer_type": "b2b",
+      "priority": "3",
+      "created_at": "2025-06-26 16:02:47.185332",
+      "shipping_deadline": "2025-06-26 20:09:42.905302",
+      "items": [
+        {
+          "sku_id": "Baseball Glove",
+          "quantity": 2,
+          "pick_time": 6.517701489996844,
+          "pack_time": 6.740543685991633,
+          "volume": 17.391561508914997,
+          "weight": 27.315564832174253
+        },
+        {
+          "sku_id": "Tablet Air",
+          "quantity": 1,
+          "pick_time": 3.209526293676465,
+          "pack_time": 3.554545647304276,
+          "volume": 1.6706745631371018,
+          "weight": 2.8289473910519773
+        },
+        {
+          "sku_id": "Coffee Table Wood",
+          "quantity": 3,
+          "pick_time": 10.798136256599932,
+          "pack_time": 12.894099686938938,
+          "volume": 16.22518501767197,
+          "weight": 16.80862002954031
+        },
+        {
+          "sku_id": "Mechanical Keyboard",
+          "quantity": 2,
+          "pick_time": 6.6179404228763445,
+          "pack_time": 7.1834071222595615,
+          "volume": 5.487532400225454,
+          "weight": 8.236274180717754
+        },
+        {
+          "sku_id": "Wall Clock",
+          "quantity": 3,
+          "pick_time": 10.498718490077255,
+          "pack_time": 13.353213422213091,
+          "volume": 13.573462910006635,
+          "weight": 22.98482742874406
+        },
+        {
+          "sku_id": "Tennis Racket Pro",
+          "quantity": 1,
+          "pick_time": 2.715341751851428,
+          "pack_time": 3.782240366613337,
+          "volume": 7.967851724258694,
+          "weight": 14.687602947284667
+        }
+      ],
+      "total_pick_time": 40.35736470507827,
+      "total_pack_time": 47.50804993132084,
+      "total_volume": 62.316268124214844,
+      "total_weight": 92.86183680951302,
+      "status": "pending",
+      "warehouse_id": 1
+    },
+    {
+      "id": 24,
+      "customer": "Electronics Hub",
+      "customer_type": "b2b",
+      "priority": "1",
+      "created_at": "2025-06-26 16:02:47.185339",
+      "shipping_deadline": "2025-06-27 00:00:55.688145",
+      "items": [
+        {
+          "sku_id": "Webcam HD",
+          "quantity": 2,
+          "pick_time": 5.878904620676118,
+          "pack_time": 7.28904591093668,
+          "volume": 4.90207083106673,
+          "weight": 5.472542289748197
+        },
+        {
+          "sku_id": "Treadmill Electric",
+          "quantity": 1,
+          "pick_time": 3.2231554099464095,
+          "pack_time": 3.5980324857593264,
+          "volume": 7.886937973496551,
+          "weight": 14.500140505291274
+        },
+        {
+          "sku_id": "Treadmill Electric",
+          "quantity": 2,
+          "pick_time": 6.446310819892819,
+          "pack_time": 7.196064971518653,
+          "volume": 15.773875946993101,
+          "weight": 29.000281010582547
+        },
+        {
+          "sku_id": "USB-C Charger",
+          "quantity": 1,
+          "pick_time": 3.5607797022344982,
+          "pack_time": 3.5068886131656916,
+          "volume": 2.681082729040292,
+          "weight": 4.545131107079724
+        }
+      ],
+      "total_pick_time": 19.109150552749846,
+      "total_pack_time": 21.590031981380353,
+      "total_volume": 31.243967480596673,
+      "total_weight": 53.51809491270174,
+      "status": "pending",
+      "warehouse_id": 1
+    },
+    {
+      "id": 25,
+      "customer": "Home Decor Outlet",
+      "customer_type": "retail",
+      "priority": "2",
+      "created_at": "2025-06-26 16:02:47.185344",
+      "shipping_deadline": "2025-06-26 22:52:05.112814",
+      "items": [
+        {
+          "sku_id": "Hockey Stick",
+          "quantity": 1,
+          "pick_time": 3.272795670557167,
+          "pack_time": 3.334784399598373,
+          "volume": 7.998694899089864,
+          "weight": 11.87327616318048
+        },
+        {
+          "sku_id": "Tennis Racket Pro",
+          "quantity": 3,
+          "pick_time": 8.146025255554283,
+          "pack_time": 11.34672109984001,
+          "volume": 23.903555172776084,
+          "weight": 44.062808841854
+        },
+        {
+          "sku_id": "Wall Mirror Round",
+          "quantity": 3,
+          "pick_time": 12.127250051942994,
+          "pack_time": 11.979806237594982,
+          "volume": 13.267903221560523,
+          "weight": 17.495666893262488
+        }
+      ],
+      "total_pick_time": 23.546070978054445,
+      "total_pack_time": 26.661311737033365,
+      "total_volume": 45.17015329342647,
+      "total_weight": 73.43175189829697,
+      "status": "pending",
+      "warehouse_id": 1
+    },
+    {
+      "id": 26,
+      "customer": "Home Decor Outlet",
+      "customer_type": "retail",
+      "priority": "3",
+      "created_at": "2025-06-26 16:02:47.185354",
+      "shipping_deadline": "2025-06-26 21:24:21.388854",
+      "items": [
+        {
+          "sku_id": "Table Lamp Modern",
+          "quantity": 2,
+          "pick_time": 8.466518755987417,
+          "pack_time": 8.857037008423728,
+          "volume": 10.637810727453628,
+          "weight": 12.617162532433305
+        },
+        {
+          "sku_id": "Treadmill Electric",
+          "quantity": 1,
+          "pick_time": 3.2231554099464095,
+          "pack_time": 3.5980324857593264,
+          "volume": 7.886937973496551,
+          "weight": 14.500140505291274
+        },
+        {
+          "sku_id": "Floor Vase Ceramic",
+          "quantity": 1,
+          "pick_time": 3.966933410635543,
+          "pack_time": 4.112207180768771,
+          "volume": 4.8398252787158045,
+          "weight": 7.824138170623273
+        },
+        {
+          "sku_id": "Soccer Ball Size 5",
+          "quantity": 3,
+          "pick_time": 8.711624847805062,
+          "pack_time": 9.978328832788756,
+          "volume": 26.63591472364911,
+          "weight": 40.85995413431787
+        },
+        {
+          "sku_id": "Mechanical Keyboard",
+          "quantity": 1,
+          "pick_time": 3.3089702114381723,
+          "pack_time": 3.5917035611297807,
+          "volume": 2.743766200112727,
+          "weight": 4.118137090358877
+        },
+        {
+          "sku_id": "Coffee Table Wood",
+          "quantity": 2,
+          "pick_time": 7.198757504399955,
+          "pack_time": 8.596066457959292,
+          "volume": 10.816790011781311,
+          "weight": 11.205746686360207
+        }
+      ],
+      "total_pick_time": 34.87596014021256,
+      "total_pack_time": 38.733375526829654,
+      "total_volume": 63.56104491520912,
+      "total_weight": 91.1252791193848,
+      "status": "pending",
+      "warehouse_id": 1
+    },
+    {
+      "id": 27,
+      "customer": "Online Marketplace",
+      "customer_type": "ecommerce",
+      "priority": "1",
+      "created_at": "2025-06-26 16:02:47.185361",
+      "shipping_deadline": "2025-06-26 22:00:18.006351",
+      "items": [
+        {
+          "sku_id": "Wall Mirror Round",
+          "quantity": 3,
+          "pick_time": 12.127250051942994,
+          "pack_time": 11.979806237594982,
+          "volume": 13.267903221560523,
+          "weight": 17.495666893262488
+        },
+        {
+          "sku_id": "Area Rug 8x10",
+          "quantity": 3,
+          "pick_time": 11.416227174293962,
+          "pack_time": 12.15201825372581,
+          "volume": 16.086715707983572,
+          "weight": 16.057190042962777
+        },
+        {
+          "sku_id": "Golf Clubs Set",
+          "quantity": 3,
+          "pick_time": 9.831953835818199,
+          "pack_time": 11.22504998231865,
+          "volume": 25.86981712178121,
+          "weight": 38.10854887109009
+        }
+      ],
+      "total_pick_time": 33.375431062055156,
+      "total_pack_time": 35.356874473639444,
+      "total_volume": 55.224436051325306,
+      "total_weight": 71.66140580731536,
+      "status": "pending",
+      "warehouse_id": 1
+    },
+    {
+      "id": 28,
+      "customer": "Home Decor Outlet",
+      "customer_type": "retail",
+      "priority": "2",
+      "created_at": "2025-06-26 16:02:47.185370",
+      "shipping_deadline": "2025-06-26 20:58:50.484592",
+      "items": [
+        {
+          "sku_id": "Bookshelf 5-Shelf",
+          "quantity": 2,
+          "pick_time": 7.6911805784110445,
+          "pack_time": 8.80151402386322,
+          "volume": 9.747528699469381,
+          "weight": 11.288562713404897
+        },
+        {
+          "sku_id": "Treadmill Electric",
+          "quantity": 3,
+          "pick_time": 9.669466229839228,
+          "pack_time": 10.79409745727798,
+          "volume": 23.66081392048965,
+          "weight": 43.500421515873825
+        },
+        {
+          "sku_id": "Floor Vase Ceramic",
+          "quantity": 2,
+          "pick_time": 7.933866821271086,
+          "pack_time": 8.224414361537542,
+          "volume": 9.679650557431609,
+          "weight": 15.648276341246547
+        },
+        {
+          "sku_id": "Throw Pillow Decorative",
+          "quantity": 1,
+          "pick_time": 3.34408676179905,
+          "pack_time": 4.100133923163053,
+          "volume": 4.196229491052553,
+          "weight": 8.139393861486507
+        },
+        {
+          "sku_id": "Fishing Rod",
+          "quantity": 1,
+          "pick_time": 3.378420406767325,
+          "pack_time": 3.3313046820873917,
+          "volume": 8.906164784259714,
+          "weight": 13.887735329224716
+        },
+        {
+          "sku_id": "Weight Bench Adjustable",
+          "quantity": 2,
+          "pick_time": 5.8523658097148,
+          "pack_time": 7.236650097033279,
+          "volume": 17.06323743300038,
+          "weight": 24.751040557940886
+        }
+      ],
+      "total_pick_time": 37.86938660780253,
+      "total_pack_time": 42.48811454496246,
+      "total_volume": 73.25362488570329,
+      "total_weight": 117.21543031917737,
+      "status": "pending",
+      "warehouse_id": 1
+    },
+    {
+      "id": 29,
+      "customer": "Acme Corporation",
+      "customer_type": "b2b",
+      "priority": "3",
+      "created_at": "2025-06-26 16:02:47.185380",
+      "shipping_deadline": "2025-06-26 22:03:20.177940",
+      "items": [
+        {
+          "sku_id": "Basketball Official",
+          "quantity": 3,
+          "pick_time": 8.853438387248257,
+          "pack_time": 10.516930215950467,
+          "volume": 26.157831532621184,
+          "weight": 42.99295046944873
+        },
+        {
+          "sku_id": "Floor Vase Ceramic",
+          "quantity": 2,
+          "pick_time": 7.933866821271086,
+          "pack_time": 8.224414361537542,
+          "volume": 9.679650557431609,
+          "weight": 15.648276341246547
+        },
+        {
+          "sku_id": "Volleyball",
+          "quantity": 3,
+          "pick_time": 9.63382191918204,
+          "pack_time": 10.983280810200354,
+          "volume": 25.149372757710395,
+          "weight": 43.375232181458834
+        },
+        {
+          "sku_id": "Monitor 27\"",
+          "quantity": 2,
+          "pick_time": 7.236986988791405,
+          "pack_time": 7.718733501352275,
+          "volume": 4.665817124086844,
+          "weight": 5.67120635192537
+        },
+        {
+          "sku_id": "Smartphone X",
+          "quantity": 1,
+          "pick_time": 3.2389772896672904,
+          "pack_time": 3.9482082869913544,
+          "volume": 2.24265074094187,
+          "weight": 4.250598774836969
+        }
+      ],
+      "total_pick_time": 36.89709140616008,
+      "total_pack_time": 41.39156717603199,
+      "total_volume": 67.89532271279191,
+      "total_weight": 111.93826411891645,
+      "status": "pending",
+      "warehouse_id": 1
+    },
+    {
+      "id": 30,
+      "customer": "University Bookstore",
+      "customer_type": "b2b",
+      "priority": "3",
+      "created_at": "2025-06-26 16:02:47.185387",
+      "shipping_deadline": "2025-06-26 20:37:23.023375",
+      "items": [
+        {
+          "sku_id": "Wall Clock",
+          "quantity": 1,
+          "pick_time": 3.499572830025752,
+          "pack_time": 4.451071140737697,
+          "volume": 4.524487636668878,
+          "weight": 7.661609142914687
+        },
+        {
+          "sku_id": "Dumbbells 20lb Pair",
+          "quantity": 2,
+          "pick_time": 5.9703908666894545,
+          "pack_time": 7.091905652195919,
+          "volume": 16.164167518415745,
+          "weight": 27.852711703005024
+        },
+        {
+          "sku_id": "Laptop Pro 15\"",
+          "quantity": 3,
+          "pick_time": 8.298565815634642,
+          "pack_time": 12.143645023533981,
+          "volume": 7.35231023165326,
+          "weight": 13.961228436470783
+        }
+      ],
+      "total_pick_time": 17.76852951234985,
+      "total_pack_time": 23.686621816467596,
+      "total_volume": 28.040965386737884,
+      "total_weight": 49.475549282390496,
+      "status": "pending",
+      "warehouse_id": 1
+    },
+    {
+      "id": 31,
+      "customer": "Global Retail Co",
+      "customer_type": "retail",
+      "priority": "2",
+      "created_at": "2025-06-26 16:02:47.185392",
+      "shipping_deadline": "2025-06-26 22:38:44.833188",
+      "items": [
+        {
+          "sku_id": "Basketball Official",
+          "quantity": 2,
+          "pick_time": 5.902292258165504,
+          "pack_time": 7.011286810633645,
+          "volume": 17.43855435508079,
+          "weight": 28.661966979632485
+        },
+        {
+          "sku_id": "Desk Lamp LED",
+          "quantity": 3,
+          "pick_time": 11.555041263379174,
+          "pack_time": 12.469836454165222,
+          "volume": 12.043513648237528,
+          "weight": 16.2771947406639
+        },
+        {
+          "sku_id": "Fishing Rod",
+          "quantity": 2,
+          "pick_time": 6.75684081353465,
+          "pack_time": 6.662609364174783,
+          "volume": 17.812329568519427,
+          "weight": 27.775470658449432
+        }
+      ],
+      "total_pick_time": 24.214174335079328,
+      "total_pack_time": 26.143732628973652,
+      "total_volume": 47.29439757183775,
+      "total_weight": 72.71463237874582,
+      "status": "pending",
+      "warehouse_id": 1
+    },
+    {
+      "id": 32,
+      "customer": "Fashion Forward",
+      "customer_type": "ecommerce",
+      "priority": "2",
+      "created_at": "2025-06-26 16:02:47.185402",
+      "shipping_deadline": "2025-06-26 23:02:00.621081",
+      "items": [
+        {
+          "sku_id": "Throw Pillow Decorative",
+          "quantity": 3,
+          "pick_time": 10.03226028539715,
+          "pack_time": 12.30040176948916,
+          "volume": 12.58868847315766,
+          "weight": 24.41818158445952
+        },
+        {
+          "sku_id": "Tennis Racket Pro",
+          "quantity": 3,
+          "pick_time": 8.146025255554283,
+          "pack_time": 11.34672109984001,
+          "volume": 23.903555172776084,
+          "weight": 44.062808841854
+        },
+        {
+          "sku_id": "Smartphone X",
+          "quantity": 3,
+          "pick_time": 9.716931869001872,
+          "pack_time": 11.844624860974063,
+          "volume": 6.72795222282561,
+          "weight": 12.751796324510906
+        },
+        {
+          "sku_id": "Wireless Headphones",
+          "quantity": 1,
+          "pick_time": 3.296409030731974,
+          "pack_time": 3.7308603870046997,
+          "volume": 2.493832642541692,
+          "weight": 3.9041496633540316
+        },
+        {
+          "sku_id": "Baseball Glove",
+          "quantity": 3,
+          "pick_time": 9.776552234995265,
+          "pack_time": 10.11081552898745,
+          "volume": 26.087342263372495,
+          "weight": 40.973347248261376
+        },
+        {
+          "sku_id": "Wall Mirror Round",
+          "quantity": 1,
+          "pick_time": 4.042416683980998,
+          "pack_time": 3.9932687458649943,
+          "volume": 4.422634407186841,
+          "weight": 5.83188896442083
+        }
+      ],
+      "total_pick_time": 45.010595359661544,
+      "total_pack_time": 53.326692392160375,
+      "total_volume": 76.22400518186038,
+      "total_weight": 131.94217262686067,
+      "status": "pending",
+      "warehouse_id": 1
+    },
+    {
+      "id": 33,
+      "customer": "TechStart Inc",
+      "customer_type": "b2b",
+      "priority": "1",
+      "created_at": "2025-06-26 16:02:47.185408",
+      "shipping_deadline": "2025-06-26 21:20:38.180609",
+      "items": [
+        {
+          "sku_id": "Wall Clock",
+          "quantity": 1,
+          "pick_time": 3.499572830025752,
+          "pack_time": 4.451071140737697,
+          "volume": 4.524487636668878,
+          "weight": 7.661609142914687
+        },
+        {
+          "sku_id": "Fishing Rod",
+          "quantity": 2,
+          "pick_time": 6.75684081353465,
+          "pack_time": 6.662609364174783,
+          "volume": 17.812329568519427,
+          "weight": 27.775470658449432
+        },
+        {
+          "sku_id": "Laptop Pro 13\"",
+          "quantity": 1,
+          "pick_time": 3.0956319010606643,
+          "pack_time": 4.048728553844326,
+          "volume": 2.288277778881098,
+          "weight": 3.2946404994941574
+        }
+      ],
+      "total_pick_time": 13.352045544621067,
+      "total_pack_time": 15.162409058756806,
+      "total_volume": 24.625094984069403,
+      "total_weight": 38.73172030085828,
+      "status": "pending",
+      "warehouse_id": 1
+    },
+    {
+      "id": 34,
+      "customer": "Online Marketplace",
+      "customer_type": "ecommerce",
+      "priority": "3",
+      "created_at": "2025-06-26 16:02:47.185415",
+      "shipping_deadline": "2025-06-26 20:44:48.184125",
+      "items": [
+        {
+          "sku_id": "Bedside Table",
+          "quantity": 2,
+          "pick_time": 7.329303030654511,
+          "pack_time": 8.919705612624785,
+          "volume": 10.916588795051782,
+          "weight": 10.63936926866731
+        },
+        {
+          "sku_id": "Monitor 27\"",
+          "quantity": 1,
+          "pick_time": 3.6184934943957026,
+          "pack_time": 3.8593667506761373,
+          "volume": 2.332908562043422,
+          "weight": 2.835603175962685
+        },
+        {
+          "sku_id": "Dumbbells 20lb Pair",
+          "quantity": 2,
+          "pick_time": 5.9703908666894545,
+          "pack_time": 7.091905652195919,
+          "volume": 16.164167518415745,
+          "weight": 27.852711703005024
+        },
+        {
+          "sku_id": "Weight Bench Adjustable",
+          "quantity": 3,
+          "pick_time": 8.7785487145722,
+          "pack_time": 10.854975145549918,
+          "volume": 25.594856149500572,
+          "weight": 37.12656083691133
+        },
+        {
+          "sku_id": "Microphone USB",
+          "quantity": 1,
+          "pick_time": 3.6779844936773345,
+          "pack_time": 3.8196237017177093,
+          "volume": 1.7886407672806621,
+          "weight": 4.479252468242102
+        }
+      ],
+      "total_pick_time": 29.374720599989203,
+      "total_pack_time": 34.54557686276447,
+      "total_volume": 56.79716179229218,
+      "total_weight": 82.93349745278846,
+      "status": "pending",
+      "warehouse_id": 1
+    },
+    {
+      "id": 35,
+      "customer": "Sports Equipment Plus",
+      "customer_type": "retail",
+      "priority": "1",
+      "created_at": "2025-06-26 16:02:47.185419",
+      "shipping_deadline": "2025-06-26 21:04:03.890015",
+      "items": [
+        {
+          "sku_id": "Tennis Racket Pro",
+          "quantity": 3,
+          "pick_time": 8.146025255554283,
+          "pack_time": 11.34672109984001,
+          "volume": 23.903555172776084,
+          "weight": 44.062808841854
+        },
+        {
+          "sku_id": "Monitor 27\"",
+          "quantity": 1,
+          "pick_time": 3.6184934943957026,
+          "pack_time": 3.8593667506761373,
+          "volume": 2.332908562043422,
+          "weight": 2.835603175962685
+        },
+        {
+          "sku_id": "Doormat Welcome",
+          "quantity": 3,
+          "pick_time": 9.970993304104354,
+          "pack_time": 12.047633618989877,
+          "volume": 13.47717878038968,
+          "weight": 23.379176478272576
+        },
+        {
+          "sku_id": "Office Chair Ergonomic",
+          "quantity": 2,
+          "pick_time": 8.007079850174742,
+          "pack_time": 8.534013318871141,
+          "volume": 10.961699190894514,
+          "weight": 14.323857906264397
+        }
+      ],
+      "total_pick_time": 29.74259190422908,
+      "total_pack_time": 35.787734788377165,
+      "total_volume": 50.6753417061037,
+      "total_weight": 84.60144640235366,
+      "status": "pending",
+      "warehouse_id": 1
+    },
+    {
+      "id": 36,
+      "customer": "Home Decor Outlet",
+      "customer_type": "retail",
+      "priority": "2",
+      "created_at": "2025-06-26 16:02:47.185427",
+      "shipping_deadline": "2025-06-26 22:48:27.700005",
+      "items": [
+        {
+          "sku_id": "Badminton Set",
+          "quantity": 3,
+          "pick_time": 9.28313150703131,
+          "pack_time": 10.03917199124119,
+          "volume": 26.052261050003025,
+          "weight": 35.449903363242285
+        },
+        {
+          "sku_id": "Webcam HD",
+          "quantity": 1,
+          "pick_time": 2.939452310338059,
+          "pack_time": 3.64452295546834,
+          "volume": 2.451035415533365,
+          "weight": 2.7362711448740984
+        },
+        {
+          "sku_id": "Wall Clock",
+          "quantity": 2,
+          "pick_time": 6.999145660051504,
+          "pack_time": 8.902142281475394,
+          "volume": 9.048975273337756,
+          "weight": 15.323218285829373
+        },
+        {
+          "sku_id": "Golf Clubs Set",
+          "quantity": 2,
+          "pick_time": 6.554635890545466,
+          "pack_time": 7.4833666548791,
+          "volume": 17.24654474785414,
+          "weight": 25.405699247393393
+        },
+        {
+          "sku_id": "Baseball Glove",
+          "quantity": 2,
+          "pick_time": 6.517701489996844,
+          "pack_time": 6.740543685991633,
+          "volume": 17.391561508914997,
+          "weight": 27.315564832174253
+        }
+      ],
+      "total_pick_time": 32.29406685796318,
+      "total_pack_time": 36.80974756905565,
+      "total_volume": 72.19037799564327,
+      "total_weight": 106.2306568735134,
+      "status": "pending",
+      "warehouse_id": 1
+    },
+    {
+      "id": 37,
+      "customer": "Online Marketplace",
+      "customer_type": "ecommerce",
+      "priority": "3",
+      "created_at": "2025-06-26 16:02:47.185432",
+      "shipping_deadline": "2025-06-26 21:13:47.747850",
+      "items": [
+        {
+          "sku_id": "Floor Vase Ceramic",
+          "quantity": 2,
+          "pick_time": 7.933866821271086,
+          "pack_time": 8.224414361537542,
+          "volume": 9.679650557431609,
+          "weight": 15.648276341246547
+        },
+        {
+          "sku_id": "Bluetooth Speaker",
+          "quantity": 1,
+          "pick_time": 3.468598732657446,
+          "pack_time": 3.704105283818627,
+          "volume": 2.0402501929711394,
+          "weight": 2.9744732630340094
+        },
+        {
+          "sku_id": "Floor Vase Ceramic",
+          "quantity": 3,
+          "pick_time": 11.90080023190663,
+          "pack_time": 12.336621542306315,
+          "volume": 14.519475836147414,
+          "weight": 23.47241451186982
+        },
+        {
+          "sku_id": "Bookshelf 5-Shelf",
+          "quantity": 3,
+          "pick_time": 11.536770867616568,
+          "pack_time": 13.20227103579483,
+          "volume": 14.621293049204072,
+          "weight": 16.932844070107343
+        }
+      ],
+      "total_pick_time": 34.84003665345173,
+      "total_pack_time": 37.467412223457316,
+      "total_volume": 40.860669635754235,
+      "total_weight": 59.02800818625772,
+      "status": "pending",
+      "warehouse_id": 1
+    },
+    {
+      "id": 38,
+      "customer": "Online Marketplace",
+      "customer_type": "ecommerce",
+      "priority": "1",
+      "created_at": "2025-06-26 16:02:47.185436",
+      "shipping_deadline": "2025-06-26 23:09:34.872702",
+      "items": [
+        {
+          "sku_id": "Volleyball",
+          "quantity": 2,
+          "pick_time": 6.422547946121361,
+          "pack_time": 7.322187206800236,
+          "volume": 16.766248505140265,
+          "weight": 28.91682145430589
+        },
+        {
+          "sku_id": "Coffee Table Wood",
+          "quantity": 1,
+          "pick_time": 3.5993787521999776,
+          "pack_time": 4.298033228979646,
+          "volume": 5.408395005890656,
+          "weight": 5.602873343180104
+        },
+        {
+          "sku_id": "Weight Bench Adjustable",
+          "quantity": 3,
+          "pick_time": 8.7785487145722,
+          "pack_time": 10.854975145549918,
+          "volume": 25.594856149500572,
+          "weight": 37.12656083691133
+        }
+      ],
+      "total_pick_time": 18.800475412893537,
+      "total_pack_time": 22.4751955813298,
+      "total_volume": 47.769499660531494,
+      "total_weight": 71.64625563439733,
+      "status": "pending",
+      "warehouse_id": 1
+    },
+    {
+      "id": 39,
+      "customer": "Electronics Hub",
+      "customer_type": "b2b",
+      "priority": "3",
+      "created_at": "2025-06-26 16:02:47.185445",
+      "shipping_deadline": "2025-06-26 23:23:59.239928",
+      "items": [
+        {
+          "sku_id": "Wall Mirror Round",
+          "quantity": 1,
+          "pick_time": 4.042416683980998,
+          "pack_time": 3.9932687458649943,
+          "volume": 4.422634407186841,
+          "weight": 5.83188896442083
+        },
+        {
+          "sku_id": "Soccer Ball Size 5",
+          "quantity": 2,
+          "pick_time": 5.8077498985367075,
+          "pack_time": 6.652219221859171,
+          "volume": 17.75727648243274,
+          "weight": 27.239969422878577
+        },
+        {
+          "sku_id": "Cable Set",
+          "quantity": 3,
+          "pick_time": 8.463012587604798,
+          "pack_time": 10.904455206656802,
+          "volume": 6.32138502966355,
+          "weight": 12.794778466115101
+        },
+        {
+          "sku_id": "Headset Gaming",
+          "quantity": 3,
+          "pick_time": 8.895169886820177,
+          "pack_time": 12.070379473953462,
+          "volume": 6.704120730903991,
+          "weight": 9.406183848978738
+        },
+        {
+          "sku_id": "Office Chair Ergonomic",
+          "quantity": 3,
+          "pick_time": 12.010619775262114,
+          "pack_time": 12.801019978306712,
+          "volume": 16.44254878634177,
+          "weight": 21.485786859396597
+        },
+        {
+          "sku_id": "Volleyball",
+          "quantity": 3,
+          "pick_time": 9.63382191918204,
+          "pack_time": 10.983280810200354,
+          "volume": 25.149372757710395,
+          "weight": 43.375232181458834
+        }
+      ],
+      "total_pick_time": 48.852790751386834,
+      "total_pack_time": 57.4046234368415,
+      "total_volume": 76.79733819423929,
+      "total_weight": 120.13383974324867,
+      "status": "pending",
+      "warehouse_id": 1
+    },
+    {
+      "id": 40,
+      "customer": "TechStart Inc",
+      "customer_type": "b2b",
+      "priority": "2",
+      "created_at": "2025-06-26 16:02:47.185449",
+      "shipping_deadline": "2025-06-26 20:34:19.515460",
+      "items": [
+        {
+          "sku_id": "Area Rug 8x10",
+          "quantity": 2,
+          "pick_time": 7.610818116195974,
+          "pack_time": 8.101345502483873,
+          "volume": 10.724477138655715,
+          "weight": 10.704793361975184
+        },
+        {
+          "sku_id": "Smartphone X",
+          "quantity": 3,
+          "pick_time": 9.716931869001872,
+          "pack_time": 11.844624860974063,
+          "volume": 6.72795222282561,
+          "weight": 12.751796324510906
+        },
+        {
+          "sku_id": "Bedside Table",
+          "quantity": 3,
+          "pick_time": 10.993954545981767,
+          "pack_time": 13.379558418937178,
+          "volume": 16.374883192577673,
+          "weight": 15.959053903000964
+        }
+      ],
+      "total_pick_time": 28.321704531179613,
+      "total_pack_time": 33.32552878239512,
+      "total_volume": 33.827312554059,
+      "total_weight": 39.415643589487054,
+      "status": "pending",
+      "warehouse_id": 1
+    },
+    {
+      "id": 41,
+      "customer": "University Bookstore",
+      "customer_type": "b2b",
+      "priority": "2",
+      "created_at": "2025-06-26 16:02:47.185457",
+      "shipping_deadline": "2025-06-26 23:01:57.640106",
+      "items": [
+        {
+          "sku_id": "Microphone USB",
+          "quantity": 1,
+          "pick_time": 3.6779844936773345,
+          "pack_time": 3.8196237017177093,
+          "volume": 1.7886407672806621,
+          "weight": 4.479252468242102
+        },
+        {
+          "sku_id": "Mechanical Keyboard",
+          "quantity": 3,
+          "pick_time": 9.926910634314517,
+          "pack_time": 10.775110683389343,
+          "volume": 8.231298600338182,
+          "weight": 12.35441127107663
+        },
+        {
+          "sku_id": "Bedside Table",
+          "quantity": 3,
+          "pick_time": 10.993954545981767,
+          "pack_time": 13.379558418937178,
+          "volume": 16.374883192577673,
+          "weight": 15.959053903000964
+        },
+        {
+          "sku_id": "Yoga Mat Premium",
+          "quantity": 2,
+          "pick_time": 6.3931425099754895,
+          "pack_time": 6.81482453401576,
+          "volume": 17.759284534611044,
+          "weight": 26.218363303223647
+        },
+        {
+          "sku_id": "Webcam HD",
+          "quantity": 2,
+          "pick_time": 5.878904620676118,
+          "pack_time": 7.28904591093668,
+          "volume": 4.90207083106673,
+          "weight": 5.472542289748197
+        },
+        {
+          "sku_id": "Basketball Official",
+          "quantity": 2,
+          "pick_time": 5.902292258165504,
+          "pack_time": 7.011286810633645,
+          "volume": 17.43855435508079,
+          "weight": 28.661966979632485
+        }
+      ],
+      "total_pick_time": 42.77318906279073,
+      "total_pack_time": 49.089450059630316,
+      "total_volume": 66.49473228095508,
+      "total_weight": 93.14559021492401,
+      "status": "pending",
+      "warehouse_id": 1
+    },
+    {
+      "id": 42,
+      "customer": "TechStart Inc",
+      "customer_type": "b2b",
+      "priority": "2",
+      "created_at": "2025-06-26 16:02:47.185465",
+      "shipping_deadline": "2025-06-26 22:11:33.826703",
+      "items": [
+        {
+          "sku_id": "Wireless Headphones",
+          "quantity": 1,
+          "pick_time": 3.296409030731974,
+          "pack_time": 3.7308603870046997,
+          "volume": 2.493832642541692,
+          "weight": 3.9041496633540316
+        },
+        {
+          "sku_id": "Cable Set",
+          "quantity": 3,
+          "pick_time": 8.463012587604798,
+          "pack_time": 10.904455206656802,
+          "volume": 6.32138502966355,
+          "weight": 12.794778466115101
+        },
+        {
+          "sku_id": "Badminton Set",
+          "quantity": 2,
+          "pick_time": 6.188754338020874,
+          "pack_time": 6.692781327494127,
+          "volume": 17.36817403333535,
+          "weight": 23.633268908828192
+        },
+        {
+          "sku_id": "Treadmill Electric",
+          "quantity": 2,
+          "pick_time": 6.446310819892819,
+          "pack_time": 7.196064971518653,
+          "volume": 15.773875946993101,
+          "weight": 29.000281010582547
+        },
+        {
+          "sku_id": "USB-C Charger",
+          "quantity": 2,
+          "pick_time": 7.1215594044689965,
+          "pack_time": 7.013777226331383,
+          "volume": 5.362165458080584,
+          "weight": 9.090262214159448
+        },
+        {
+          "sku_id": "Laptop Pro 15\"",
+          "quantity": 2,
+          "pick_time": 5.532377210423094,
+          "pack_time": 8.095763349022654,
+          "volume": 4.901540154435507,
+          "weight": 9.307485624313856
+        }
+      ],
+      "total_pick_time": 37.048423391142556,
+      "total_pack_time": 43.63370246802832,
+      "total_volume": 52.220973265049786,
+      "total_weight": 87.73022588735317,
+      "status": "pending",
+      "warehouse_id": 1
+    },
+    {
+      "id": 43,
+      "customer": "University Bookstore",
+      "customer_type": "b2b",
+      "priority": "3",
+      "created_at": "2025-06-26 16:02:47.185470",
+      "shipping_deadline": "2025-06-26 23:35:00.167240",
+      "items": [
+        {
+          "sku_id": "Golf Clubs Set",
+          "quantity": 2,
+          "pick_time": 6.554635890545466,
+          "pack_time": 7.4833666548791,
+          "volume": 17.24654474785414,
+          "weight": 25.405699247393393
+        },
+        {
+          "sku_id": "Baseball Glove",
+          "quantity": 2,
+          "pick_time": 6.517701489996844,
+          "pack_time": 6.740543685991633,
+          "volume": 17.391561508914997,
+          "weight": 27.315564832174253
+        },
+        {
+          "sku_id": "Bluetooth Speaker",
+          "quantity": 3,
+          "pick_time": 10.405796197972338,
+          "pack_time": 11.11231585145588,
+          "volume": 6.120750578913418,
+          "weight": 8.923419789102027
+        },
+        {
+          "sku_id": "Cable Set",
+          "quantity": 2,
+          "pick_time": 5.642008391736532,
+          "pack_time": 7.2696368044378685,
+          "volume": 4.214256686442367,
+          "weight": 8.5298523107434
+        },
+        {
+          "sku_id": "Laptop Pro 13\"",
+          "quantity": 3,
+          "pick_time": 9.286895703181994,
+          "pack_time": 12.146185661532977,
+          "volume": 6.8648333366432945,
+          "weight": 9.883921498482472
+        }
+      ],
+      "total_pick_time": 38.40703767343317,
+      "total_pack_time": 44.752048658297454,
+      "total_volume": 51.83794685876821,
+      "total_weight": 80.05845767789555,
+      "status": "pending",
+      "warehouse_id": 1
+    },
+    {
+      "id": 44,
+      "customer": "University Bookstore",
+      "customer_type": "b2b",
+      "priority": "1",
+      "created_at": "2025-06-26 16:02:47.185477",
+      "shipping_deadline": "2025-06-26 20:30:47.318964",
+      "items": [
+        {
+          "sku_id": "Hockey Stick",
+          "quantity": 1,
+          "pick_time": 3.272795670557167,
+          "pack_time": 3.334784399598373,
+          "volume": 7.998694899089864,
+          "weight": 11.87327616318048
+        },
+        {
+          "sku_id": "Baseball Glove",
+          "quantity": 2,
+          "pick_time": 6.517701489996844,
+          "pack_time": 6.740543685991633,
+          "volume": 17.391561508914997,
+          "weight": 27.315564832174253
+        },
+        {
+          "sku_id": "Fishing Rod",
+          "quantity": 2,
+          "pick_time": 6.75684081353465,
+          "pack_time": 6.662609364174783,
+          "volume": 17.812329568519427,
+          "weight": 27.775470658449432
+        },
+        {
+          "sku_id": "Hockey Stick",
+          "quantity": 2,
+          "pick_time": 6.545591341114334,
+          "pack_time": 6.669568799196746,
+          "volume": 15.997389798179729,
+          "weight": 23.74655232636096
+        }
+      ],
+      "total_pick_time": 23.092929315202998,
+      "total_pack_time": 23.407506248961536,
+      "total_volume": 59.199975774704015,
+      "total_weight": 90.71086398016512,
+      "status": "pending",
+      "warehouse_id": 1
+    },
+    {
+      "id": 45,
+      "customer": "Acme Corporation",
+      "customer_type": "b2b",
+      "priority": "3",
+      "created_at": "2025-06-26 16:02:47.185483",
+      "shipping_deadline": "2025-06-26 23:50:38.268547",
+      "items": [
+        {
+          "sku_id": "Tennis Racket Pro",
+          "quantity": 1,
+          "pick_time": 2.715341751851428,
+          "pack_time": 3.782240366613337,
+          "volume": 7.967851724258694,
+          "weight": 14.687602947284667
+        },
+        {
+          "sku_id": "Bluetooth Speaker",
+          "quantity": 1,
+          "pick_time": 3.468598732657446,
+          "pack_time": 3.704105283818627,
+          "volume": 2.0402501929711394,
+          "weight": 2.9744732630340094
+        },
+        {
+          "sku_id": "Mountain Bike 26\"",
+          "quantity": 1,
+          "pick_time": 3.2868571469145267,
+          "pack_time": 3.764157872238532,
+          "volume": 8.80555654023545,
+          "weight": 12.391105387305204
+        },
+        {
+          "sku_id": "Floor Vase Ceramic",
+          "quantity": 2,
+          "pick_time": 7.933866821271086,
+          "pack_time": 8.224414361537542,
+          "volume": 9.679650557431609,
+          "weight": 15.648276341246547
+        },
+        {
+          "sku_id": "Bedside Table",
+          "quantity": 3,
+          "pick_time": 10.993954545981767,
+          "pack_time": 13.379558418937178,
+          "volume": 16.374883192577673,
+          "weight": 15.959053903000964
+        }
+      ],
+      "total_pick_time": 28.398618998676255,
+      "total_pack_time": 32.85447630314522,
+      "total_volume": 44.868192207474564,
+      "total_weight": 61.6605118418714,
+      "status": "pending",
+      "warehouse_id": 1
+    },
+    {
+      "id": 46,
+      "customer": "Fashion Forward",
+      "customer_type": "ecommerce",
+      "priority": "2",
+      "created_at": "2025-06-26 16:02:47.185491",
+      "shipping_deadline": "2025-06-26 21:31:42.816895",
+      "items": [
+        {
+          "sku_id": "Golf Clubs Set",
+          "quantity": 3,
+          "pick_time": 9.831953835818199,
+          "pack_time": 11.22504998231865,
+          "volume": 25.86981712178121,
+          "weight": 38.10854887109009
+        },
+        {
+          "sku_id": "Monitor 27\"",
+          "quantity": 2,
+          "pick_time": 7.236986988791405,
+          "pack_time": 7.718733501352275,
+          "volume": 4.665817124086844,
+          "weight": 5.67120635192537
+        },
+        {
+          "sku_id": "Hockey Stick",
+          "quantity": 1,
+          "pick_time": 3.272795670557167,
+          "pack_time": 3.334784399598373,
+          "volume": 7.998694899089864,
+          "weight": 11.87327616318048
+        },
+        {
+          "sku_id": "Tennis Racket Pro",
+          "quantity": 3,
+          "pick_time": 8.146025255554283,
+          "pack_time": 11.34672109984001,
+          "volume": 23.903555172776084,
+          "weight": 44.062808841854
+        },
+        {
+          "sku_id": "Candle Set",
+          "quantity": 2,
+          "pick_time": 6.649572723796377,
+          "pack_time": 8.683877366106099,
+          "volume": 8.996556403839286,
+          "weight": 15.984895316289954
+        },
+        {
+          "sku_id": "Smartphone X",
+          "quantity": 3,
+          "pick_time": 9.716931869001872,
+          "pack_time": 11.844624860974063,
+          "volume": 6.72795222282561,
+          "weight": 12.751796324510906
+        }
+      ],
+      "total_pick_time": 44.8542663435193,
+      "total_pack_time": 54.15379121018947,
+      "total_volume": 78.16239294439889,
+      "total_weight": 128.4525318688508,
+      "status": "pending",
+      "warehouse_id": 1
+    },
+    {
+      "id": 47,
+      "customer": "Home Decor Outlet",
+      "customer_type": "retail",
+      "priority": "1",
+      "created_at": "2025-06-26 16:02:47.185495",
+      "shipping_deadline": "2025-06-26 21:38:20.396350",
+      "items": [
+        {
+          "sku_id": "Bedside Table",
+          "quantity": 1,
+          "pick_time": 3.6646515153272556,
+          "pack_time": 4.459852806312393,
+          "volume": 5.458294397525891,
+          "weight": 5.319684634333655
+        },
+        {
+          "sku_id": "Badminton Set",
+          "quantity": 2,
+          "pick_time": 6.188754338020874,
+          "pack_time": 6.692781327494127,
+          "volume": 17.36817403333535,
+          "weight": 23.633268908828192
+        },
+        {
+          "sku_id": "Mountain Bike 26\"",
+          "quantity": 3,
+          "pick_time": 9.86057144074358,
+          "pack_time": 11.292473616715597,
+          "volume": 26.41666962070635,
+          "weight": 37.173316161915615
+        },
+        {
+          "sku_id": "Bookshelf 5-Shelf",
+          "quantity": 1,
+          "pick_time": 3.8455902892055223,
+          "pack_time": 4.40075701193161,
+          "volume": 4.8737643497346905,
+          "weight": 5.644281356702448
+        }
+      ],
+      "total_pick_time": 23.55956758329723,
+      "total_pack_time": 26.845864762453726,
+      "total_volume": 54.11690240130228,
+      "total_weight": 71.77055106177991,
+      "status": "pending",
+      "warehouse_id": 1
+    },
+    {
+      "id": 48,
+      "customer": "TechStart Inc",
+      "customer_type": "b2b",
+      "priority": "3",
+      "created_at": "2025-06-26 16:02:47.185503",
+      "shipping_deadline": "2025-06-26 20:52:02.145783",
+      "items": [
+        {
+          "sku_id": "USB-C Charger",
+          "quantity": 3,
+          "pick_time": 10.682339106703495,
+          "pack_time": 10.520665839497074,
+          "volume": 8.043248187120877,
+          "weight": 13.635393321239173
+        },
+        {
+          "sku_id": "Power Bank",
+          "quantity": 3,
+          "pick_time": 10.238846918457366,
+          "pack_time": 11.218186139995371,
+          "volume": 7.822591318372274,
+          "weight": 10.860784522763645
+        },
+        {
+          "sku_id": "Baseball Glove",
+          "quantity": 3,
+          "pick_time": 9.776552234995265,
+          "pack_time": 10.11081552898745,
+          "volume": 26.087342263372495,
+          "weight": 40.973347248261376
+        },
+        {
+          "sku_id": "Laptop Pro 13\"",
+          "quantity": 1,
+          "pick_time": 3.0956319010606643,
+          "pack_time": 4.048728553844326,
+          "volume": 2.288277778881098,
+          "weight": 3.2946404994941574
+        },
+        {
+          "sku_id": "Desk Lamp LED",
+          "quantity": 1,
+          "pick_time": 3.851680421126391,
+          "pack_time": 4.156612151388408,
+          "volume": 4.01450454941251,
+          "weight": 5.425731580221301
+        },
+        {
+          "sku_id": "Mechanical Keyboard",
+          "quantity": 3,
+          "pick_time": 9.926910634314517,
+          "pack_time": 10.775110683389343,
+          "volume": 8.231298600338182,
+          "weight": 12.35441127107663
+        }
+      ],
+      "total_pick_time": 47.5719612166577,
+      "total_pack_time": 50.830118897101976,
+      "total_volume": 56.48726269749743,
+      "total_weight": 86.54430844305627,
+      "status": "pending",
+      "warehouse_id": 1
+    },
+    {
+      "id": 49,
+      "customer": "Local Store Chain",
+      "customer_type": "retail",
+      "priority": "1",
+      "created_at": "2025-06-26 16:02:47.185507",
+      "shipping_deadline": "2025-06-26 22:12:26.288085",
+      "items": [
+        {
+          "sku_id": "Cable Set",
+          "quantity": 2,
+          "pick_time": 5.642008391736532,
+          "pack_time": 7.2696368044378685,
+          "volume": 4.214256686442367,
+          "weight": 8.5298523107434
+        },
+        {
+          "sku_id": "Monitor 27\"",
+          "quantity": 3,
+          "pick_time": 10.855480483187108,
+          "pack_time": 11.578100252028412,
+          "volume": 6.998725686130266,
+          "weight": 8.506809527888056
+        },
+        {
+          "sku_id": "Laptop Pro 15\"",
+          "quantity": 2,
+          "pick_time": 5.532377210423094,
+          "pack_time": 8.095763349022654,
+          "volume": 4.901540154435507,
+          "weight": 9.307485624313856
+        },
+        {
+          "sku_id": "Monitor 27\"",
+          "quantity": 1,
+          "pick_time": 3.6184934943957026,
+          "pack_time": 3.8593667506761373,
+          "volume": 2.332908562043422,
+          "weight": 2.835603175962685
+        }
+      ],
+      "total_pick_time": 25.648359579742436,
+      "total_pack_time": 30.80286715616507,
+      "total_volume": 18.447431089051562,
+      "total_weight": 29.179750638907997,
+      "status": "pending",
+      "warehouse_id": 1
+    },
+    {
+      "id": 50,
+      "customer": "TechStart Inc",
+      "customer_type": "b2b",
+      "priority": "2",
+      "created_at": "2025-06-26 16:02:47.185513",
+      "shipping_deadline": "2025-06-26 20:06:34.433115",
+      "items": [
+        {
+          "sku_id": "Mechanical Keyboard",
+          "quantity": 1,
+          "pick_time": 3.3089702114381723,
+          "pack_time": 3.5917035611297807,
+          "volume": 2.743766200112727,
+          "weight": 4.118137090358877
+        },
+        {
+          "sku_id": "Bookshelf 5-Shelf",
+          "quantity": 1,
+          "pick_time": 3.8455902892055223,
+          "pack_time": 4.40075701193161,
+          "volume": 4.8737643497346905,
+          "weight": 5.644281356702448
+        },
+        {
+          "sku_id": "Golf Clubs Set",
+          "quantity": 2,
+          "pick_time": 6.554635890545466,
+          "pack_time": 7.4833666548791,
+          "volume": 17.24654474785414,
+          "weight": 25.405699247393393
+        }
+      ],
+      "total_pick_time": 13.70919639118916,
+      "total_pack_time": 15.47582722794049,
+      "total_volume": 24.86407529770156,
+      "total_weight": 35.16811769445472,
+      "status": "pending",
+      "warehouse_id": 1
+    }
+  ],
+  "statistics": {
+    "workers": {
+      "total": 20,
+      "multi_skilled": 7,
+      "specialized": 5,
+      "skill_distribution": {
+        "picking": 8,
+        "packing": 9,
+        "shipping": 8,
+        "labeling": 7,
+        "consolidation": 6,
+        "staging": 4
+      }
+    },
+    "equipment": {
+      "total": 41,
+      "packing_stations": 8,
+      "dock_doors": 6,
+      "pick_carts": 20,
+      "conveyors": 3,
+      "label_printers": 4
+    },
+    "orders": {
+      "total": 50,
+      "high_priority": 33,
+      "tight_deadlines": 0,
+      "total_pick_time_hours": 25.160035183448915,
+      "total_pack_time_hours": 28.700552185829174,
+      "avg_order_value": 496.7202215891398
+    },
+    "bottlenecks": {
+      "packing_bottleneck_ratio": 0.22422306395179042,
+      "shipping_bottleneck_ratio": 0.052083333333333336,
+      "packing_capacity_hours": 128,
+      "packing_demand_hours": 28.700552185829174,
+      "shipping_capacity_hours": 96,
+      "shipping_demand_hours": 5.0
+    },
+    "optimization_opportunities": {
+      "equipment_bottleneck": false,
+      "deadline_pressure": false,
+      "skill_mismatch": false,
+      "resource_underutilization": false
+    }
+  }
+}

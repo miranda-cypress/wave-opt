@@ -1,0 +1,23 @@
+.app-root {
+  min-height: 100vh;
+  background: #f7faf9;
+  font-family: 'Inter', 'Segoe UI', Arial, sans-serif;
+}
+
+.app-main {
+  max-width: 1200px;
+  margin: 2rem auto;
+  padding: 2rem;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 2px 16px rgba(0,0,0,0.04);
+}
+
+h2 {
+  color: #174c3c;
+  margin-top: 0;
+}
+
+p {
+  color: #2e6e5c;
+} 

@@ -1,0 +1,153 @@
+.optimization-panel {
+  padding: 2rem;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  margin: 2rem 0;
+}
+
+.optimization-panel h2 {
+  color: #174c3c;
+  margin-bottom: 1.5rem;
+  font-size: 1.8rem;
+}
+
+.optimization-controls {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  margin-bottom: 2rem;
+  padding: 1.5rem;
+  background: #f8f9fa;
+  border-radius: 8px;
+}
+
+.control-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.control-group label {
+  font-weight: 600;
+  color: #174c3c;
+  font-size: 0.9rem;
+}
+
+.control-group input {
+  padding: 0.5rem;
+  border: 2px solid #e0e0e0;
+  border-radius: 6px;
+  font-size: 1rem;
+  width: 120px;
+}
+
+.control-group input:focus {
+  outline: none;
+  border-color: #4db6ac;
+}
+
+.optimize-button {
+  background: linear-gradient(135deg, #174c3c 0%, #2e6e5c 100%);
+  color: white;
+  border: none;
+  padding: 0.75rem 2rem;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  min-width: 160px;
+}
+
+.optimize-button:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(23, 76, 60, 0.3);
+}
+
+.optimize-button:disabled {
+  background: #ccc;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.error-message {
+  background: #fee;
+  border: 1px solid #fcc;
+  color: #c33;
+  padding: 1rem;
+  border-radius: 8px;
+  margin: 1rem 0;
+}
+
+.error-message h3 {
+  margin: 0 0 0.5rem 0;
+  font-size: 1.1rem;
+}
+
+.optimization-results {
+  margin-top: 2rem;
+}
+
+.optimization-results h3 {
+  color: #174c3c;
+  margin-bottom: 1.5rem;
+  font-size: 1.5rem;
+}
+
+.results-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.result-card {
+  background: #f8f9fa;
+  padding: 1.5rem;
+  border-radius: 8px;
+  border-left: 4px solid #4db6ac;
+}
+
+.result-card h4 {
+  color: #174c3c;
+  margin: 0 0 1rem 0;
+  font-size: 1.1rem;
+}
+
+.result-card p {
+  margin: 0.5rem 0;
+  color: #333;
+}
+
+.result-card strong {
+  color: #174c3c;
+}
+
+.run-info {
+  background: #e8f5e8;
+  padding: 1rem;
+  border-radius: 8px;
+  border: 1px solid #4db6ac;
+}
+
+.run-info p {
+  margin: 0.25rem 0;
+  color: #174c3c;
+}
+
+@media (max-width: 768px) {
+  .optimization-controls {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 1rem;
+  }
+  
+  .control-group input {
+    width: 100%;
+  }
+  
+  .results-grid {
+    grid-template-columns: 1fr;
+  }
+} 
