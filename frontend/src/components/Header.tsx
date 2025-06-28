@@ -2,16 +2,50 @@ import React from 'react';
 import './Header.css';
 import logo from '../assets/zoneflow-logo.png';
 
-const Header: React.FC = () => (
-  <header className="zf-header">
-    <div className="zf-header-content">
-      <img src={logo} alt="ZoneFlow AI Logo" className="zf-logo" />
-      <div className="zf-title-group">
-        <h1 className="zf-title">ZoneFlow AI</h1>
-        <span className="zf-tagline">From tasks to teamwork — with insight</span>
+interface HeaderProps {
+  currentPage: string;
+  onPageChange: (page: string) => void;
+}
+
+const Header: React.FC<HeaderProps> = ({ currentPage, onPageChange }) => {
+  return (
+    <header className="header">
+      <div className="header-content">
+        <div className="logo">
+          <img src={logo} alt="ZoneFlow Logo" />
+        </div>
+        
+        <nav className="nav-menu">
+          <ul className="nav-list">
+            <li className="nav-item">
+              <button
+                className={`nav-link ${currentPage === 'dashboard' ? 'active' : ''}`}
+                onClick={() => onPageChange('dashboard')}
+              >
+                Dashboard
+              </button>
+            </li>
+            <li className="nav-item">
+              <button
+                className={`nav-link ${currentPage === 'optimize' ? 'active' : ''}`}
+                onClick={() => onPageChange('optimize')}
+              >
+                Optimize
+              </button>
+            </li>
+            <li className="nav-item">
+              <button
+                className={`nav-link ${currentPage === 'wave-details' ? 'active' : ''}`}
+                onClick={() => onPageChange('wave-details')}
+              >
+                Wave Details
+              </button>
+            </li>
+          </ul>
+        </nav>
       </div>
-    </div>
-  </header>
-);
+    </header>
+  );
+};
 
 export default Header; 
