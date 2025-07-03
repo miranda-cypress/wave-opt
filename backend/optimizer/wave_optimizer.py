@@ -29,7 +29,7 @@ from models.optimization import (
 
 class OptimizationRequirements:
     """Performance and constraint requirements for the optimization engine."""
-    max_solve_time_seconds = 10  # Demo responsiveness
+    max_solve_time_seconds = 300  # 5 minutes for more thorough optimization
     max_orders_per_wave = 500    # Typical mid-market scale
     max_workers = 25             # Reasonable demo size
     stages = [
