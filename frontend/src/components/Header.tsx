@@ -41,6 +41,14 @@ const Header: React.FC<HeaderProps> = ({ currentPage, onPageChange }) => {
                 Wave Details
               </button>
             </li>
+            <li className="nav-item">
+              <button
+                className={`nav-link ${currentPage === 'wave-optimization' ? 'active' : ''}`}
+                onClick={() => onPageChange('wave-optimization')}
+              >
+                Wave Optimization
+              </button>
+            </li>
           </ul>
         </nav>
       </div>

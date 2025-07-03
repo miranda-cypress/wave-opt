@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from 'react';
-import { Routes, Route, useNavigate, useLocation } from 'react-router-dom';
+import { Routes, Route, Navigate, useLocation, useNavigate } from 'react-router-dom';
 import './App.css';
 import Header from './components/Header';
-import DashboardSummary from './components/DashboardSummary';
+import Dashboard from './components/DashboardSummary';
 import OptimizationPanel from './components/OptimizationPanel';
 import ComparisonPage from './components/ComparisonPage';
 import StageTimeline from './components/StageTimeline';
+import WaveDetails from './components/WaveDetails';
+import WaveOptimization from './components/WaveOptimization';
 import Footer from './components/Footer';
 import { getOriginalWmsPlanSummary } from './api';
 
@@ -15,29 +17,29 @@ interface OptimizationResults {
   summary: any;
 }
 
-function App() {
-  const navigate = useNavigate();
+function AppContent() {
   const location = useLocation();
-  const [optimizationResults, setOptimizationResults] = useState<OptimizationResults | null>(null);
+  const navigate = useNavigate();
   const [baselineData, setBaselineData] = useState<any>(null);
+  const [optimizationResults, setOptimizationResults] = useState<OptimizationResults | null>(null);
+  const [hasOptimizationResults, setHasOptimizationResults] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [currentPage, setCurrentPage] = useState('dashboard');
 
-  // Get current page from URL path
-  const getCurrentPage = () => {
-    const path = location.pathname;
-    if (path === '/optimize') return 'optimize';
-    return 'dashboard';
-  };
-
-  const currentPage = getCurrentPage();
-
-  // Load baseline data when optimize page is first opened
+  // Sync navigation state with URL
   useEffect(() => {
-    if (currentPage === 'optimize' && !baselineData) {
-      loadBaselineData();
-    }
-  }, [currentPage]);
+    const path = location.pathname;
+    if (path === '/') setCurrentPage('dashboard');
+    else if (path === '/optimize') setCurrentPage('optimize');
+    else if (path === '/wave-details') setCurrentPage('wave-details');
+    else if (path === '/wave-optimization') setCurrentPage('wave-optimization');
+  }, [location]);
+
+  useEffect(() => {
+    // Load baseline data on app start
+    loadBaselineData();
+  }, []);
 
   const loadBaselineData = async () => {
     try {
@@ -57,12 +59,14 @@ function App() {
 
   const handleOptimizationComplete = (results: OptimizationResults) => {
     setOptimizationResults(results);
+    setHasOptimizationResults(true);
     setError(null);
   };
 
   const handleOptimizationError = (errorMessage: string) => {
     setError(errorMessage);
     setOptimizationResults(null);
+    setHasOptimizationResults(false);
   };
 
   const handleOptimizationStart = () => {
@@ -75,15 +79,27 @@ function App() {
   };
 
   const handlePageChange = (page: string) => {
-    if (page === 'dashboard') {
-      navigate('/');
-    } else {
-      navigate(`/${page}`);
+    setCurrentPage(page);
+    switch (page) {
+      case 'dashboard':
+        navigate('/');
+        break;
+      case 'optimize':
+        navigate('/optimize');
+        break;
+      case 'wave-details':
+        navigate('/wave-details');
+        break;
+      case 'wave-optimization':
+        navigate('/wave-optimization');
+        break;
+      default:
+        navigate('/');
     }
   };
 
   const DashboardPage = () => (
-    <DashboardSummary onNavigate={handlePageChange} />
+    <Dashboard onNavigate={handlePageChange} />
   );
 
   const OptimizePage = () => (
@@ -115,7 +131,7 @@ function App() {
           optimizedPlan={optimizationResults?.optimized_plan}
           summary={optimizationResults?.summary || baselineData}
           showHeader={false}
-          hasOptimizationResults={!!optimizationResults}
+          hasOptimizationResults={hasOptimizationResults}
         />
         
         {optimizationResults && (
@@ -133,19 +149,40 @@ function App() {
 
   return (
     <div className="App">
-      <Header 
-        currentPage={currentPage}
-        onPageChange={handlePageChange}
-      />
+      <Header currentPage={currentPage} onPageChange={handlePageChange} />
+      
       <main className="main-content">
         <Routes>
-          <Route path="/" element={<DashboardPage />} />
-          <Route path="/optimize" element={<OptimizePage />} />
+          <Route 
+            path="/" 
+            element={<Navigate to="/dashboard" replace />} 
+          />
+          <Route 
+            path="/dashboard" 
+            element={<DashboardPage />} 
+          />
+          <Route 
+            path="/optimize" 
+            element={<OptimizePage />} 
+          />
+          <Route 
+            path="/wave-details" 
+            element={<WaveDetails onNavigate={handlePageChange} />} 
+          />
+          <Route 
+            path="/wave-optimization" 
+            element={<WaveOptimization />} 
+          />
         </Routes>
       </main>
+      
       <Footer />
     </div>
   );
+}
+
+function App() {
+  return <AppContent />;
 }
 
 export default App; 

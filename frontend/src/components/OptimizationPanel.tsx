@@ -54,6 +54,15 @@ const OptimizationPanel: React.FC<OptimizationPanelProps> = ({
         >
           {isLoading ? 'Optimizing...' : 'Run Optimization'}
         </button>
+        
+        <div className="optimization-links">
+          <a href="/wave-optimization" className="link-button">
+            🌊 Wave-Specific Optimization
+          </a>
+          <span className="link-description">
+            Optimize individual waves or across all waves
+          </span>
+        </div>
       </div>
 
       {error && (

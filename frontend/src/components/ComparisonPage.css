@@ -1,0 +1,321 @@
+.comparison-page {
+  max-width: 80rem;
+  margin: 0 auto;
+  padding: var(--spacing-lg);
+}
+
+.comparison-header {
+  text-align: center;
+  margin-bottom: var(--spacing-3xl);
+}
+
+.comparison-header h1 {
+  color: var(--primary-green);
+  font-size: 3.5rem;
+  font-weight: 700;
+  margin-bottom: var(--spacing-md);
+  letter-spacing: -0.025em;
+}
+
+.comparison-header p {
+  color: var(--monochrome-600);
+  font-size: 1.25rem;
+  max-width: 48rem;
+  margin: 0 auto;
+  line-height: 1.7;
+}
+
+.metrics-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: var(--spacing-xl);
+  margin-bottom: var(--spacing-3xl);
+}
+
+.metric-card {
+  background: var(--white);
+  border-radius: var(--border-radius-xl);
+  box-shadow: var(--shadow-lg);
+  padding: var(--spacing-xl);
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  transition: var(--transition);
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.metric-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, var(--primary-green), var(--accent-green-1));
+}
+
+.metric-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-elegant);
+}
+
+.metric-card.original::before {
+  background: linear-gradient(90deg, #f59e0b, #f97316);
+}
+
+.metric-card.optimized::before {
+  background: linear-gradient(90deg, var(--accent-green-1), var(--accent-green-2));
+}
+
+.metric-card h3 {
+  color: var(--monochrome-900);
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: var(--spacing-lg);
+  letter-spacing: -0.025em;
+}
+
+.metric-value {
+  font-size: 3rem;
+  font-weight: 800;
+  margin-bottom: var(--spacing-md);
+  letter-spacing: -0.025em;
+}
+
+.metric-card.original .metric-value {
+  color: #f59e0b;
+}
+
+.metric-card.optimized .metric-value {
+  color: var(--accent-green-1);
+}
+
+.metric-label {
+  color: var(--monochrome-600);
+  font-size: 0.875rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.improvement-indicator {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.25rem;
+  border-radius: var(--border-radius);
+  font-weight: 600;
+  font-size: 0.875rem;
+  margin-top: var(--spacing-md);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.improvement-indicator.positive {
+  background: rgba(15, 126, 19, 0.1);
+  color: var(--accent-green-1);
+  border: 1px solid rgba(15, 126, 19, 0.2);
+}
+
+.improvement-indicator.negative {
+  background: rgba(239, 68, 68, 0.1);
+  color: #ef4444;
+  border: 1px solid rgba(239, 68, 68, 0.2);
+}
+
+.improvement-indicator.neutral {
+  background: rgba(156, 163, 175, 0.1);
+  color: var(--monochrome-600);
+  border: 1px solid rgba(156, 163, 175, 0.2);
+}
+
+.arrow-up {
+  color: var(--accent-green-1);
+}
+
+.arrow-down {
+  color: #ef4444;
+}
+
+.arrow-neutral {
+  color: var(--monochrome-600);
+}
+
+.value-proposition {
+  background: linear-gradient(135deg, var(--primary-green) 0%, var(--accent-green-1) 100%);
+  color: var(--white);
+  border-radius: var(--border-radius-xl);
+  padding: var(--spacing-3xl);
+  margin: var(--spacing-3xl) 0;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.value-proposition::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M 10 0 L 0 0 0 10" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="0.5"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
+  opacity: 0.3;
+}
+
+.value-proposition h2 {
+  color: var(--white);
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: var(--spacing-lg);
+  letter-spacing: -0.025em;
+  position: relative;
+  z-index: 1;
+}
+
+.value-proposition p {
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 1.25rem;
+  line-height: 1.7;
+  max-width: 48rem;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+
+.benefits-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: var(--spacing-xl);
+  margin-top: var(--spacing-3xl);
+  position: relative;
+  z-index: 1;
+}
+
+.benefit-item {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: var(--border-radius-lg);
+  padding: var(--spacing-xl);
+  text-align: center;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  transition: var(--transition);
+}
+
+.benefit-item:hover {
+  background: rgba(255, 255, 255, 0.15);
+  transform: translateY(-2px);
+}
+
+.benefit-item h4 {
+  color: var(--white);
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: var(--spacing-md);
+  letter-spacing: -0.025em;
+}
+
+.benefit-item p {
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+.cta-section {
+  text-align: center;
+  margin-top: var(--spacing-3xl);
+  position: relative;
+  z-index: 1;
+}
+
+.cta-button {
+  background: var(--white);
+  color: var(--primary-green);
+  border: none;
+  padding: 1rem 2.5rem;
+  border-radius: var(--border-radius);
+  font-family: var(--font-body);
+  font-size: 1.125rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transition);
+  box-shadow: var(--shadow-lg);
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.cta-button:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-elegant);
+  background: #f8f9fa;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .comparison-page {
+    padding: var(--spacing-sm);
+  }
+  
+  .comparison-header h1 {
+    font-size: 2.5rem;
+  }
+  
+  .comparison-header p {
+    font-size: 1.125rem;
+  }
+  
+  .metrics-grid {
+    grid-template-columns: 1fr;
+    gap: var(--spacing-lg);
+  }
+  
+  .metric-value {
+    font-size: 2.5rem;
+  }
+  
+  .value-proposition {
+    padding: var(--spacing-2xl);
+  }
+  
+  .value-proposition h2 {
+    font-size: 2rem;
+  }
+  
+  .benefits-grid {
+    grid-template-columns: 1fr;
+    gap: var(--spacing-lg);
+  }
+  
+  .cta-button {
+    padding: 0.875rem 2rem;
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .comparison-header h1 {
+    font-size: 2rem;
+  }
+  
+  .comparison-header p {
+    font-size: 1rem;
+  }
+  
+  .metric-card {
+    padding: var(--spacing-lg);
+  }
+  
+  .metric-value {
+    font-size: 2rem;
+  }
+  
+  .value-proposition {
+    padding: var(--spacing-xl);
+  }
+  
+  .value-proposition h2 {
+    font-size: 1.75rem;
+  }
+} 

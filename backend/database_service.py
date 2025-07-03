@@ -35,17 +35,17 @@ class DatabaseService:
         self.conn = None
     
     def get_connection(self):
-        """Get a database connection."""
+        """Get a fresh database connection."""
         try:
-            if self.conn is None or self.conn.closed:
-                self.conn = psycopg2.connect(
-                    host=self.host,
-                    port=self.port,
-                    database=self.database,
-                    user=self.user,
-                    password=self.password
-                )
-            return self.conn
+            # Always create a fresh connection to avoid transaction state issues
+            conn = psycopg2.connect(
+                host=self.host,
+                port=self.port,
+                database=self.database,
+                user=self.user,
+                password=self.password
+            )
+            return conn
         except Exception as e:
             logger.error(f"Failed to connect to database: {e}")
             raise

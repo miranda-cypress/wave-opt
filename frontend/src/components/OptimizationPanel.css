@@ -46,6 +46,7 @@
   align-items: center;
   gap: var(--spacing-lg);
   margin-bottom: var(--spacing-xl);
+  margin: 1.5rem 0;
 }
 
 .control-group {
@@ -74,48 +75,27 @@
 }
 
 .optimize-button {
-  background: var(--primary-green);
-  color: var(--white);
+  background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+  color: white;
   border: none;
-  padding: 1rem 2.5rem;
-  border-radius: var(--border-radius);
-  font-family: var(--font-body);
-  font-size: 1.125rem;
+  padding: 0.75rem 1.5rem;
+  border-radius: 8px;
+  font-size: 1rem;
   font-weight: 600;
   cursor: pointer;
-  transition: var(--transition);
-  box-shadow: var(--shadow);
-  min-width: 240px;
-  position: relative;
-  overflow: hidden;
-}
-
-.optimize-button::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: -100%;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-  transition: left 0.6s;
-}
-
-.optimize-button:hover::before {
-  left: 100%;
+  transition: all 0.2s;
+  margin-bottom: 1rem;
 }
 
 .optimize-button:hover:not(:disabled) {
-  background: var(--accent-green-3);
-  transform: translateY(-2px);
-  box-shadow: var(--shadow-elegant);
+  background: linear-gradient(135deg, #2563eb, #1e40af);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
 }
 
 .optimize-button:disabled {
-  background: var(--monochrome-500);
+  opacity: 0.6;
   cursor: not-allowed;
-  transform: none;
-  box-shadow: none;
 }
 
 .optimize-button:disabled::before {
@@ -284,4 +264,36 @@
     padding: 0.75rem 1.5rem;
     font-size: 0.95rem;
   }
+}
+
+.optimization-links {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding: 1rem;
+  background: #f8fafc;
+  border-radius: 8px;
+  border: 1px solid #e2e8f0;
+}
+
+.link-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: #3b82f6;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.9rem;
+  transition: color 0.2s;
+}
+
+.link-button:hover {
+  color: #1d4ed8;
+  text-decoration: underline;
+}
+
+.link-description {
+  font-size: 0.8rem;
+  color: #6b7280;
+  line-height: 1.4;
 } 
