@@ -3,11 +3,13 @@ import { Routes, Route, Navigate, useLocation, useNavigate } from 'react-router-
 import './App.css';
 import Header from './components/Header';
 import Dashboard from './components/DashboardSummary';
-import OptimizationPanel from './components/OptimizationPanel';
+import UnifiedOptimization from './components/UnifiedOptimization';
 import ComparisonPage from './components/ComparisonPage';
 import StageTimeline from './components/StageTimeline';
 import WaveDetails from './components/WaveDetails';
-import WaveOptimization from './components/WaveOptimization';
+import SKUDetails from './components/SKUDetails';
+import WarehouseLayout from './components/WarehouseLayout';
+import ConfigurationPage from './components/ConfigurationPage';
 import Footer from './components/Footer';
 import { getOriginalWmsPlanSummary } from './api';
 
@@ -33,7 +35,9 @@ function AppContent() {
     if (path === '/') setCurrentPage('dashboard');
     else if (path === '/optimize') setCurrentPage('optimize');
     else if (path === '/wave-details') setCurrentPage('wave-details');
-    else if (path === '/wave-optimization') setCurrentPage('wave-optimization');
+    else if (path === '/sku-details') setCurrentPage('sku-details');
+    else if (path === '/warehouse-layout') setCurrentPage('warehouse-layout');
+    else if (path === '/config') setCurrentPage('config');
   }, [location]);
 
   useEffect(() => {
@@ -90,8 +94,14 @@ function AppContent() {
       case 'wave-details':
         navigate('/wave-details');
         break;
-      case 'wave-optimization':
-        navigate('/wave-optimization');
+      case 'sku-details':
+        navigate('/sku-details');
+        break;
+      case 'warehouse-layout':
+        navigate('/warehouse-layout');
+        break;
+      case 'config':
+        navigate('/config');
         break;
       default:
         navigate('/');
@@ -104,12 +114,7 @@ function AppContent() {
 
   const OptimizePage = () => (
     <div className="container">
-      <h1 className="page-title">Warehouse Workflow Optimization</h1>
-      <p className="page-subtitle">
-        Optimize your warehouse operations with constraint programming to improve efficiency, reduce costs, and meet deadlines.
-      </p>
-      
-      <OptimizationPanel 
+      <UnifiedOptimization 
         onOptimizationComplete={handleOptimizationComplete}
         onOptimizationError={handleOptimizationError}
         onOptimizationStart={handleOptimizationStart}
@@ -170,9 +175,18 @@ function AppContent() {
             element={<WaveDetails onNavigate={handlePageChange} />} 
           />
           <Route 
-            path="/wave-optimization" 
-            element={<WaveOptimization />} 
+            path="/sku-details" 
+            element={<SKUDetails onNavigate={handlePageChange} />} 
           />
+          <Route 
+            path="/warehouse-layout" 
+            element={<WarehouseLayout onNavigate={handlePageChange} />} 
+          />
+          <Route 
+            path="/config" 
+            element={<ConfigurationPage onNavigate={handlePageChange} />} 
+          />
+
         </Routes>
       </main>
       

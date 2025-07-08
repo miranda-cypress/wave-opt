@@ -127,6 +127,12 @@ class SimpleWaveOptimizer:
                             deadline = datetime.fromisoformat(deadline)
                         except:
                             deadline = datetime.now() + timedelta(hours=24)
+                    elif isinstance(deadline, datetime):
+                        # Ensure timezone-naive
+                        if deadline.tzinfo is not None:
+                            deadline = deadline.replace(tzinfo=None)
+                    else:
+                        deadline = datetime.now() + timedelta(hours=24)
                     
                     # Ensure both dates are timezone-naive for comparison
                     if hasattr(deadline, 'tzinfo') and deadline.tzinfo is not None:

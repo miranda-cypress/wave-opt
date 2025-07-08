@@ -1,0 +1,24 @@
+{
+  "walking_time": {
+    "walking_speed_fpm": 250,
+    "vertical_movement_weight": 2,
+    "zone_change_penalty_minutes": 0.5,
+    "level_change_penalty_minutes": 1,
+    "x_weight": 1,
+    "y_weight": 1
+  },
+  "optimization": {
+    "default_hourly_rate": 25,
+    "estimated_minutes_per_order": 2.5,
+    "efficiency_threshold_low": 70,
+    "efficiency_threshold_high": 85
+  },
+  "standard_times": {
+    "label_minutes_per_order": 5,
+    "stage_minutes_per_order": 8,
+    "ship_minutes_per_order": 8,
+    "consolidate_minutes_per_item": 0.5,
+    "pack_minutes_per_item": 1.5,
+    "pick_minutes_per_item": 2
+  }
+}

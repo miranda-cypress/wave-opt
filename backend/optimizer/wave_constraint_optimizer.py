@@ -255,10 +255,20 @@ class WaveConstraintOptimizer:
             
             # 2. Worker assignment for each order at each stage
             worker_assignments = {}
+            # Get the actual worker IDs to ensure proper domain
+            worker_ids = [w.get('id', 0) for w in workers if w.get('id') is not None]
+            if not worker_ids:
+                logger.error("No valid worker IDs found")
+                return False
+            
+            min_worker_id = min(worker_ids)
+            max_worker_id = max(worker_ids)
+            logger.info(f"Worker ID range: {min_worker_id} to {max_worker_id}")
+            
             for order_idx in range(num_orders):
                 for stage in self.stages:
                     worker_assignments[order_idx, stage] = self.model.NewIntVar(
-                        0, num_workers - 1, f'worker_{order_idx}_{stage}'
+                        min_worker_id, max_worker_id, f'worker_{order_idx}_{stage}'
                     )
             logger.info(f"Created {len(worker_assignments)} worker assignment variables")
             
@@ -287,7 +297,7 @@ class WaveConstraintOptimizer:
             # 2. Worker capacity constraints (one worker can only work on one order at a time)
             logger.info("Creating worker capacity constraints...")
             try:
-                for worker_id in range(num_workers):
+                for worker_id in worker_ids:
                     for stage in self.stages:
                         # Create intervals for each order that could be assigned to this worker
                         intervals = []
@@ -383,11 +393,17 @@ class WaveConstraintOptimizer:
                         try:
                             # Convert to minutes relative to planned_start_time
                             if isinstance(shipping_deadline, datetime):
+                                # Ensure both datetimes are timezone-naive for comparison
+                                if shipping_deadline.tzinfo is not None:
+                                    shipping_deadline = shipping_deadline.replace(tzinfo=None)
                                 deadline_time = int((shipping_deadline - base_time).total_seconds() // 60)
                             else:
                                 # Try to parse string deadline
                                 try:
                                     deadline_dt = datetime.fromisoformat(str(shipping_deadline))
+                                    # Ensure timezone-naive
+                                    if deadline_dt.tzinfo is not None:
+                                        deadline_dt = deadline_dt.replace(tzinfo=None)
                                     deadline_time = int((deadline_dt - base_time).total_seconds() // 60)
                                 except:
                                     logger.warning(f"Invalid deadline format for order {order_idx}, skipping deadline constraint")
@@ -449,14 +465,18 @@ class WaveConstraintOptimizer:
                         
                         # If no skilled workers found, allow any worker (fallback)
                         if not skilled_workers:
-                            skilled_workers = list(range(num_workers))
+                            skilled_workers = worker_ids
+                            logger.info(f"No skilled workers found for stage {stage}, using all {len(worker_ids)} workers")
                         
+                        logger.info(f"Order {order_idx}, stage {stage}: {len(skilled_workers)} skilled workers available")
                         if skilled_workers:
                             try:
                                 # Worker assignment must be one of the skilled workers
+                                # Convert list of worker IDs to list of tuples for AddAllowedAssignments
+                                skilled_worker_tuples = [(worker_id,) for worker_id in skilled_workers]
                                 self.model.AddAllowedAssignments(
                                     [worker_assignments[order_idx, stage]], 
-                                    [skilled_workers]
+                                    skilled_worker_tuples
                                 )
                             except Exception as assignment_error:
                                 logger.warning(f"Failed to add worker assignment constraint for order {order_idx}, stage {stage}: {assignment_error}")

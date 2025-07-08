@@ -47,6 +47,11 @@ export const getOriginalWmsPlan = async (orderId: number) => {
   return res.data;
 };
 
+export const getOriginalWmsPlanByNumber = async (orderNumber: string) => {
+  const res = await axios.get(`${API_BASE}/optimization/original/order-by-number/${orderNumber}`);
+  return res.data;
+};
+
 export const getOriginalWmsPlanSummary = async () => {
   const res = await axios.get(`${API_BASE}/optimization/original/summary`);
   return res.data;
@@ -107,5 +112,112 @@ export const optimizeWave = async (waveId: number, optimizeType: 'within_wave' |
 
 export const optimizeCrossWave = async () => {
   const res = await axios.post(`${API_BASE}/optimization/cross-wave`);
+  return res.data;
+};
+
+// New API functions for detailed wave metrics
+export const getWaveUtilization = async (waveId: number) => {
+  const res = await axios.get(`${API_BASE}/data/waves/${waveId}/utilization`);
+  return res.data;
+};
+
+export const getWaveOnTimeDelivery = async (waveId: number) => {
+  const res = await axios.get(`${API_BASE}/data/waves/${waveId}/on-time-delivery`);
+  return res.data;
+};
+
+export const getWaveCosts = async (waveId: number) => {
+  const res = await axios.get(`${API_BASE}/data/waves/${waveId}/costs`);
+  return res.data;
+};
+
+export const getWaveWorkerAssignments = async (waveId: number) => {
+  const res = await axios.get(`${API_BASE}/data/waves/${waveId}/worker-assignments`);
+  return res.data;
+};
+
+export const getWaveDetailedMetrics = async (waveId: number) => {
+  const res = await axios.get(`${API_BASE}/data/waves/${waveId}/detailed-metrics`);
+  return res.data;
+};
+
+export const getWaveCompletionMetrics = async (waveId: number) => {
+  const res = await axios.get(`${API_BASE}/data/waves/${waveId}/completion-metrics`);
+  return res.data;
+};
+
+// Configuration API functions
+export const getConfiguration = async () => {
+  const res = await axios.get(`${API_BASE}/config`);
+  return res.data;
+};
+
+export const updateConfiguration = async (config: any) => {
+  const res = await axios.put(`${API_BASE}/config`, config);
+  return res.data;
+};
+
+export const resetConfiguration = async () => {
+  const res = await axios.post(`${API_BASE}/config/reset`);
+  return res.data;
+};
+
+// Real calculation API functions
+export const getWorkerStatistics = async (warehouseId: number = 1) => {
+  const res = await axios.get(`${API_BASE}/data/calculations/worker-stats?warehouse_id=${warehouseId}`);
+  return res.data;
+};
+
+export const getOrderStatistics = async (warehouseId: number = 1) => {
+  const res = await axios.get(`${API_BASE}/data/calculations/order-stats?warehouse_id=${warehouseId}`);
+  return res.data;
+};
+
+export const getWaveRiskAssessment = async (waveId: number) => {
+  const res = await axios.get(`${API_BASE}/data/calculations/wave-risk-assessment/${waveId}`);
+  return res.data;
+};
+
+// New API function for comprehensive wave comparison data
+export const getWaveComparisonData = async (warehouseId: number = 1) => {
+  const res = await axios.get(`${API_BASE}/data/waves/comparison/all?warehouse_id=${warehouseId}`);
+  return res.data;
+};
+
+// Demo data management API function
+export const updateDemoDates = async () => {
+  const res = await axios.post(`${API_BASE}/demo/update-dates`);
+  return res.data;
+};
+
+// Wave sequence exploration API functions
+export const getWorkerSequence = async (waveId: number, workerId: number) => {
+  const res = await axios.get(`${API_BASE}/data/waves/${waveId}/worker-sequence/${workerId}`);
+  return res.data;
+};
+
+export const getStationSequence = async (waveId: number, equipmentId: number) => {
+  const res = await axios.get(`${API_BASE}/data/waves/${waveId}/station-sequence/${equipmentId}`);
+  return res.data;
+};
+
+export const getAvailableWorkers = async (waveId: number) => {
+  const res = await axios.get(`${API_BASE}/data/waves/${waveId}/available-workers`);
+  return res.data;
+};
+
+export const getAvailableStations = async (waveId: number) => {
+  const res = await axios.get(`${API_BASE}/data/waves/${waveId}/available-stations`);
+  return res.data;
+};
+
+// Order wave assignment API functions
+export const getOrderWaveAssignment = async (orderId: number) => {
+  const res = await axios.get(`${API_BASE}/data/orders/${orderId}/wave-assignment`);
+  return res.data;
+};
+
+export const getOrderWaveAssignmentByNumber = async (orderNumber: string) => {
+  const res = await axios.get(`${API_BASE}/data/orders/number/${orderNumber}/wave-assignment`);
   return res.data;
 }; 

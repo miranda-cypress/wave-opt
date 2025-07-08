@@ -93,8 +93,11 @@ class DatabaseService:
         conn = self.get_connection()
         with conn.cursor(cursor_factory=RealDictCursor) as cursor:
             cursor.execute("""
-                SELECT id, name, category, zone, pick_time_minutes, pack_time_minutes,
-                       volume_cubic_feet, weight_lbs, demand_pattern, shelf_life_days
+                SELECT id, warehouse_id, sku_code, name, category, zone, 
+                       pick_time_minutes, pack_time_minutes, volume_cubic_feet, 
+                       weight_lbs, demand_pattern, velocity_class, shelf_life_days,
+                       external_sku_id, source_id, import_id, augmentation_id,
+                       created_at, updated_at
                 FROM skus
                 WHERE warehouse_id = %s
                 ORDER BY category, name
@@ -102,16 +105,105 @@ class DatabaseService:
             
             return [dict(row) for row in cursor.fetchall()]
     
+    def get_bins(self, warehouse_id: int = 1) -> List[Dict]:
+        """Get all bins for a warehouse with bin type information."""
+        conn = self.get_connection()
+        with conn.cursor(cursor_factory=RealDictCursor) as cursor:
+            cursor.execute("""
+                SELECT b.id, b.warehouse_id, b.bin_id, b.bin_type, b.x_coordinate, b.y_coordinate, 
+                       b.z_coordinate, b.zone, b.aisle, b.level, b.capacity_cubic_feet, 
+                       b.max_weight_lbs, b.current_utilization, b.active, b.external_bin_id,
+                       b.source_id, b.import_id, b.created_at, b.updated_at,
+                       bt.type_code, bt.type_name, bt.description, bt.access_type, 
+                       bt.height_restriction, bt.max_height_feet, bt.requires_equipment, 
+                       bt.equipment_type, bt.pick_efficiency_factor
+                FROM bins b
+                LEFT JOIN bin_types bt ON b.bin_type_id = bt.id
+                WHERE b.warehouse_id = %s
+                ORDER BY b.zone, b.aisle, b.level
+            """, (warehouse_id,))
+            
+            return [dict(row) for row in cursor.fetchall()]
+    
+    def get_bin_types(self) -> List[Dict]:
+        """Get all bin types."""
+        conn = self.get_connection()
+        with conn.cursor(cursor_factory=RealDictCursor) as cursor:
+            cursor.execute("""
+                SELECT id, type_code, type_name, description, default_capacity_cubic_feet,
+                       default_max_weight_lbs, access_type, height_restriction, max_height_feet,
+                       requires_equipment, equipment_type, pick_efficiency_factor, active,
+                       created_at, updated_at
+                FROM bin_types
+                WHERE active = TRUE
+                ORDER BY type_name
+            """)
+            
+            return [dict(row) for row in cursor.fetchall()]
+    
+    def get_walking_times(self, warehouse_id: int = 1) -> List[Dict]:
+        """Get walking times matrix for a warehouse."""
+        conn = self.get_connection()
+        with conn.cursor(cursor_factory=RealDictCursor) as cursor:
+            cursor.execute("""
+                SELECT wt.from_bin_id, wt.to_bin_id, wt.distance_feet, wt.walking_time_minutes,
+                       wt.path_type, wt.computed_at,
+                       b1.bin_id as from_bin_code, b2.bin_id as to_bin_code,
+                       b1.zone as from_zone, b2.zone as to_zone
+                FROM walking_times wt
+                JOIN bins b1 ON wt.from_bin_id = b1.id
+                JOIN bins b2 ON wt.to_bin_id = b2.id
+                WHERE b1.warehouse_id = %s AND b2.warehouse_id = %s
+                ORDER BY b1.bin_id, b2.bin_id
+            """, (warehouse_id, warehouse_id))
+            
+            return [dict(row) for row in cursor.fetchall()]
+    
+    def save_walking_times_matrix(self, walking_times: List[Dict]) -> bool:
+        """Save walking times matrix to database."""
+        try:
+            conn = self.get_connection()
+            cursor = conn.cursor()
+            
+            # Clear existing walking times
+            cursor.execute("DELETE FROM walking_times")
+            
+            # Insert new walking times
+            for record in walking_times:
+                cursor.execute("""
+                    INSERT INTO walking_times 
+                    (from_bin_id, to_bin_id, distance_feet, walking_time_minutes, path_type)
+                    VALUES (%s, %s, %s, %s, %s)
+                """, (
+                    record['from_bin_id'],
+                    record['to_bin_id'],
+                    record['distance_feet'],
+                    record['walking_time_minutes'],
+                    record['path_type']
+                ))
+            
+            conn.commit()
+            conn.close()
+            return True
+            
+        except Exception as e:
+            logger.error(f"Error saving walking times: {e}")
+            if 'conn' in locals():
+                conn.rollback()
+                conn.close()
+            return False
+    
     def get_pending_orders(self, warehouse_id: int = 1, limit: Optional[int] = None) -> List[Dict]:
         """Get pending orders with their items for a warehouse."""
         conn = self.get_connection()
         with conn.cursor(cursor_factory=RealDictCursor) as cursor:
             # Get orders
             query = """
-                SELECT o.id, o.customer_name, o.customer_type, o.priority,
+                SELECT o.id, c.name as customer_name, o.customer_type, o.priority,
                        o.created_at, o.shipping_deadline, o.total_pick_time,
                        o.total_pack_time, o.total_volume, o.total_weight, o.status
                 FROM orders o
+                JOIN customers c ON o.customer_id = c.id
                 WHERE o.warehouse_id = %s AND o.status = 'pending'
                 ORDER BY o.priority ASC, o.shipping_deadline ASC
             """
@@ -143,10 +235,11 @@ class DatabaseService:
         with conn.cursor(cursor_factory=RealDictCursor) as cursor:
             # Get orders from the most recent optimization run for this scenario
             cursor.execute("""
-                SELECT o.id, o.warehouse_id, o.customer_name, o.customer_type, o.priority,
+                SELECT o.id, o.warehouse_id, c.name as customer_name, o.customer_type, o.priority,
                        o.created_at, o.shipping_deadline, o.total_pick_time,
                        o.total_pack_time, o.total_volume, o.total_weight, o.status
                 FROM orders o
+                JOIN customers c ON o.customer_id = c.id
                 WHERE o.status = 'pending'
                 ORDER BY o.priority ASC, o.shipping_deadline ASC
                 LIMIT %s
@@ -313,8 +406,16 @@ class DatabaseService:
                                 stage_schedule.get('sequence_order', 0)
                             ))
                 
-                # Get original plan summary for comparison
-                original_summary = self.get_original_wms_plan_summary()
+                # Get original plan summary for comparison (with fallback)
+                try:
+                    original_summary = self.get_original_wms_plan_summary()
+                except Exception as e:
+                    # Fallback if original plans table doesn't exist
+                    original_summary = {
+                        'total_processing_time': 0,
+                        'total_waiting_time': 0,
+                        'total_orders': optimization_result.get('metrics', {}).get('total_orders', 0)
+                    }
                 
                 # Save plan summary metrics
                 if 'metrics' in optimization_result:
@@ -353,8 +454,10 @@ class DatabaseService:
                         
                         # Get order details
                         cursor.execute("""
-                            SELECT customer_name, priority, shipping_deadline
-                            FROM orders WHERE id = %s
+                            SELECT c.name as customer_name, o.priority, o.shipping_deadline
+                            FROM orders o
+                            JOIN customers c ON o.customer_id = c.id
+                            WHERE o.id = %s
                         """, (order_id,))
                         order_info = cursor.fetchone()
                         
@@ -551,8 +654,9 @@ class DatabaseService:
                     (SELECT COUNT(*) FROM workers WHERE warehouse_id = %s) as total_workers,
                     (SELECT COUNT(*) FROM equipment WHERE warehouse_id = %s) as total_equipment,
                     (SELECT COUNT(*) FROM skus WHERE warehouse_id = %s) as total_skus,
+                    (SELECT COUNT(*) FROM customers WHERE warehouse_id = %s) as total_customers,
                     (SELECT COUNT(*) FROM orders WHERE warehouse_id = %s AND status = 'pending') as pending_orders
-            """, (warehouse_id, warehouse_id, warehouse_id, warehouse_id))
+            """, (warehouse_id, warehouse_id, warehouse_id, warehouse_id, warehouse_id))
             
             result = cursor.fetchone()
             stats = dict(result) if result else {}
@@ -587,6 +691,30 @@ class DatabaseService:
             self.conn.close()
             self.conn = None
     
+    def get_order_id_by_number(self, order_number: str) -> Optional[int]:
+        """
+        Get order ID by order number.
+        
+        Args:
+            order_number: Order number (e.g., ORD00376899)
+            
+        Returns:
+            Order ID if found, None otherwise
+        """
+        try:
+            conn = self.get_connection()
+            with conn.cursor(cursor_factory=RealDictCursor) as cursor:
+                cursor.execute("""
+                    SELECT id FROM orders WHERE order_number = %s
+                """, (order_number,))
+                
+                result = cursor.fetchone()
+                return result['id'] if result else None
+                
+        except Exception as e:
+            print(f"Error getting order ID by number: {e}")
+            return None
+
     def get_orders_for_optimization(self, limit: int = 100) -> List[Dict[str, Any]]:
         """
         Get orders for optimization, using the same 100 orders as the original plan.
@@ -604,7 +732,7 @@ class DatabaseService:
                 cursor.execute("""
                     SELECT 
                         o.id,
-                        o.customer_name,
+                        c.name as customer_name,
                         o.priority,
                         o.shipping_deadline,
                         o.total_pick_time,
@@ -614,6 +742,7 @@ class DatabaseService:
                         15.0 as total_weight,
                         o.status
                     FROM orders o
+                    JOIN customers c ON o.customer_id = c.id
                     WHERE o.status = 'pending'
                     AND o.id IN (
                         SELECT id FROM orders 
@@ -629,4 +758,73 @@ class DatabaseService:
                 
         except Exception as e:
             print(f"Error getting orders for optimization: {e}")
-            return [] 
+            return []
+
+    def get_pending_orders_with_wave_metrics(self, warehouse_id: int = 1, limit: Optional[int] = None, plan_version_id: Optional[int] = None) -> List[Dict]:
+        """
+        Get pending orders with wave-specific metrics from wave_order_metrics table.
+        
+        Args:
+            warehouse_id: ID of the warehouse
+            limit: Maximum number of orders to return
+            plan_version_id: Specific plan version to use (defaults to original plan)
+            
+        Returns:
+            List of orders with wave-specific pick/pack times
+        """
+        conn = self.get_connection()
+        with conn.cursor(cursor_factory=RealDictCursor) as cursor:
+            # Get the original plan version if not specified
+            if plan_version_id is None:
+                cursor.execute("""
+                    SELECT id FROM wave_plan_versions 
+                    WHERE version_type = 'original' 
+                    ORDER BY id LIMIT 1
+                """)
+                result = cursor.fetchone()
+                plan_version_id = result['id'] if result else 1
+            
+            # Get orders with wave metrics
+            query = """
+                SELECT o.id, c.name as customer_name, o.customer_type, o.priority,
+                       o.created_at, o.shipping_deadline, o.total_volume, o.total_weight, o.status,
+                       COALESCE(wom.pick_time_minutes, o.total_pick_time) as pick_time_minutes,
+                       COALESCE(wom.pack_time_minutes, o.total_pack_time) as pack_time_minutes,
+                       COALESCE(wom.walking_time_minutes, 0) as walking_time_minutes,
+                       COALESCE(wom.consolidate_time_minutes, 0) as consolidate_time_minutes,
+                       COALESCE(wom.label_time_minutes, 0) as label_time_minutes,
+                       COALESCE(wom.stage_time_minutes, 0) as stage_time_minutes,
+                       COALESCE(wom.ship_time_minutes, 0) as ship_time_minutes,
+                       wa.wave_id, wa.stage as wave_stage
+                FROM orders o
+                JOIN customers c ON o.customer_id = c.id
+                LEFT JOIN wave_assignments wa ON o.id = wa.order_id
+                LEFT JOIN wave_order_metrics wom ON (
+                    wom.order_id = o.id 
+                    AND wom.wave_id = wa.wave_id 
+                    AND wom.plan_version_id = %s
+                )
+                WHERE o.warehouse_id = %s AND o.status = 'pending'
+                ORDER BY o.priority ASC, o.shipping_deadline ASC
+            """
+            
+            if limit:
+                query += f" LIMIT {limit}"
+            
+            cursor.execute(query, (plan_version_id, warehouse_id))
+            orders = [dict(row) for row in cursor.fetchall()]
+            
+            # Get order items for each order
+            for order in orders:
+                cursor.execute("""
+                    SELECT oi.id, oi.sku_id, oi.quantity, oi.pick_time, oi.pack_time,
+                           oi.volume, oi.weight, s.name as sku_name, s.category
+                    FROM order_items oi
+                    JOIN skus s ON oi.sku_id = s.id
+                    WHERE oi.order_id = %s
+                    ORDER BY oi.id
+                """, (order['id'],))
+                
+                order['items'] = [dict(row) for row in cursor.fetchall()]
+            
+            return orders 

@@ -17,6 +17,8 @@ DECLARE
     priority_multiplier DECIMAL;
     complexity_multiplier DECIMAL;
     priority_int INTEGER;
+    walking_time DECIMAL;
+    item_count INTEGER;
 BEGIN
     -- Convert priority string to integer
     priority_int := CASE order_priority
@@ -28,11 +30,23 @@ BEGIN
         ELSE 3  -- Default to medium priority
     END;
     
+    -- Get actual item count for this order
+    SELECT get_order_item_count(order_id) INTO item_count;
+    
     -- Base duration calculations based on WMS heuristics
     CASE stage_name
         WHEN 'PICK' THEN
-            -- Basic WMS: Simple zone-based picking, no route optimization
-            base_duration := CEIL(total_pick_time * 1.3); -- 30% slower due to poor routing
+            -- Use the order's total_pick_time if available and non-zero
+            IF total_pick_time > 0 THEN
+                base_duration := CEIL(total_pick_time * 1.3); -- 30% slower due to poor routing
+            ELSE
+                -- Use standard time per item if no pick time available
+                base_duration := CEIL(item_count * 2.0); -- 2 minutes per item
+            END IF;
+            
+            -- Add walking time for pick stage
+            walking_time := calculate_order_walking_time(order_id);
+            base_duration := base_duration + CEIL(walking_time);
             
             -- Priority affects picking speed (rush orders get rushed)
             IF priority_int <= 2 THEN
@@ -45,17 +59,22 @@ BEGIN
             END IF;
             
         WHEN 'CONSOLIDATE' THEN
-            -- Basic WMS: Simple consolidation, no optimization
-            base_duration := 12; -- Base consolidation time
+            -- Use standard time per item for consolidation
+            base_duration := CEIL(item_count * 0.5); -- 0.5 minutes per item
             
             -- More items = more consolidation time
-            IF total_items > 5 THEN
-                base_duration := base_duration + (total_items - 5) * 2;
+            IF item_count > 5 THEN
+                base_duration := base_duration + (item_count - 5) * 0.2;
             END IF;
             
         WHEN 'PACK' THEN
-            -- Basic WMS: First available packing station, no skill matching
-            base_duration := CEIL(total_pack_time * 1.4); -- 40% slower due to poor station assignment
+            -- Use the order's total_pack_time if available and non-zero
+            IF total_pack_time > 0 THEN
+                base_duration := CEIL(total_pack_time * 1.4); -- 40% slower due to poor station assignment
+            ELSE
+                -- Use standard time per item if no pack time available
+                base_duration := CEIL(item_count * 1.5); -- 1.5 minutes per item
+            END IF;
             
             -- Heavy orders take longer to pack
             IF total_weight > 15 THEN
@@ -63,17 +82,17 @@ BEGIN
             END IF;
             
         WHEN 'LABEL' THEN
-            -- Basic WMS: Simple labeling process
-            base_duration := 6; -- Base labeling time
+            -- Use standard time per order for labeling
+            base_duration := 5; -- 5 minutes per order
             
             -- More items = more labels
-            IF total_items > 3 THEN
-                base_duration := base_duration + (total_items - 3);
+            IF item_count > 3 THEN
+                base_duration := base_duration + (item_count - 3) * 0.5;
             END IF;
             
         WHEN 'STAGE' THEN
-            -- Basic WMS: Simple staging, no location optimization
-            base_duration := 10; -- Base staging time
+            -- Use standard time per order for staging
+            base_duration := 10; -- 10 minutes per order
             
             -- Heavy orders take longer to stage
             IF total_weight > 25 THEN
@@ -81,8 +100,8 @@ BEGIN
             END IF;
             
         WHEN 'SHIP' THEN
-            -- Basic WMS: First available dock door
-            base_duration := 8; -- Base shipping time
+            -- Use standard time per order for shipping
+            base_duration := 8; -- 8 minutes per order
             
             -- Priority affects shipping speed
             IF priority_int <= 2 THEN
@@ -108,6 +127,7 @@ DECLARE
     queue_multiplier DECIMAL;
     priority_discount DECIMAL;
     priority_int INTEGER;
+    max_waiting_time INTEGER := 60; -- Cap waiting time at 60 minutes
 BEGIN
     -- Convert priority string to integer
     priority_int := CASE order_priority
@@ -150,6 +170,11 @@ BEGIN
     IF priority_int <= 2 THEN
         priority_discount := 0.7; -- 30% less waiting for high priority
         base_waiting_time := CEIL(base_waiting_time * priority_discount);
+    END IF;
+    
+    -- Cap the waiting time at a reasonable maximum
+    IF base_waiting_time > max_waiting_time THEN
+        base_waiting_time := max_waiting_time;
     END IF;
     
     RETURN base_waiting_time;
@@ -286,69 +311,77 @@ BEGIN
 END;
 $$ LANGUAGE plpgsql;
 
--- Enhanced materialized view for original WMS plans with realistic heuristics
+-- Enhanced materialized view for original WMS plans using wave_order_metrics
 CREATE MATERIALIZED VIEW original_wms_plans AS
-WITH order_stages AS (
+WITH original_plan_version AS (
+    SELECT id AS plan_version_id
+    FROM wave_plan_versions
+    WHERE version_type = 'original'
+    ORDER BY id LIMIT 1
+),
+order_stages AS (
     SELECT 
-        o.id as order_id,
-        o.customer_name,
+        wa.order_id,
+        c.name as customer_name,
         o.priority,
         o.shipping_deadline,
-        o.total_pick_time,
-        o.total_pack_time,
-        -- Use a default value for total_items since it doesn't exist in the schema
-        5 as total_items,
-        -- Use a default value for total_weight since it doesn't exist in the schema
-        15.0 as total_weight,
-        unnest(ARRAY['PICK', 'CONSOLIDATE', 'PACK', 'LABEL', 'STAGE', 'SHIP']) as stage_name,
+        wom.pick_time_minutes,
+        wom.pack_time_minutes,
+        wom.walking_time_minutes,
+        wom.consolidate_time_minutes,
+        wom.label_time_minutes,
+        wom.stage_time_minutes,
+        wom.ship_time_minutes,
+        unnest(ARRAY['PICK', 'CONSOLIDATE', 'PACK', 'LABEL', 'STAGE', 'SHIP'])::VARCHAR(20) as stage_name,
         generate_series(1, 6) as stage_order,
+        wa.wave_id,
         -- Calculate order sequence using basic WMS heuristics
         calculate_original_order_sequence(o.priority, o.shipping_deadline, o.id) as order_sequence
-    FROM orders o
+    FROM wave_assignments wa
+    JOIN orders o ON wa.order_id = o.id
+    LEFT JOIN customers c ON o.customer_id = c.id
+    JOIN original_plan_version opv ON TRUE
+    LEFT JOIN wave_order_metrics wom ON wom.order_id = wa.order_id AND wom.wave_id = wa.wave_id AND wom.plan_version_id = opv.plan_version_id
     WHERE o.status = 'pending'
-    -- Limit to exactly 100 orders for testing
-    AND o.id IN (
-        SELECT id FROM orders 
-        WHERE status = 'pending' 
-        ORDER BY priority ASC, shipping_deadline ASC 
-        LIMIT 100
-    )
 ),
 stage_calculations AS (
     SELECT 
         os.*,
-        -- Calculate duration using enhanced heuristics
-        calculate_original_stage_duration(
-            os.order_id, os.stage_name, os.total_pick_time, 
-            os.total_pack_time, os.priority, os.total_items, os.total_weight
-        ) as duration_minutes,
-        -- Calculate waiting time using queue-based heuristics
+        -- Use times from wave_order_metrics for each stage
+        CASE WHEN os.stage_name = 'PICK' THEN COALESCE(os.pick_time_minutes, 0)
+             WHEN os.stage_name = 'CONSOLIDATE' THEN COALESCE(os.consolidate_time_minutes, 0)
+             WHEN os.stage_name = 'PACK' THEN COALESCE(os.pack_time_minutes, 0)
+             WHEN os.stage_name = 'LABEL' THEN COALESCE(os.label_time_minutes, 0)
+             WHEN os.stage_name = 'STAGE' THEN COALESCE(os.stage_time_minutes, 0)
+             WHEN os.stage_name = 'SHIP' THEN COALESCE(os.ship_time_minutes, 0)
+             ELSE 0 END as duration_minutes,
+        -- Calculate waiting time using queue-based heuristics (can be improved later)
         calculate_original_waiting_time(
-            os.stage_name, os.priority, 
-            (SELECT COUNT(*) FROM orders WHERE status = 'pending')
+            os.stage_name::VARCHAR(20), os.priority::VARCHAR, 
+            (SELECT COUNT(*) FROM orders WHERE status = 'pending')::INTEGER
         ) as waiting_time_before,
         -- Assign workers using basic WMS heuristics
-        get_original_worker_assignment(os.order_id, os.stage_name, os.priority) as worker_id,
+        get_original_worker_assignment(os.order_id, os.stage_name::VARCHAR(20), os.priority)::INTEGER as worker_id,
         -- Assign equipment using basic WMS heuristics
-        get_original_equipment_assignment(os.stage_name, os.order_id, os.priority) as equipment_id
+        get_original_equipment_assignment(os.stage_name::VARCHAR(20), os.order_id, os.priority) as equipment_id
     FROM order_stages os
 )
 SELECT 
     sc.*,
     w.name as worker_name,
     e.name as equipment_name,
-    -- Calculate cumulative time (start time for each stage) - basic WMS doesn't optimize this
-    SUM(sc.duration_minutes + sc.waiting_time_before) OVER (
+    -- Calculate cumulative time (start time for each stage)
+    (SUM(sc.duration_minutes + sc.waiting_time_before) OVER (
         PARTITION BY sc.order_id 
         ORDER BY sc.stage_order 
         ROWS UNBOUNDED PRECEDING
-    ) - sc.waiting_time_before as start_time_minutes,
+    ) - sc.waiting_time_before)::INTEGER as start_time_minutes,
     -- Calculate total processing time for the order
-    SUM(sc.duration_minutes) OVER (PARTITION BY sc.order_id) as total_processing_time,
+    SUM(sc.duration_minutes) OVER (PARTITION BY sc.order_id)::INTEGER as total_processing_time,
     -- Calculate total waiting time for the order
-    SUM(sc.waiting_time_before) OVER (PARTITION BY sc.order_id) as total_waiting_time,
-    -- Calculate completion time (basic WMS doesn't optimize for this)
-    SUM(sc.duration_minutes + sc.waiting_time_before) OVER (PARTITION BY sc.order_id) as total_time
+    SUM(sc.waiting_time_before) OVER (PARTITION BY sc.order_id)::INTEGER as total_waiting_time,
+    -- Calculate completion time
+    SUM(sc.duration_minutes + sc.waiting_time_before) OVER (PARTITION BY sc.order_id)::INTEGER as total_time
 FROM stage_calculations sc
 LEFT JOIN workers w ON sc.worker_id = w.id
 LEFT JOIN equipment e ON sc.equipment_id = e.id
@@ -376,7 +409,7 @@ RETURNS TABLE (
     shipping_deadline TIMESTAMPTZ,
     stage_name VARCHAR(20),
     stage_order INTEGER,
-    duration_minutes INTEGER,
+    duration_minutes DECIMAL,
     waiting_time_before INTEGER,
     start_time_minutes INTEGER,
     worker_id INTEGER,

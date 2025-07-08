@@ -6,6 +6,7 @@ This module implements a Job Shop Scheduling Problem with:
 - Equipment capacity constraints  
 - Shipping deadline constraints
 - Precedence constraints between stages
+- Walking time optimization between bins
 """
 
 import time
@@ -25,6 +26,7 @@ from models.optimization import (
     OptimizationResult, OrderSchedule, WorkerSchedule, EquipmentSchedule,
     StageSchedule, OptimizationMetrics
 )
+from walking_time_calculator import WalkingTimeCalculator
 
 
 class OptimizationRequirements:
@@ -116,6 +118,10 @@ class MultiStageOptimizer:
         self.requirements = OptimizationRequirements()
         self.constraints = OptimizationConstraints()
         self.time_granularity = self.requirements.time_granularity_minutes
+        
+        # Initialize walking time calculator
+        self.walking_calculator = WalkingTimeCalculator()
+        self.walking_times_cache = {}  # Cache for walking times between bins
 
     def optimize_workflow(self, orders, workers, equipment, deadlines):
         """
@@ -390,10 +396,30 @@ class MultiStageOptimizer:
             ship_stage = stages.index(StageType.SHIP)
             ship_start = solver.Value(start_time_vars[o, ship_stage]) * time_granularity
             ship_completion_time = datetime.now() + timedelta(minutes=ship_start + self._stage_duration(order, StageType.SHIP))
-            if ship_completion_time <= order.shipping_deadline:
+            
+            # Ensure both datetimes are timezone-naive for comparison
+            if ship_completion_time.tzinfo is not None:
+                ship_completion_time = ship_completion_time.replace(tzinfo=None)
+            
+            deadline = order.shipping_deadline
+            if deadline and hasattr(deadline, 'tzinfo') and deadline.tzinfo is not None:
+                deadline = deadline.replace(tzinfo=None)
+            
+            if ship_completion_time <= deadline:
                 on_time_orders += 1
             else:
                 total_deadline_penalties += 1000  # High penalty for late orders
+        
+        # Calculate walking time metrics
+        total_walking_time = 0.0
+        for order_schedule in order_schedules:
+            for stage_schedule in order_schedule.stages:
+                if stage_schedule.stage_type == StageType.PICK:
+                    # Get the order object to calculate walking time
+                    order = next((o for o in orders if o.id == order_schedule.order_id), None)
+                    if order:
+                        walking_time = self._calculate_total_walking_time(order)
+                        total_walking_time += walking_time
         
         # Create metrics
         metrics = OptimizationMetrics(
@@ -410,6 +436,12 @@ class MultiStageOptimizer:
             optimization_runtime_seconds=optimization_time,
             solver_status="OPTIMAL" if status == cp_model.OPTIMAL else "FEASIBLE"
         )
+        
+        # Store walking time in the result for later use
+        walking_time_info = {
+            'total_walking_time_minutes': total_walking_time,
+            'average_walking_time_per_order': total_walking_time / total_orders if total_orders > 0 else 0.0
+        }
         
         return OptimizationResult(
             order_schedules=order_schedules,
@@ -465,14 +497,83 @@ class MultiStageOptimizer:
         return "\n".join(explanations) if explanations else "Optimization completed with standard resource allocation."
 
     # Helper methods
+    def _get_walking_time_between_bins(self, from_bin_id: int, to_bin_id: int) -> float:
+        """Get walking time between two bins, using cache if available."""
+        cache_key = (from_bin_id, to_bin_id)
+        
+        if cache_key in self.walking_times_cache:
+            return self.walking_times_cache[cache_key]
+        
+        try:
+            # Get walking time from database
+            from walking_time_calculator import calculate_walking_time_between_bins
+            walking_time = calculate_walking_time_between_bins(from_bin_id, to_bin_id)
+            time_minutes = walking_time.get('walking_time_minutes', 0.0)
+            self.walking_times_cache[cache_key] = time_minutes
+            return time_minutes
+        except Exception as e:
+            print(f"Warning: Could not get walking time between bins {from_bin_id} and {to_bin_id}: {e}")
+            return 0.0
+    
+    def _get_order_bin_locations(self, order) -> List[int]:
+        """Get all bin locations for items in an order."""
+        bin_locations = set()
+        
+        try:
+            # Get order items with their SKU bin locations
+            conn = self.walking_calculator.db.get_connection()
+            with conn.cursor() as cursor:
+                cursor.execute("""
+                    SELECT DISTINCT s.bin_id
+                    FROM order_items oi
+                    JOIN skus s ON oi.sku_id = s.id
+                    WHERE oi.order_id = %s AND s.bin_id IS NOT NULL
+                """, (order.id,))
+                
+                for row in cursor.fetchall():
+                    bin_locations.add(row[0])
+            
+            conn.close()
+            return list(bin_locations)
+            
+        except Exception as e:
+            print(f"Warning: Could not get bin locations for order {order.id}: {e}")
+            return []
+    
+    def _calculate_total_walking_time(self, order) -> float:
+        """Calculate total walking time for all picks in an order."""
+        bin_locations = self._get_order_bin_locations(order)
+        
+        if len(bin_locations) <= 1:
+            return 0.0
+        
+        total_walking_time = 0.0
+        
+        # Calculate walking time between consecutive bins
+        # This is a simplified approach - in practice you'd want to optimize the route
+        for i in range(len(bin_locations) - 1):
+            from_bin = bin_locations[i]
+            to_bin = bin_locations[i + 1]
+            walking_time = self._get_walking_time_between_bins(from_bin, to_bin)
+            total_walking_time += walking_time
+        
+        return total_walking_time
+    
     def _stage_duration(self, order, stage):
-        """Get duration for a stage of an order"""
+        """Get duration for a stage of an order including walking time"""
+        base_duration = 0.0
+        
         if stage == StageType.PICK:
-            return order.total_pick_time
+            base_duration = order.total_pick_time
+            # Add walking time for picking stage
+            walking_time = self._calculate_total_walking_time(order)
+            base_duration += walking_time
         elif stage == StageType.PACK:
-            return order.total_pack_time
+            base_duration = order.total_pack_time
         else:
-            return 30  # Default 30 minutes for other stages
+            base_duration = 30  # Default 30 minutes for other stages
+        
+        return base_duration
     
     def _stage_skill(self, stage):
         """Get required skill for a stage"""
@@ -499,6 +600,9 @@ class MultiStageOptimizer:
     def _deadline_to_slot(self, deadline, time_granularity):
         """Convert deadline datetime to time slot"""
         if isinstance(deadline, datetime):
+            # Ensure timezone-naive for calculation
+            if deadline.tzinfo is not None:
+                deadline = deadline.replace(tzinfo=None)
             minutes_since_midnight = deadline.hour * 60 + deadline.minute
             return math.floor(minutes_since_midnight / time_granularity)
         return 96  # Default to end of day (24h * 4 slots per hour)

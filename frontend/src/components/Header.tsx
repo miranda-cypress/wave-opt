@@ -43,12 +43,29 @@ const Header: React.FC<HeaderProps> = ({ currentPage, onPageChange }) => {
             </li>
             <li className="nav-item">
               <button
-                className={`nav-link ${currentPage === 'wave-optimization' ? 'active' : ''}`}
-                onClick={() => onPageChange('wave-optimization')}
+                className={`nav-link ${currentPage === 'sku-details' ? 'active' : ''}`}
+                onClick={() => onPageChange('sku-details')}
               >
-                Wave Optimization
+                SKU Details
               </button>
             </li>
+            <li className="nav-item">
+              <button
+                className={`nav-link ${currentPage === 'warehouse-layout' ? 'active' : ''}`}
+                onClick={() => onPageChange('warehouse-layout')}
+              >
+                Warehouse Layout
+              </button>
+            </li>
+            <li className="nav-item">
+              <button
+                className={`nav-link ${currentPage === 'config' ? 'active' : ''}`}
+                onClick={() => onPageChange('config')}
+              >
+                Config
+              </button>
+            </li>
+
           </ul>
         </nav>
       </div>
