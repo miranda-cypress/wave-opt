@@ -162,7 +162,8 @@ BEGIN
     
     -- Queue length affects waiting time (basic WMS doesn't optimize for this)
     IF total_orders_in_queue > 10 THEN
-        queue_multiplier := 1.0 + (total_orders_in_queue - 10) * 0.1;
+        -- More realistic queue multiplier that doesn't explode with large numbers
+        queue_multiplier := 1.0 + (LEAST(total_orders_in_queue - 10, 50)) * 0.02;
         base_waiting_time := CEIL(base_waiting_time * queue_multiplier);
     END IF;
     
@@ -313,11 +314,53 @@ $$ LANGUAGE plpgsql;
 
 -- Enhanced materialized view for original WMS plans using wave_order_metrics
 CREATE MATERIALIZED VIEW original_wms_plans AS
-WITH original_plan_version AS (
+WITH latest_original_plan_version AS (
     SELECT id AS plan_version_id
     FROM wave_plan_versions
     WHERE version_type = 'original'
-    ORDER BY id LIMIT 1
+    ORDER BY created_at DESC, id DESC
+    LIMIT 1
+),
+relevant_waves AS (
+    SELECT id AS wave_id
+    FROM waves
+    WHERE version_id = (SELECT plan_version_id FROM latest_original_plan_version)
+),
+wave_assignments_with_times AS (
+    SELECT 
+        wa.order_id,
+        wa.stage,
+        wa.planned_start_time,
+        wa.planned_duration_minutes,
+        wa.planned_start_time + INTERVAL '1 minute' * wa.planned_duration_minutes as planned_end_time,
+        wa.wave_id,
+        ROW_NUMBER() OVER (PARTITION BY wa.order_id ORDER BY 
+            CASE wa.stage
+                WHEN 'pick' THEN 1
+                WHEN 'consolidate' THEN 2
+                WHEN 'pack' THEN 3
+                WHEN 'label' THEN 4
+                WHEN 'stage' THEN 5
+                WHEN 'ship' THEN 6
+                ELSE 1
+            END
+        ) as stage_order
+    FROM wave_assignments wa
+    JOIN relevant_waves rw ON wa.wave_id = rw.wave_id
+),
+wait_times AS (
+    SELECT 
+        order_id,
+        stage,
+        planned_start_time,
+        planned_duration_minutes,
+        planned_end_time,
+        stage_order,
+        CASE 
+            WHEN stage_order = 1 THEN 0
+            ELSE EXTRACT(EPOCH FROM (planned_start_time - LAG(planned_end_time) OVER (PARTITION BY order_id ORDER BY stage_order))) / 60
+        END as wait_time_minutes
+    FROM wave_assignments_with_times
 ),
 order_stages AS (
     SELECT 
@@ -332,15 +375,26 @@ order_stages AS (
         wom.label_time_minutes,
         wom.stage_time_minutes,
         wom.ship_time_minutes,
-        unnest(ARRAY['PICK', 'CONSOLIDATE', 'PACK', 'LABEL', 'STAGE', 'SHIP'])::VARCHAR(20) as stage_name,
-        generate_series(1, 6) as stage_order,
+        UPPER(wa.stage)::VARCHAR(20) as stage_name,
+        ROW_NUMBER() OVER (PARTITION BY wa.order_id ORDER BY 
+            CASE wa.stage
+                WHEN 'pick' THEN 1
+                WHEN 'consolidate' THEN 2
+                WHEN 'pack' THEN 3
+                WHEN 'label' THEN 4
+                WHEN 'stage' THEN 5
+                WHEN 'ship' THEN 6
+                ELSE 1
+            END
+        ) as stage_order,
         wa.wave_id,
         -- Calculate order sequence using basic WMS heuristics
         calculate_original_order_sequence(o.priority, o.shipping_deadline, o.id) as order_sequence
     FROM wave_assignments wa
+    JOIN relevant_waves rw ON wa.wave_id = rw.wave_id
     JOIN orders o ON wa.order_id = o.id
     LEFT JOIN customers c ON o.customer_id = c.id
-    JOIN original_plan_version opv ON TRUE
+    JOIN latest_original_plan_version opv ON TRUE
     LEFT JOIN wave_order_metrics wom ON wom.order_id = wa.order_id AND wom.wave_id = wa.wave_id AND wom.plan_version_id = opv.plan_version_id
     WHERE o.status = 'pending'
 ),
@@ -355,19 +409,35 @@ stage_calculations AS (
              WHEN os.stage_name = 'STAGE' THEN COALESCE(os.stage_time_minutes, 0)
              WHEN os.stage_name = 'SHIP' THEN COALESCE(os.ship_time_minutes, 0)
              ELSE 0 END as duration_minutes,
-        -- Calculate waiting time using queue-based heuristics (can be improved later)
-        calculate_original_waiting_time(
-            os.stage_name::VARCHAR(20), os.priority::VARCHAR, 
-            (SELECT COUNT(*) FROM orders WHERE status = 'pending')::INTEGER
-        ) as waiting_time_before,
+        -- Use wait times from wave_assignments calculation
+        COALESCE(wt.wait_time_minutes, 0)::INTEGER as waiting_time_before,
         -- Assign workers using basic WMS heuristics
         get_original_worker_assignment(os.order_id, os.stage_name::VARCHAR(20), os.priority)::INTEGER as worker_id,
         -- Assign equipment using basic WMS heuristics
         get_original_equipment_assignment(os.stage_name::VARCHAR(20), os.order_id, os.priority) as equipment_id
     FROM order_stages os
+    LEFT JOIN wait_times wt ON wt.order_id = os.order_id AND LOWER(os.stage_name) = wt.stage
 )
 SELECT 
-    sc.*,
+    sc.order_id,
+    sc.customer_name,
+    sc.priority,
+    sc.shipping_deadline,
+    sc.pick_time_minutes,
+    sc.pack_time_minutes,
+    sc.walking_time_minutes,
+    sc.consolidate_time_minutes,
+    sc.label_time_minutes,
+    sc.stage_time_minutes,
+    sc.ship_time_minutes,
+    sc.stage_name,
+    sc.stage_order::INTEGER as stage_order,
+    sc.wave_id,
+    sc.order_sequence::INTEGER as order_sequence,
+    sc.duration_minutes,
+    sc.waiting_time_before,
+    sc.worker_id,
+    sc.equipment_id,
     w.name as worker_name,
     e.name as equipment_name,
     -- Calculate cumulative time (start time for each stage)

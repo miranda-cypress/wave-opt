@@ -1037,7 +1037,7 @@ const WaveDetails: React.FC<WaveDetailsProps> = ({ onNavigate }) => {
                         <td style={{ border: '1px solid #ccc', padding: 6, minWidth: 120 }}>
                           {data ? (
                             <div>
-                              <div><strong>Time:</strong> {data.start_time_minutes !== undefined ? `${Math.round(data.start_time_minutes)} min` : 'N/A'}</div>
+                              <div><strong>Time:</strong> {data.duration_minutes !== undefined ? `${Math.round(data.duration_minutes)} min` : 'N/A'}</div>
                               <div><strong>Worker:</strong> {data.worker_name || 'N/A'}</div>
                               <div><strong>Equipment:</strong> {data.equipment_name || 'N/A'}</div>
                             </div>
@@ -1062,7 +1062,7 @@ const WaveDetails: React.FC<WaveDetailsProps> = ({ onNavigate }) => {
                         <td style={{ border: '1px solid #ccc', padding: 6, minWidth: 120 }}>
                           {data ? (
                             <div>
-                              <div><strong>Time:</strong> {data.start_time_minutes !== undefined ? `${Math.round(data.start_time_minutes)} min` : 'N/A'}</div>
+                              <div><strong>Time:</strong> {data.duration_minutes !== undefined ? `${Math.round(data.duration_minutes)} min` : 'N/A'}</div>
                               <div><strong>Worker:</strong> {data.worker_name || 'N/A'}</div>
                               <div><strong>Equipment:</strong> {data.equipment_name || 'N/A'}</div>
                             </div>
